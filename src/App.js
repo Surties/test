@@ -1,24 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import {
+  LOGIN_ERROR,
+  LOGIN_LOADING,
+  LOGIN_SUCCESS,
+} from "./Redux/auth/auth.actiontype";
 
+import AllRoutes from "./Routes/AllRoutes";
+axios.defaults.withCredentials = true;
 function App() {
+  const dispatch = useDispatch();
+  const getUser = () => {
+    dispatch({
+      type: LOGIN_LOADING,
+    });
+    axios
+      .get("http://localhost:8080/auth/signin-token", { withCredentials: true })
+      .then((res) => {
+        dispatch({
+          type: LOGIN_SUCCESS,
+          payload: res.data,
+        });
+      })
+      .catch((err) => {
+        dispatch({
+          type: LOGIN_ERROR,
+          payload: err.response.data.msg,
+        });
+      });
+  };
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AllRoutes />
+    </>
   );
 }
 
