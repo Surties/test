@@ -70,12 +70,12 @@ export default function LoginForm() {
         "https://surtiesserver.onrender.com/auth/signin",
         Info
       );
-      console.log(res);
+      
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
-      console.log(res.data.role);
+     
       if (res.data.role == "admin" && "newsEditor") {
         navigate("/admin");
       } else {

@@ -8,7 +8,7 @@ function OAuth() {
       const auth = getAuth(app);
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      console.log(result);
+     
     } catch (error) {
       console.log("could not login in with google ", error);
     }

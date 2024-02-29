@@ -38,7 +38,6 @@ function News() {
       .get("https://surtiesserver.onrender.com/news/grouped")
       .then((response) => {
         setNews(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.error("Error:", error.message);
@@ -54,7 +53,7 @@ function News() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         if (res.data.role == "admin" || res.data.role == "newsEditor") {
           // navigate("/admin");
         } else navigate("/");

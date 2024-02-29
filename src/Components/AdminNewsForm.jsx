@@ -113,15 +113,14 @@ const YourFormComponent = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    
     try {
       const response = await axios.post(
         "https://surtiesserver.onrender.com/news",
         formData
       );
 
-      console.log("Response:", response.data);
-    } catch (error) {
+   } catch (error) {
       console.error("Error:", error);
     }
     setFormData(initialFormData);
@@ -146,7 +145,7 @@ const YourFormComponent = () => {
         setFormData({ ...formData, catagory: selectedButtons });
       }
     }
-    console.log(selectedButtons);
+    
   };
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
@@ -361,7 +360,7 @@ const YourFormComponent = () => {
                   "surties ",
                 ].map((label, index) => (
                   <Button
-                    key={label}
+                    key={index}
                     _hover={{}}
                     onClick={() => handleButtonClick(label, index)}
                     color={selectedButtons.includes(label) ? "white" : "black"}

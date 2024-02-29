@@ -46,7 +46,6 @@ function UpdateNews() {
     axios
       .delete(`${"https://surtiesserver.onrender.com/news"}/${el}`)
       .then((response) => {
-        console.log("Delete successful:", response.data);
         setLoad(!load);
         fetchData();
       })
@@ -61,7 +60,6 @@ function UpdateNews() {
     axios
       .get(apiUrl)
       .then((response) => {
-        console.log(response.data);
         setNewsData(response.data.newsItems);
         setTotalPage(response.data.totalPages);
       })

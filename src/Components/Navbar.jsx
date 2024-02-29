@@ -15,14 +15,10 @@ import {
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function Navbar() {
-  const { isOpen, onToggle, onClose } = useDisclosure();
-  const [isSmaller] = useMediaQuery("(mix-width: 680px)");
-  useEffect(() => {
-    onClose();
-  }, []);
+  const { isOpen, onToggle} = useDisclosure();
+ 
   return (
     <>
       <Box>

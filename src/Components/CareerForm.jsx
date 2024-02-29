@@ -56,7 +56,7 @@ const CareerForm = () => {
           }
         );
         setUploading(false);
-        console.log("Server Response:", response.data);
+        
       } catch (error) {
         console.error("Error submitting form:", error);
         setUploading(false);

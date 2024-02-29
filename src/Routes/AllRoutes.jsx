@@ -89,7 +89,7 @@ function AllRoutes() {
           element={
             <>
               <Navbar />
-              <News />
+              {/* <News /> */}
             </>
           }
         />

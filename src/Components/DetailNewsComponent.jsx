@@ -5,25 +5,25 @@ import React, { useEffect, useState } from "react";
 function DetailNewsComponent({ para }) {
   const [articleData, setArticleData] = useState({ imgs: [] });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [error1, setError] = useState(false);
   const fetchData = () => {
     setLoading(true);
     axios
       .get(`https://surtiesserver.onrender.com/news/${para}`)
       .then((response) => {
-        console.log(response.data);
+       
         setArticleData(response.data);
         setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
         setLoading(false);
-        setError(true);
+        setError(!error1);
       });
   };
   useEffect(() => {
     fetchData();
-    console.log(loading);
+   
   }, []);
   return (
     <div>
@@ -56,7 +56,7 @@ function DetailNewsComponent({ para }) {
             Image Gallery
           </Text>
           {articleData.imgs.map((img, index) => {
-            return <img src={img} />;
+            return <img key={img + index} alt={index} src={img} />;
           })}
         </Box>
       )}

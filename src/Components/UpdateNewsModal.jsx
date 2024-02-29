@@ -50,7 +50,7 @@ function UpdateNewsModal({ id, fetchData }) {
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-    console.log(value, files);
+
     if (type == "file") {
       setFormData({
         ...formData,
@@ -66,7 +66,6 @@ function UpdateNewsModal({ id, fetchData }) {
   const getSingleData = () => {
     axios.get(`https://surtiesserver.onrender.com/news/${id}`).then((res) => {
       setFormData(res.data);
-      console.log(res.data.catagory);
       setSelectedButtons(res.data.catagory);
     });
   };
@@ -131,7 +130,6 @@ function UpdateNewsModal({ id, fetchData }) {
     axios
       .patch(`${"https://surtiesserver.onrender.com/news"}/${id}`, formData)
       .then((response) => {
-        console.log("PATCH successful:", response.data);
         fetchData();
       })
       .catch((error) => {
@@ -159,7 +157,6 @@ function UpdateNewsModal({ id, fetchData }) {
         setFormData({ ...formData, catagory: selectedButtons });
       }
     }
-    console.log(selectedButtons);
   };
   useEffect(() => {
     getSingleData();
@@ -384,7 +381,6 @@ function UpdateNewsModal({ id, fetchData }) {
                             key={label + index}
                             _hover={{}}
                             onClick={() => {
-                              console.log(label);
                               handleButtonClick(label, index);
                             }}
                             color={

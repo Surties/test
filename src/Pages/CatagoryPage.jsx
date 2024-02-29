@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import { useParams } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
 import { Box, Grid } from "@chakra-ui/react";
@@ -17,7 +16,7 @@ function CatagoryPage() {
     axios
       .get(`https://surtiesserver.onrender.com/news?filter=${catagory}`)
       .then((res) => {
-        console.log(res.data);
+       
         setData(res.data.newsItems);
         setLoading(false);
       })
@@ -61,7 +60,7 @@ function CatagoryPage() {
             justifyContent={"center"}
           >
             {data.map((el) => {
-              return <NewsCard data={el} />;
+              return <NewsCard data={el} key={el._id} />;
             })}
           </Grid>
         )}

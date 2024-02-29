@@ -13,12 +13,12 @@ import {
 } from "@chakra-ui/react";
 
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 import OAuth from "./OAuth";
 
-import { useDispatch, useSelector } from "react-redux";
-import { signup } from "../Redux/auth/auth.action";
+import { useDispatch } from "react-redux";
+// import { signup } from "../Redux/auth/auth.action";
 import axios from "axios";
 import {
   SIGNUP_ERROR,

@@ -69,7 +69,7 @@ const ContactPageComp = () => {
       !contactData.message
     ) {
       setSuccessMsg(false);
-      console.log(contactData);
+      
       return;
     }
 
@@ -83,7 +83,7 @@ const ContactPageComp = () => {
         postData
       );
 
-      console.log("Response:", response.data);
+      
     } catch (error) {
       console.error("Error:", error);
     }

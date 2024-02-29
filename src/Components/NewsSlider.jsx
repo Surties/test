@@ -36,7 +36,7 @@ function NewsSlider() {
         img: null,
         link: "",
       });
-      console.log("Server Response:", response.data);
+      
     } catch (error) {
       console.error("Error submitting form:", error);
       setUploading(false);
@@ -44,7 +44,7 @@ function NewsSlider() {
   };
   const handleUploadImg = async () => {
     const file = formData.img[0];
-    console.log(file);
+   
     if (file == null) return;
     setUploading(true);
     const imgRef = ref(storage, `images/${file.name + Date.now()}`);

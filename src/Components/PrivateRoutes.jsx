@@ -4,7 +4,7 @@ import { Navigate } from "react-router-dom";
 
 function PrivateRoutes({ children }) {
   const { auth, role } = useSelector((store) => store.auth);
-  console.log(auth, role);
+ 
   if (auth) {
     if (role == "admin") {
       return children;

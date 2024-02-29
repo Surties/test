@@ -1,4 +1,4 @@
-import { Select, Text } from "@chakra-ui/react";
+import { Select } from "@chakra-ui/react";
 
 function Filtering({ onFilter, cata }) {
   const handleChange = (e) => {
