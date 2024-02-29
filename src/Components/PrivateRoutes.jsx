@@ -6,9 +6,9 @@ function PrivateRoutes({ children }) {
   const { auth, role } = useSelector((store) => store.auth);
  
   if (auth) {
-    if (role == "admin") {
+    if (role === "admin") {
       return children;
-    } else if (role == "newsEditor") {
+    } else if (role === "newsEditor") {
       return children;
     } else {
       return <Navigate to={"/unauthorized"} />;

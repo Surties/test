@@ -44,7 +44,7 @@ const YourFormComponent = () => {
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
 
-    if (type == "file") {
+    if (type === "file") {
       setFormData({
         ...formData,
         [name]: [files],
@@ -61,7 +61,7 @@ const YourFormComponent = () => {
     setUploading1(true);
     const file = formData.thumbnail[0][0];
 
-    if (file == null) return;
+    if (file === null) return;
     const imgRef = ref(storage, `images/${file.name + Date.now()}`);
     try {
       const snapshot = await uploadBytes(imgRef, file);
@@ -206,7 +206,7 @@ const YourFormComponent = () => {
                   onChange={handleChange}
                 />
                 <Button
-                  isDisabled={formData.thumbnail == null}
+                  isDisabled={formData.thumbnail === null}
                   pos={"static"}
                   loadingText=""
                   bg={"#cb202d"}

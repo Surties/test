@@ -76,7 +76,7 @@ export default function LoginForm() {
         payload: res.data,
       });
      
-      if (res.data.role == "admin" && "newsEditor") {
+      if (res.data.role === "admin" && "newsEditor") {
         navigate("/admin");
       } else {
         navigate("/");

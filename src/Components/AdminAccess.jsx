@@ -7,7 +7,7 @@ function AdminAccess({ children }) {
     return store.auth;
   });
 
-  if (role == "admin") {
+  if (role === "admin") {
     return <>{children}</>;
   } else {
     return <UnAuthorized />;

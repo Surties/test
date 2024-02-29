@@ -17,7 +17,7 @@ const containerStyles = {
 function News() {
   const [slides, setSlides] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error1, setError] = useState(false);
   const [news, setNews] = useState([{ documents: [] }]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ function News() {
       );
       setSlides(response.data);
     } catch (error) {
-      setError(error);
+      setError(!!error1);
     } finally {
       setLoading(false);
     }
@@ -54,7 +54,7 @@ function News() {
       })
       .then((res) => {
         // console.log(res.data);
-        if (res.data.role == "admin" || res.data.role == "newsEditor") {
+        if (res.data.role === "admin" || res.data.role === "newsEditor") {
           // navigate("/admin");
         } else navigate("/");
       })

@@ -7,7 +7,7 @@ function NewsEditorAccess({ children }) {
     return store.auth;
   });
 
-  if (role == "newsEditor" || role == "admin") {
+  if (role === "newsEditor" || role === "admin") {
     return <>{children}</>;
   } else {
     return <UnAuthorized />;

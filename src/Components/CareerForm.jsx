@@ -41,7 +41,7 @@ const CareerForm = () => {
     e.preventDefault();
     setUploading(true);
 
-    if (file == null) return;
+    if (file === null) return;
     const imgRef = ref(storage, `resumes/${file.name + Date.now()}`);
     try {
       const snapshot = await uploadBytes(imgRef, file);

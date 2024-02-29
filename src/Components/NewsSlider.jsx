@@ -45,7 +45,7 @@ function NewsSlider() {
   const handleUploadImg = async () => {
     const file = formData.img[0];
    
-    if (file == null) return;
+    if (file === null) return;
     setUploading(true);
     const imgRef = ref(storage, `images/${file.name + Date.now()}`);
     try {
@@ -64,7 +64,7 @@ function NewsSlider() {
   };
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
-    if (type == "file") {
+    if (type === "file") {
       setFormData({
         ...formData,
         [name]: files,

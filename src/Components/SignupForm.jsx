@@ -72,10 +72,10 @@ export default function SignupForm() {
 
   const postData = async () => {
     if (
-      passwordError == "" &&
-      emailError == "" &&
-      nameError == "" &&
-      ageError == ""
+      passwordError === "" &&
+      emailError === "" &&
+      nameError === "" &&
+      ageError === ""
     ) {
       signup(contactInfo);
     } else {

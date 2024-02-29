@@ -51,7 +51,7 @@ function UpdateNewsModal({ id, fetchData }) {
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
 
-    if (type == "file") {
+    if (type === "file") {
       setFormData({
         ...formData,
         [name]: [files],
@@ -74,7 +74,7 @@ function UpdateNewsModal({ id, fetchData }) {
     setUploading1(true);
     const file = formData.thumbnail[0][0];
 
-    if (file == null) return;
+    if (file === null) return;
     const imgRef = ref(storage, `images/${file.name + Date.now()}`);
     try {
       const snapshot = await uploadBytes(imgRef, file);
