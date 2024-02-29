@@ -2,13 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import { useParams } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
-import { Box, Button, Flex, Grid } from "@chakra-ui/react";
+import { Box, Grid } from "@chakra-ui/react";
 import axios from "axios";
 import NewsCard from "../Components/NewsCard";
 import StickyBox from "react-sticky-box";
 function CatagoryPage() {
   const [data, setData] = useState([]);
-  const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const { catagory } = useParams();
@@ -48,20 +47,24 @@ function CatagoryPage() {
             <Sidebar />
           </StickyBox>
         </Box>
-        <Grid
-          templateColumns={{
-            base: "repeat(1,1fr)",
-            md: "repeat(4, 1fr)",
-            lg: '"repeat(4, 1fr)',
-          }}
-          gap={{ base: "15px", md: "5px" }}
-          w={{ base: "100%", md: "75%" }}
-          justifyContent={"center"}
-        >
-          {data.map((el) => {
-            return <NewsCard data={el} />;
-          })}
-        </Grid>
+        {loading ? (
+          <>Loading</>
+        ) : (
+          <Grid
+            templateColumns={{
+              base: "repeat(1,1fr)",
+              md: "repeat(4, 1fr)",
+              lg: '"repeat(4, 1fr)',
+            }}
+            gap={{ base: "15px", md: "5px" }}
+            w={{ base: "100%", md: "75%" }}
+            justifyContent={"center"}
+          >
+            {data.map((el) => {
+              return <NewsCard data={el} />;
+            })}
+          </Grid>
+        )}
       </Box>
     </>
   );

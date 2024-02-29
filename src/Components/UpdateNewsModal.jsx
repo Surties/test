@@ -64,7 +64,7 @@ function UpdateNewsModal({ id, fetchData }) {
     }
   };
   const getSingleData = () => {
-    axios.get(`http://localhost:8080/news/${id}`).then((res) => {
+    axios.get(`https://surtiesserver.onrender.com/news/${id}`).then((res) => {
       setFormData(res.data);
       console.log(res.data.catagory);
       setSelectedButtons(res.data.catagory);
@@ -129,7 +129,7 @@ function UpdateNewsModal({ id, fetchData }) {
     e.preventDefault();
 
     axios
-      .patch(`${"http://localhost:8080/news"}/${id}`, formData)
+      .patch(`${"https://surtiesserver.onrender.com/news"}/${id}`, formData)
       .then((response) => {
         console.log("PATCH successful:", response.data);
         fetchData();

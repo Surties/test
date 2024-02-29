@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {
   Box,
-  Heading,
   Text,
   Image,
   Stack,
@@ -10,7 +9,6 @@ import {
   Button,
   Flex,
   Center,
-  Select,
   Grid,
 } from "@chakra-ui/react";
 import UpdateNewsModal from "./UpdateNewsModal";
@@ -44,11 +42,12 @@ function UpdateNews() {
   const [query, setQuery] = useState("");
 
   const handleDelete = (el) => {
+    setLoad(true);
     axios
       .delete(`${"https://surtiesserver.onrender.com/news"}/${el}`)
       .then((response) => {
         console.log("Delete successful:", response.data);
-        setLoad(false);
+        setLoad(!load);
         fetchData();
       })
       .catch((error) => {
