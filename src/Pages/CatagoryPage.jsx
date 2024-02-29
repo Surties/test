@@ -16,7 +16,7 @@ function CatagoryPage() {
   const fetchData = () => {
     setLoading(true);
     axios
-      .get(`http://localhost:8080/news?filter=${catagory}`)
+      .get(`https://surtiesserver.onrender.com/news?filter=${catagory}`)
       .then((res) => {
         console.log(res.data);
         setData(res.data.newsItems);

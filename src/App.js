@@ -16,7 +16,9 @@ function App() {
       type: LOGIN_LOADING,
     });
     axios
-      .get("http://localhost:8080/auth/signin-token", { withCredentials: true })
+      .get("https://surtiesserver.onrender.com/auth/signin-token", {
+        withCredentials: true,
+      })
       .then((res) => {
         dispatch({
           type: LOGIN_SUCCESS,
