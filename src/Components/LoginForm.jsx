@@ -15,7 +15,7 @@ import {
 import React, { useEffect, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
-import OAuth from "./OAuth";
+// import OAuth from "./OAuth";
 import { useDispatch, useSelector } from "react-redux";
 import {
   LOGIN_ERROR,
@@ -89,11 +89,11 @@ export default function LoginForm() {
       });
     }
   };
-  useEffect(() => {
-    if (auth) {
-      // navigate("/");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (auth) {
+  //     // navigate("/");
+  //   }
+  // }, [auth]);
   return (
     <Flex
       minH={{ base: "0vh", md: "30vh", lg: "100vh" }}
@@ -176,7 +176,7 @@ export default function LoginForm() {
               >
                 Sign in
               </Button>
-              <OAuth />
+              {/* <OAuth /> */}
             </Stack>
             <Text textAlign={"center"} color={"red"}>
               {message1}{" "}

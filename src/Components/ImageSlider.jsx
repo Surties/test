@@ -19,7 +19,7 @@ const ImageSlider = ({ slides }) => {
     }, 3000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [handleNext]);
   const slideStyles = {
     width: "100%",
     paddingTop: "30%",

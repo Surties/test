@@ -28,7 +28,7 @@ function CatagoryPage() {
   };
   useEffect(() => {
     fetchData();
-  }, [catagory]);
+  }, [catagory,fetchData]);
   return (
     <>
       <Box

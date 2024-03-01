@@ -54,7 +54,9 @@ const CareerForm = () => {
             ...formData,
             file: downloadURL,
           }
+          
         );
+        console.log(response);
         setUploading(false);
         
       } catch (error) {

@@ -85,7 +85,7 @@ function UpdateNews() {
   };
   useEffect(() => {
     fetchData();
-  }, [pageNumber, filter, query]);
+  }, [pageNumber, filter, query,fetchData]);
 
   return (
     <Center flexDirection={"column"}>

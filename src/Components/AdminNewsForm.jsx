@@ -99,6 +99,7 @@ const YourFormComponent = () => {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(progress);
         },
         (error) => {
           reject(error);
@@ -113,14 +114,14 @@ const YourFormComponent = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     try {
       const response = await axios.post(
         "https://surtiesserver.onrender.com/news",
         formData
       );
-
-   } catch (error) {
+      console.log(response);
+    } catch (error) {
       console.error("Error:", error);
     }
     setFormData(initialFormData);
@@ -145,7 +146,6 @@ const YourFormComponent = () => {
         setFormData({ ...formData, catagory: selectedButtons });
       }
     }
-    
   };
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>

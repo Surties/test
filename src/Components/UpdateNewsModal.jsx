@@ -131,6 +131,7 @@ function UpdateNewsModal({ id, fetchData }) {
       .patch(`${"https://surtiesserver.onrender.com/news"}/${id}`, formData)
       .then((response) => {
         fetchData();
+        console.log(response);
       })
       .catch((error) => {
         console.error("Error updating resource:", error);
@@ -160,7 +161,7 @@ function UpdateNewsModal({ id, fetchData }) {
   };
   useEffect(() => {
     getSingleData();
-  }, []);
+  }, [getSingleData]);
   const handleClick = () => {
     onOpen();
   };

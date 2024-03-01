@@ -69,25 +69,25 @@ const ContactPageComp = () => {
       !contactData.message
     ) {
       setSuccessMsg(false);
-      
+
       return;
     }
 
     setSuccessMsg(true);
   };
 
-  const handlePostRequest = async () => {
-    try {
-      const response = await axios.post(
-        "https://surtiesserver.onrender.com/contact-us",
-        postData
-      );
-
-      
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  // const handlePostRequest = async () => {
+  //   try {
+  //     const response = await axios.post(
+  //       "https://surtiesserver.onrender.com/contact-us",
+  //       postData
+  //     );
+  //     console.log(response);
+  //     setPostData({})
+  //   } catch (error) {
+  //     console.error("Error:", error);
+  //   }
+  // };
   return (
     <Box
       backgroundColor={"white"}

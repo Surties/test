@@ -22,7 +22,7 @@ function DetailNewsComponent({ para }) {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
   return (
     <div>
       {loading ? (

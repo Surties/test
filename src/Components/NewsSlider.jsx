@@ -30,6 +30,7 @@ function NewsSlider() {
         "https://surtiesserver.onrender.com/slider",
         formData
       );
+      console.log(response)
       setUploading(false);
       setFormData({
         heading: "",

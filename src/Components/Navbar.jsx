@@ -9,7 +9,6 @@ import {
   useBreakpointValue,
   useDisclosure,
   Img,
-  useMediaQuery,
 } from "@chakra-ui/react";
 
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
