@@ -16,7 +16,6 @@ function CatagoryPage() {
     axios
       .get(`https://surtiesserver.onrender.com/news?filter=${catagory}`)
       .then((res) => {
-       
         setData(res.data.newsItems);
         setLoading(false);
       })
@@ -28,7 +27,7 @@ function CatagoryPage() {
   };
   useEffect(() => {
     fetchData();
-  }, [catagory,fetchData]);
+  }, [catagory]);
   return (
     <>
       <Box

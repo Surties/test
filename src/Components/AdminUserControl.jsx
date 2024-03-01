@@ -55,7 +55,7 @@ function AdminUserControl() {
 
   useEffect(() => {
     fetchData();
-  }, [page, query,fetchData]);
+  }, [page, query]);
 
   const onSearch = (e) => {
     setQuery(e);

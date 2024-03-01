@@ -12,7 +12,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 // import OAuth from "./OAuth";
@@ -89,11 +89,7 @@ export default function LoginForm() {
       });
     }
   };
-  // useEffect(() => {
-  //   if (auth) {
-  //     // navigate("/");
-  //   }
-  // }, [auth]);
+
   return (
     <Flex
       minH={{ base: "0vh", md: "30vh", lg: "100vh" }}

@@ -161,7 +161,7 @@ function UpdateNewsModal({ id, fetchData }) {
   };
   useEffect(() => {
     getSingleData();
-  }, [getSingleData]);
+  }, []);
   const handleClick = () => {
     onOpen();
   };
