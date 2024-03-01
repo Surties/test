@@ -11,7 +11,6 @@ function DetailNewsComponent({ para }) {
     axios
       .get(`https://surtiesserver.onrender.com/news/${para}`)
       .then((response) => {
-       
         setArticleData(response.data);
         setLoading(false);
       })
@@ -23,7 +22,6 @@ function DetailNewsComponent({ para }) {
   };
   useEffect(() => {
     fetchData();
-   
   }, []);
   return (
     <div>

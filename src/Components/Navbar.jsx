@@ -17,8 +17,8 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
-  const { isOpen, onToggle} = useDisclosure();
- 
+  const { isOpen, onToggle } = useDisclosure();
+
   return (
     <>
       <Box>
@@ -116,7 +116,7 @@ export default function Navbar() {
             pr={{ base: "0px", md: "60px" }}
           >
             <Box display="flex" gap={{ base: 0, md: 3 }}></Box>
-            <Link to="#">
+            <Link to="/admin">
               <Box display="flex" gap={2}>
                 <FaRegUserCircle
                   style={{ marginRight: "6%" }}

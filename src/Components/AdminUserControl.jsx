@@ -16,6 +16,7 @@ import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import Searchbar from "./Searchbar";
 import Pagination from "./Pagination";
+axios.defaults.withCredentials = true;
 
 function AdminUserControl() {
   const [userData, setUserData] = useState([]);
