@@ -77,7 +77,6 @@ const ContactPageComp = () => {
         postData
       );
       console.log(response);
-      setPostData({});
     } catch (error) {
       console.error("Error:", error);
     }
