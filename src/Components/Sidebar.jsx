@@ -101,7 +101,7 @@ function Sidebar() {
           top={"15px"}
           borderRadius={"40px"}
         >
-          View All
+          {!show ? "View All" : "Hide"}
         </Button>
       </Box>
     </Box>

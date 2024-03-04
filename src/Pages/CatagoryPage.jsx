@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
-import { Box, Grid } from "@chakra-ui/react";
+import { Box, Center, Flex, Grid, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import NewsCard from "../Components/NewsCard";
 import StickyBox from "react-sticky-box";
@@ -46,7 +46,21 @@ function CatagoryPage() {
           </StickyBox>
         </Box>
         {loading ? (
-          <>Loading</>
+          <>
+            <Flex
+              w={{ base: "100%", md: "75%" }}
+              justifyContent={"center"}
+              mt={"20px"}
+            >
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="#cb404d"
+                size="xl"
+              />
+            </Flex>
+          </>
         ) : (
           <Grid
             templateColumns={{

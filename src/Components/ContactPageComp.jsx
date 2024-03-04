@@ -6,12 +6,6 @@ const ContactPageComp = () => {
   const [contactData, setContactData] = useState({});
   const [errorMsg, setErrorMsg] = useState();
   const [successMsg, setSuccessMsg] = useState(false);
-  const [postData, setPostData] = useState({
-    // Your data to be sent in the POST request
-    // Example:
-    // username: 'john_doe',
-    // password: 'securepassword123'
-  });
   const isValidEmail = (email) => {
     return /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/.test(email);
   };
@@ -24,7 +18,7 @@ const ContactPageComp = () => {
     if (value.length <= 0) {
       return (
         <>
-          <span className="text-capitalize">{field}</span> is a required field.
+          <span className="text-capitalize">{field}</span> is required field.
         </>
       );
     } else {
@@ -59,6 +53,7 @@ const ContactPageComp = () => {
   };
 
   const handleSubmit = (e) => {
+    console.log();
     e.preventDefault();
 
     if (
@@ -68,26 +63,25 @@ const ContactPageComp = () => {
       !contactData.subject ||
       !contactData.message
     ) {
-      setSuccessMsg(false);
-
       return;
     }
-
+    console.log(contactData);
     setSuccessMsg(true);
+    handlePostRequest(contactData);
   };
 
-  // const handlePostRequest = async () => {
-  //   try {
-  //     const response = await axios.post(
-  //       "https://surtiesserver.onrender.com/contact-us",
-  //       postData
-  //     );
-  //     console.log(response);
-  //     setPostData({})
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //   }
-  // };
+  const handlePostRequest = async (postData) => {
+    try {
+      const response = await axios.post(
+        "https://surtiesserver.onrender.com/contact-us",
+        postData
+      );
+      console.log(response);
+      setPostData({});
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
   return (
     <Box
       backgroundColor={"white"}
@@ -105,6 +99,7 @@ const ContactPageComp = () => {
           {!successMsg ? (
             <>
               <Box
+                textTransform={"capitalize"}
                 id="errormessage"
                 className={errorMsg ? "show" : ""}
                 color="#cb404d"

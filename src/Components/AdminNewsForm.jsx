@@ -361,9 +361,13 @@ const YourFormComponent = () => {
                 ].map((label, index) => (
                   <Button
                     key={index}
-                    _hover={{}}
+                    _hover={{ border: "1px solid #cb404d" }}
+                    fontSize={"14px"}
+                    fontWeight={"400"}
+                    color={
+                      selectedButtons.includes(label) ? "white" : "#cb404d"
+                    }
                     onClick={() => handleButtonClick(label, index)}
-                    color={selectedButtons.includes(label) ? "white" : "black"}
                     backgroundColor={
                       selectedButtons.includes(label)
                         ? "#cb404d"

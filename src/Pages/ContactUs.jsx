@@ -35,7 +35,6 @@ function ContactUs() {
           <a href="https://www.gps.ie/">gps trackers</a>
         </iframe>
       </Center>
-      <Box></Box>
     </Flex>
   );
 }

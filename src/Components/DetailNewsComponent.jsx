@@ -1,4 +1,4 @@
-import { Box, Center, Text } from "@chakra-ui/react";
+import { Box, Center, Spinner, Text } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
@@ -26,7 +26,15 @@ function DetailNewsComponent({ para }) {
   return (
     <div>
       {loading ? (
-        <>Loading...</>
+        <Center mt={"20px"}>
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="#cb404d"
+            size="xl"
+          />
+        </Center>
       ) : (
         <Box p={5}>
           <Center>
@@ -40,7 +48,7 @@ function DetailNewsComponent({ para }) {
             {articleData.subHeading}
           </Text>
           <Text fontSize="md" color="gray.500">
-            Author: {articleData.author} | Date: {articleData.date}
+            Author: {articleData.author} | Date:{articleData.date}
           </Text>
 
           <Text fontSize="xl" fontWeight="bold">

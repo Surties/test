@@ -153,6 +153,7 @@ function UpdateNewsModal({ id, fetchData }) {
       setSelectedButtons(selectedButtons.filter((item) => item !== lable));
       setFormData({ ...formData, catagory: selectedButtons });
     } else {
+      console.log(selectedButtons);
       if (selectedButtons.length <= 2) {
         setSelectedButtons([...selectedButtons, lable]);
         setFormData({ ...formData, catagory: selectedButtons });
@@ -361,13 +362,13 @@ function UpdateNewsModal({ id, fetchData }) {
                       <FormLabel>Catagory</FormLabel>
                       <Grid
                         templateColumns={"repeat(3, 1fr)"}
-                        gap={"10px"}
+                        gap={"8px"}
                         mb={4}
                       >
                         {[
                           "top",
                           "latest",
-                          "city/state",
+                          "state",
                           "country",
                           "entertainment",
                           "women",
@@ -380,22 +381,28 @@ function UpdateNewsModal({ id, fetchData }) {
                         ].map((label, index) => (
                           <Button
                             key={label + index}
-                            _hover={{}}
-                            onClick={() => {
-                              handleButtonClick(label, index);
-                            }}
+                            _hover={{ border: "1px solid #cb404d" }}
+                            fontSize={"14px"}
                             color={
                               selectedButtons.includes(label)
                                 ? "white"
-                                : "black"
+                                : "#cb404d"
                             }
+                            onClick={() => {
+                              handleButtonClick(label, index);
+                            }}
                             backgroundColor={
                               selectedButtons.includes(label)
                                 ? "#cb404d"
                                 : "transparent"
                             }
                           >
-                            <Text textTransform={"capitalize"}>{label}</Text>
+                            <Text
+                              fontWeight={"400"}
+                              textTransform={"capitalize"}
+                            >
+                              {label}
+                            </Text>
                           </Button>
                         ))}
                       </Grid>

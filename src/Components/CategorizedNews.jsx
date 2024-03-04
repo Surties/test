@@ -17,6 +17,7 @@ function CategorizedNews({ data, catagory, cata }) {
           borderRadius={"40px"}
           cursor={"default"}
           height={"30px"}
+          textTransform={"capitalize"}
           width={{ base: "120px", md: "120px" }}
         >
           {catagory}
@@ -48,6 +49,7 @@ function CategorizedNews({ data, catagory, cata }) {
         <Grid
           mt={"2%"}
           p={"10px"}
+          
           gridGap={"5px"}
           templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }}
         >

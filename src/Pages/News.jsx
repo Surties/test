@@ -3,7 +3,7 @@ import ImageSlider from "../Components/ImageSlider";
 import axios from "axios";
 import StickyBox from "react-sticky-box";
 
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Center, Flex, Spinner } from "@chakra-ui/react";
 import CategorizedNews from "../Components/CategorizedNews";
 import Sidebar from "../Components/Sidebar";
 import { LOGIN_LOADING } from "../Redux/auth/auth.actiontype";
@@ -18,7 +18,9 @@ function News() {
   const [slides, setSlides] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error1, setError] = useState(false);
+  const [first, SetFirst] = useState(true);
   const [news, setNews] = useState([{ documents: [] }]);
+  const [loading2, setLoading2] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const fetchData = async () => {
@@ -34,31 +36,35 @@ function News() {
     }
   };
   const getNews = () => {
+    setLoading2(true);
     axios
       .get("https://surtiesserver.onrender.com/news/grouped")
       .then((response) => {
         setNews(response.data);
+        setLoading(false);
       })
       .catch((error) => {
+        setLoading2(false);
         console.error("Error:", error.message);
       });
   };
 
   const getUser = () => {
-    dispatch({
-      type: LOGIN_LOADING,
-    });
-    axios
-      .get("https://surtiesserver.onrender.com/auth/signin-token", {
-        withCredentials: true,
-      })
-      .then((res) => {
-        // console.log(res.data);
-        if (res.data.role === "admin" || res.data.role === "newsEditor") {
-          // navigate("/admin");
-        } else navigate("/");
-      })
-      .catch((err) => {});
+    if (first) {
+      dispatch({
+        type: LOGIN_LOADING,
+      });
+      axios
+        .get("https://surtiesserver.onrender.com/auth/signin-token", {
+          withCredentials: true,
+        })
+        .then((res) => {
+          SetFirst(false);
+          console.log(res.data);
+          navigate("/");
+        })
+        .catch((err) => {});
+    } else SetFirst(true);
   };
 
   useEffect(() => {
@@ -73,24 +79,52 @@ function News() {
           <Sidebar />
         </StickyBox>
       </Box>
-      <Box w={{ base: "100%", md: "74%" }} mr={"3%"}>
-        {" "}
+      <Box w={{ base: "100%", md: "76%" }}>
         <Flex mt={"30px"} justifyContent={"center"}>
           <div style={containerStyles}>
-            {loading ? <h1>Loading...</h1> : <ImageSlider slides={slides} />}
+            {loading ? (
+              <Center mt={"20px"}>
+                <Spinner
+                  thickness="4px"
+                  speed="0.65s"
+                  emptyColor="gray.200"
+                  color="#cb404d"
+                  size="xl"
+                />
+              </Center>
+            ) : (
+              <ImageSlider slides={slides} />
+            )}
           </div>
         </Flex>
-        <Box>
-          {news.map((el) => {
-            return (
-              <CategorizedNews
-                catagory={el.category}
-                data={el.documents}
-                cata={el.category}
+        {!loading ? (
+          !loading2 ? (
+            <Center mt={"20px"}>
+              <Spinner
+                thickness="4px"
+                speed="0.65s"
+                emptyColor="gray.200"
+                color="#cb404d"
+                size="xl"
               />
-            );
-          })}
-        </Box>
+            </Center>
+          ) : (
+            <Box ml={"20px"}>
+              {news.map((el, index) => {
+                return (
+                  <CategorizedNews
+                    key={index}
+                    catagory={el.category}
+                    data={el.documents}
+                    cata={el.category}
+                  />
+                );
+              })}
+            </Box>
+          )
+        ) : (
+          ""
+        )}
       </Box>
     </Flex>
   );
