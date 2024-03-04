@@ -13,19 +13,19 @@ import {
 } from "@chakra-ui/react";
 
 import { Link, useNavigate } from "react-router-dom";
-import {  useState } from "react";
+import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-import OAuth from "./OAuth";
+// import OAuth from "./OAuth";
 
 import { useDispatch } from "react-redux";
-// import { signup } from "../Redux/auth/auth.action";
+
 import axios from "axios";
 import {
   SIGNUP_ERROR,
   SIGNUP_LOADING,
   SIGNUP_SUCCESS,
 } from "../Redux/auth/auth.actiontype";
-export default function SignupForm() {
+const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [nameError, setNameError] = useState("");
   const [ageError, setAgeError] = useState("");
@@ -200,6 +200,10 @@ export default function SignupForm() {
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
+                isDisabled={
+                  !!(nameError || ageError || emailError || passwordError) ||
+                  loading
+                }
                 isLoading={loading}
                 pos={"static"}
                 loadingText="Submitting"
@@ -217,7 +221,7 @@ export default function SignupForm() {
               <Text color={"red"} textAlign={"center"}>
                 {message}
               </Text>
-              <OAuth />
+              {/* <OAuth /> */}
             </Stack>
 
             <Box display={"flex"} gap={"6px"}>
@@ -233,4 +237,5 @@ export default function SignupForm() {
       </Stack>
     </Flex>
   );
-}
+};
+export default SignupForm;

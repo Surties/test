@@ -7,6 +7,7 @@ import {
   useColorModeValue,
   Box,
   Stack,
+  Text,
   Flex,
 } from "@chakra-ui/react";
 import { storage } from "../firebase/firebase";
@@ -16,36 +17,48 @@ import { FaUpload } from "react-icons/fa";
 
 function NewsSlider() {
   const [uploading, setUploading] = useState(false);
+
+  const [loading, setloading] = useState("");
   const init = {
     heading: "",
     img: null,
     link: "",
   };
   const [formData, setFormData] = useState(init);
+  const [emptyFields, setEmptyFields] = useState([]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    // Check for empty fields
+    const emptyFieldsArray = Object.entries(formData).filter(([key, value]) =>
+      Array.isArray(value) ? value.length === 0 : !value
+    );
+
+    if (emptyFieldsArray.length > 0) {
+      // Set empty fields to state for displaying error message
+      setEmptyFields(emptyFieldsArray.map(([key, _]) => key));
+      return;
+    }
+
     try {
       const response = await axios.post(
         "https://surtiesserver.onrender.com/slider",
         formData
       );
-      console.log(response)
+      console.log(response);
       setUploading(false);
-      setFormData({
-        heading: "",
-        img: null,
-        link: "",
-      });
-      
+      setFormData(init);
+      setEmptyFields([]);
     } catch (error) {
       console.error("Error submitting form:", error);
       setUploading(false);
     }
   };
+
   const handleUploadImg = async () => {
     const file = formData.img[0];
-   
+
     if (file === null) return;
     setUploading(true);
     const imgRef = ref(storage, `images/${file.name + Date.now()}`);
@@ -63,8 +76,13 @@ function NewsSlider() {
       setUploading(false);
     }
   };
+
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
+
+    // Clear error for the changed field
+    setEmptyFields((prev) => prev.filter((field) => field !== name));
+
     if (type === "file") {
       setFormData({
         ...formData,
@@ -77,9 +95,11 @@ function NewsSlider() {
       });
     }
   };
-  const handleDelete = (id) => {
+
+  const handleDelete = () => {
     setFormData({ ...formData, img: null });
   };
+
   return (
     <Flex align={"center"} justify={"center"}>
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
@@ -131,7 +151,7 @@ function NewsSlider() {
                         alt=""
                       />
                       <Button
-                        onClick={() => handleDelete()}
+                        onClick={handleDelete}
                         width={"100px"}
                         colorScheme="red"
                       >
@@ -166,9 +186,19 @@ function NewsSlider() {
                 placeholder="Enter link"
               />
             </FormControl>
+
+            {emptyFields.length > 0 && (
+              <Text color={"red"} textAlign={"center"}>
+                {`Please fill in the following fields: ${emptyFields.join(
+                  ", "
+                )}`}
+              </Text>
+            )}
+
             <Stack spacing={10} pt={2}>
-              {" "}
               <Button
+                isLoading={uploading}
+                loadingText={"Loading..."}
                 bg={"#cb202d"}
                 color={"white"}
                 _hover={{
@@ -177,6 +207,7 @@ function NewsSlider() {
                 }}
                 type="submit"
                 mt={4}
+                isDisabled={emptyFields.length > 0}
               >
                 Submit
               </Button>

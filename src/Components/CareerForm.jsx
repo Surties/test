@@ -12,6 +12,7 @@ import {
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase/firebase";
 import axios from "axios";
+
 const jobProfiles = [
   "Software Engineer",
   "Product Manager",
@@ -29,6 +30,7 @@ const CareerForm = () => {
     phoneNumber: "",
   });
   const toast = useToast();
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -39,6 +41,21 @@ const CareerForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    
+    if (Object.values(formData).some((value) => value === "")) {
+      toast({
+        position: "top",
+        title: "Error",
+        color: "#c3251f",
+        description: "All fields are required",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+      return;
+    }
+
     setUploading(true);
 
     if (file === null) return;
@@ -54,25 +71,31 @@ const CareerForm = () => {
             ...formData,
             file: downloadURL,
           }
-          
         );
         console.log(response);
         setUploading(false);
-        
+
+        // Clear the form after successful submission
+        setFormData({
+          name: "",
+          email: "",
+          postion: "",
+          phoneNumber: "",
+        });
+
+        toast({
+          position: "top",
+          title: "Resume",
+          color: "#c3251f",
+          description: "Uploaded Successfully",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
       } catch (error) {
         console.error("Error submitting form:", error);
         setUploading(false);
       }
-
-      toast({
-        position: "top",
-        title: "Resume",
-        color: "#c3251f",
-        description: "Uploaded Successfully",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
-      });
     } catch (error) {
       console.error("Error uploading image:", error);
       setUploading(false);
@@ -89,7 +112,8 @@ const CareerForm = () => {
       >
         <form onSubmit={handleSubmit}>
           <FormControl pos={"static"}>
-            <FormLabel>Name</FormLabel>
+            {" "}
+            <FormLabel>Name</FormLabel>{" "}
             <Input
               pos={"static"}
               focusBorderColor="#cb202d"
@@ -97,10 +121,11 @@ const CareerForm = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-            />
-          </FormControl>
+            />{" "}
+          </FormControl>{" "}
           <FormControl pos={"static"}>
-            <FormLabel>Email</FormLabel>
+            {" "}
+            <FormLabel>Email</FormLabel>{" "}
             <Input
               pos={"static"}
               focusBorderColor="#cb202d"
@@ -108,10 +133,11 @@ const CareerForm = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-            />
-          </FormControl>
+            />{" "}
+          </FormControl>{" "}
           <FormControl pos={"static"} mb={4}>
-            <FormLabel>Job Profile</FormLabel>
+            {" "}
+            <FormLabel>Job Profile</FormLabel>{" "}
             <Select
               focusBorderColor="#cb202d"
               className="jobProfileSelector"
@@ -119,19 +145,22 @@ const CareerForm = () => {
               value={formData.postion}
               onChange={handleChange}
             >
+              {" "}
               {jobProfiles.map((profile) => (
                 <option
                   style={{ position: "static" }}
                   key={profile}
                   value={profile}
                 >
-                  {profile}
+                  {" "}
+                  {profile}{" "}
                 </option>
-              ))}
-            </Select>
-          </FormControl>
+              ))}{" "}
+            </Select>{" "}
+          </FormControl>{" "}
           <FormControl pos={"static"} mb={4}>
-            <FormLabel>Phone Number</FormLabel>
+            {" "}
+            <FormLabel>Phone Number</FormLabel>{" "}
             <Input
               pos={"static"}
               focusBorderColor="#cb202d"
@@ -139,11 +168,11 @@ const CareerForm = () => {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleChange}
-            />
-          </FormControl>
-
+            />{" "}
+          </FormControl>{" "}
           <FormControl pos={"static"} mb={4}>
-            <FormLabel>Resume</FormLabel>
+            {" "}
+            <FormLabel>Resume</FormLabel>{" "}
             <Input
               pos={"static"}
               focusBorderColor="#cb202d"
@@ -153,7 +182,7 @@ const CareerForm = () => {
               onChange={(e) => {
                 setFile(e.target.files[0]);
               }}
-            />
+            />{" "}
           </FormControl>
           <Box marginTop={"40px"} display={"flex"} justifyContent={"flex-end"}>
             <Button
@@ -166,6 +195,7 @@ const CareerForm = () => {
               type="submit"
               color={"white"}
               w={"140px"}
+              disabled={uploading} // Disable the button while uploading
             >
               Submit
             </Button>

@@ -28,7 +28,7 @@ const initialFormData = {
   subHeading: "",
   author: "",
   trending: "no",
-  numberOfClick: 0,
+
   catagory: [],
   article: "",
   imgs: [],
@@ -41,6 +41,8 @@ const YourFormComponent = () => {
   const [uploading1, setUploading1] = useState(false);
   const [uploading2, setUploading2] = useState(false);
   const [selectedButtons, setSelectedButtons] = useState([]);
+  const [emptyFields, setEmptyFields] = useState([]);
+  const [loading, setloading] = useState(false);
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
 
@@ -55,6 +57,7 @@ const YourFormComponent = () => {
         [name]: value,
       });
     }
+    setEmptyFields([]);
   };
 
   const handleChangeImg1 = async () => {
@@ -114,14 +117,24 @@ const YourFormComponent = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setloading(true);
+    const emptyFieldsArray = Object.entries(formData).filter(([key, value]) =>
+      Array.isArray(value) ? value.length === 0 : !value
+    );
+    if (emptyFieldsArray.length > 0) {
+      // Set empty fields to state for displaying error message
+      setEmptyFields(emptyFieldsArray.map(([key, _]) => key));
+      return;
+    }
     try {
       const response = await axios.post(
         "https://surtiesserver.onrender.com/news",
         formData
       );
       console.log(response);
+      setloading(false);
     } catch (error) {
+      setloading(false);
       console.error("Error:", error);
     }
     setFormData(initialFormData);
@@ -323,7 +336,6 @@ const YourFormComponent = () => {
                 onChange={handleChange}
               />
             </FormControl>
-
             <FormControl mb={4}>
               <FormLabel>Trending</FormLabel>
               <Select
@@ -336,7 +348,6 @@ const YourFormComponent = () => {
                 <option value="no">No</option>
               </Select>
             </FormControl>
-
             <Box>
               <FormLabel>Catagory</FormLabel>
               <Grid
@@ -381,6 +392,8 @@ const YourFormComponent = () => {
             </Box>
             <Stack spacing={10} pt={2}>
               <Button
+                isLoading={loading}
+                loadingText={"Uplaoding..."}
                 bg={"#cb202d"}
                 color={"white"}
                 _hover={{
@@ -393,6 +406,13 @@ const YourFormComponent = () => {
                 Submit
               </Button>
             </Stack>
+            {emptyFields.length > 0 && (
+              <Text color={"#cb404d"} textAlign={"center"}>
+                {`Please fill in the following fields: ${emptyFields.join(
+                  ", "
+                )}`}
+              </Text>
+            )}{" "}
           </form>
         </Box>
       </Stack>
