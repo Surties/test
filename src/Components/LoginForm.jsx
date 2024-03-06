@@ -12,7 +12,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 
-import React, {  useState } from "react";
+import React, { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 // import OAuth from "./OAuth";
@@ -28,7 +28,7 @@ export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
-
+  const [loading, setLoading] = useState(false);
   const { message1 } = useSelector((store) => {
     return store.auth;
   });
@@ -57,6 +57,7 @@ export default function LoginForm() {
     }
   };
   const submit = async () => {
+    setLoading(true);
     if ((isValidEmail, isValidPassword)) {
       await login();
     }
@@ -70,12 +71,13 @@ export default function LoginForm() {
         "https://surtiesserver.onrender.com/auth/signin",
         Info
       );
-      
+
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
-     
+
+      setLoading(false);
       if (res.data.role === "admin" && "newsEditor") {
         navigate("/admin");
       } else {
@@ -87,6 +89,7 @@ export default function LoginForm() {
         type: LOGIN_ERROR,
         payload: error.response.data.msg,
       });
+      setLoading(false);
     }
   };
 
@@ -160,8 +163,10 @@ export default function LoginForm() {
             ) : null}
             <Stack spacing={10}>
               <Button
+                isLoading={loading}
                 isDisabled={!isValidEmail || !isValidPassword}
                 onClick={submit}
+                loadingText={"signin..."}
                 pos={"static"}
                 bg={"#cb202d"}
                 color={"white"}

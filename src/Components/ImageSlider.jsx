@@ -30,12 +30,17 @@ const ImageSlider = ({ slides }) => {
 
   const slideStylesWithBackground = {
     ...slideStyles,
-    backgroundImage: `url(${slides[currentIndex].img})`,
+    backgroundImage: `url(${
+      slides[currentIndex].img
+        ? slides[currentIndex].img
+        : "https://placehold.co/600x400"
+    })`,
     backgroundSize: "100% 100%",
     backgroundRepeat: "no-repeat",
     display: "flex",
     flexDirection: "column",
   };
+
 
   return (
     <Flex>

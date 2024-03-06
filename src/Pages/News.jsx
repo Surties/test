@@ -15,7 +15,7 @@ const containerStyles = {
 };
 
 function News() {
-  const [slides, setSlides] = useState([]);
+  const [slides, setSlides] = useState([{ img: "" }]);
   const [loading, setLoading] = useState(true);
   const [error1, setError] = useState(false);
   const [first, SetFirst] = useState(true);
