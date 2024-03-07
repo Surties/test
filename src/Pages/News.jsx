@@ -9,6 +9,7 @@ import Sidebar from "../Components/Sidebar";
 import { LOGIN_LOADING } from "../Redux/auth/auth.actiontype";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 axios.defaults.withCredentials = true;
 const containerStyles = {
   width: "90%",
@@ -73,16 +74,37 @@ function News() {
     getUser();
   }, []);
   return (
-    <Flex flexDirection={{ base: "column", md: "row" }}>
-      <Box backgroundColor={"#cb404d"} width={{ base: "100%", md: "20%" }}>
-        <StickyBox offsetTop={20} offsetBottom={20}>
-          <Sidebar />
-        </StickyBox>
-      </Box>
-      <Box w={{ base: "100%", md: "76%" }}>
-        <Flex mt={"30px"} justifyContent={"center"}>
-          <div style={containerStyles}>
-            {loading ? (
+    <>
+      <Helmet>
+        <title>News-Surtie's Digital Media </title>
+        <meta name="Home" content="Get news of all categories" />
+      </Helmet>{" "}
+      <Flex flexDirection={{ base: "column", md: "row" }}>
+        <Box backgroundColor={"#cb404d"} width={{ base: "100%", md: "20%" }}>
+          <StickyBox offsetTop={20} offsetBottom={20}>
+            <Sidebar />
+          </StickyBox>
+        </Box>
+        <Box w={{ base: "100%", md: "76%" }}>
+          <Flex mt={"30px"} justifyContent={"center"}>
+            <div style={containerStyles}>
+              {loading ? (
+                <Center mt={"20px"}>
+                  <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="#cb404d"
+                    size="xl"
+                  />
+                </Center>
+              ) : (
+                <ImageSlider slides={slides} />
+              )}
+            </div>
+          </Flex>
+          {!loading ? (
+            !loading2 ? (
               <Center mt={"20px"}>
                 <Spinner
                   thickness="4px"
@@ -93,40 +115,25 @@ function News() {
                 />
               </Center>
             ) : (
-              <ImageSlider slides={slides} />
-            )}
-          </div>
-        </Flex>
-        {!loading ? (
-          !loading2 ? (
-            <Center mt={"20px"}>
-              <Spinner
-                thickness="4px"
-                speed="0.65s"
-                emptyColor="gray.200"
-                color="#cb404d"
-                size="xl"
-              />
-            </Center>
+              <Box ml={"20px"}>
+                {news.map((el, index) => {
+                  return (
+                    <CategorizedNews
+                      key={index}
+                      catagory={el.category}
+                      data={el.documents}
+                      cata={el.category}
+                    />
+                  );
+                })}
+              </Box>
+            )
           ) : (
-            <Box ml={"20px"}>
-              {news.map((el, index) => {
-                return (
-                  <CategorizedNews
-                    key={index}
-                    catagory={el.category}
-                    data={el.documents}
-                    cata={el.category}
-                  />
-                );
-              })}
-            </Box>
-          )
-        ) : (
-          ""
-        )}
-      </Box>
-    </Flex>
+            ""
+          )}
+        </Box>
+      </Flex>
+    </>
   );
 }
 

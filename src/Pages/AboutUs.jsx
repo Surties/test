@@ -9,6 +9,7 @@ import {
   GridItem,
   Image,
 } from "@chakra-ui/react";
+import { Helmet } from "react-helmet";
 
 // Sample data for the About Us page
 const aboutUsData = {
@@ -105,97 +106,109 @@ const aboutUsData = {
 // AboutUs component
 const AboutUs = () => {
   return (
-    <Box maxW="100%" mx="auto">
-      <Image
-        src={aboutUsData.officeImage}
-        alt="Office"
-        maxH="300px"
-        w="100%"
-        objectFit="cover"
-      />
+    <>
+      <Helmet>
+        <title>About-Surtie's Digital Media</title>
+        <meta name="Home" content="know more about the company" />
+      </Helmet>
+      <Box maxW="100%" mx="auto">
+        <Image
+          src={aboutUsData.officeImage}
+          alt="Office"
+          maxH="300px"
+          w="100%"
+          objectFit="cover"
+        />
 
-      <Box p={8} bgColor="#cb404d" color="white" borderRadius="10px" mt="-50px">
-        <Heading fontSize={"35px"} mb={6}>
-          {aboutUsData.title}
-        </Heading>
-        <Text fontSize="lg" mb={8}>
-          {aboutUsData.description}
-        </Text>
-
-        <Heading size="md" mb={4}>
-          Our Mission
-        </Heading>
-        <Text mb={6}>{aboutUsData.mission}</Text>
-
-        <Heading size="lg" mb={4}>
-          Meet Our Team
-        </Heading>
-        <Grid
-          templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(6, 1fr)" }}
-          gap={6}
+        <Box
+          p={8}
+          bgColor="#cb404d"
+          color="white"
+          borderRadius="10px"
+          mt="-50px"
         >
-          {aboutUsData.teamMembers.map((member, index) => (
-            <GridItem key={index}>
-              <Box
-                bgColor="white"
-                p={4}
-                borderRadius="10px"
-                textAlign="center"
-                boxShadow="lg"
-                overflow="hidden"
-              >
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  borderRadius="full"
-                  boxSize="150px"
-                  mx="auto"
-                />
-                <Heading size="sm" mt={2}>
-                  {member.name}
-                </Heading>
-                <Text fontSize="sm" color="#cb404d">
-                  {member.role}
-                </Text>
-              </Box>
-            </GridItem>
-          ))}
-        </Grid>
+          <Heading fontSize={"35px"} mb={6}>
+            {aboutUsData.title}
+          </Heading>
+          <Text fontSize="lg" mb={8}>
+            {aboutUsData.description}
+          </Text>
 
-        <Heading size="md" mt={8} mb={4}>
-          Our History
-        </Heading>
-        <Text mb={6}>{aboutUsData.history}</Text>
+          <Heading size="md" mb={4}>
+            Our Mission
+          </Heading>
+          <Text mb={6}>{aboutUsData.mission}</Text>
 
-        <Heading size="md" mb={4}>
-          Achievements
-        </Heading>
-        <VStack align="start" spacing={2}>
-          {aboutUsData.achievements.map((achievement, index) => (
-            <Text key={index}>&#8226; {achievement}</Text>
-          ))}
-        </VStack>
+          <Heading size="lg" mb={4}>
+            Meet Our Team
+          </Heading>
+          <Grid
+            templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(6, 1fr)" }}
+            gap={6}
+          >
+            {aboutUsData.teamMembers.map((member, index) => (
+              <GridItem key={index}>
+                <Box
+                  bgColor="white"
+                  p={4}
+                  borderRadius="10px"
+                  textAlign="center"
+                  boxShadow="lg"
+                  overflow="hidden"
+                >
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    borderRadius="full"
+                    boxSize="150px"
+                    mx="auto"
+                  />
+                  <Heading size="sm" mt={2}>
+                    {member.name}
+                  </Heading>
+                  <Text fontSize="sm" color="#cb404d">
+                    {member.role}
+                  </Text>
+                </Box>
+              </GridItem>
+            ))}
+          </Grid>
 
-        <Heading size="md" mt={8} mb={4}>
-          What We Do
-        </Heading>
-        <Text mb={6}>{aboutUsData.goals.whatWeDo}</Text>
+          <Heading size="md" mt={8} mb={4}>
+            Our History
+          </Heading>
+          <Text mb={6}>{aboutUsData.history}</Text>
 
-        <Heading size="md" mb={4}>
-          What We Want to Achieve
-        </Heading>
-        <Text mb={6}>{aboutUsData.goals.whatWeWant}</Text>
+          <Heading size="md" mb={4}>
+            Achievements
+          </Heading>
+          <VStack align="start" spacing={2}>
+            {aboutUsData.achievements.map((achievement, index) => (
+              <Text key={index}>&#8226; {achievement}</Text>
+            ))}
+          </VStack>
 
-        <Heading size="md" mt={8} mb={4}>
-          Contact Us
-        </Heading>
-        <VStack align="start" spacing={2}>
-          <Text>Email: {aboutUsData.contact.email}</Text>
-          <Text>Phone: {aboutUsData.contact.phone}</Text>
-          <Text>Address: {aboutUsData.contact.address}</Text>
-        </VStack>
+          <Heading size="md" mt={8} mb={4}>
+            What We Do
+          </Heading>
+          <Text mb={6}>{aboutUsData.goals.whatWeDo}</Text>
+
+          <Heading size="md" mb={4}>
+            What We Want to Achieve
+          </Heading>
+          <Text mb={6}>{aboutUsData.goals.whatWeWant}</Text>
+
+          <Heading size="md" mt={8} mb={4}>
+            Contact Us
+          </Heading>
+          <VStack align="start" spacing={2}>
+            <Text>Email: {aboutUsData.contact.email}</Text>
+            <Text>Phone: {aboutUsData.contact.phone}</Text>
+            <Text>Address: {aboutUsData.contact.address}</Text>
+          </VStack>
+        </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

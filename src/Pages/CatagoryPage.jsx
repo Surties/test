@@ -5,6 +5,7 @@ import { Box, Center, Flex, Grid, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import NewsCard from "../Components/NewsCard";
 import StickyBox from "react-sticky-box";
+import { Helmet } from "react-helmet";
 function CatagoryPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -30,6 +31,13 @@ function CatagoryPage() {
   }, [catagory]);
   return (
     <>
+      <Helmet>
+        <title>News-{catagory}-Surtie's Digital Media </title>
+        <meta
+          name={catagory}
+          content={`Get news all the news of ${catagory}`}
+        />
+      </Helmet>
       <Box
         display={{ base: "flex", md: "flex" }}
         gap={"2%"}

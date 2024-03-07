@@ -8,6 +8,7 @@ import {
 } from "./Redux/auth/auth.actiontype";
 
 import AllRoutes from "./Routes/AllRoutes";
+import { Helmet } from "react-helmet";
 axios.defaults.withCredentials = true;
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function App() {
   console.log("last");
   return (
     <>
+      
       <AllRoutes />
     </>
   );
