@@ -14,13 +14,16 @@ function NewsCard({ data }) {
         alignItems={"center"}
         flexDirection={"column"}
         borderRadius={"6px"}
+        h={'350px'}
       >
         <Flex
           flexDirection={"column"}
           alignItems={"center"}
           justifyContent={"center"}
         >
-          <img width={"400px"} src={data.thumbnail} alt="" />
+          <Box w={'300px'} overflow={"hidden"} h={"160px"}>
+            <img src={data.thumbnail} alt="" />
+          </Box>
           <Box p={"10px"}>
             <Text
               fontWeight={{ base: "500", md: "600" }}

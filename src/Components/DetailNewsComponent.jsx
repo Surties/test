@@ -5,13 +5,13 @@ import { InstagramEmbed } from "react-social-media-embed";
 function DetailNewsComponent({ para, articleData }) {
   return (
     <Center flexDirection={"column"} p={5}>
-      <Center>
+      <Text fontSize="28px" fontWeight="bold">
+        {articleData.heading}
+      </Text>
+      <Center overflow={'hidden'} w={"100%"} h={"400px"}>
         <img src={articleData.thumbnail} alt="Thumbnail" mt={4} mb={4} />
       </Center>
 
-      <Text fontSize="4xl" fontWeight="bold">
-        {articleData.heading}
-      </Text>
       <Text fontSize="xl" color="gray.500">
         {articleData.subHeading}
       </Text>

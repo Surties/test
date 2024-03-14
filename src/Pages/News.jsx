@@ -62,7 +62,7 @@ function News() {
         })
         .then((res) => {
           SetFirst(false);
-          console.log(res.data);
+
           navigate("/");
         })
         .catch((err) => {});

@@ -23,6 +23,7 @@ import {
 import { app, storage } from "../firebase/firebase";
 import axios from "axios";
 import { FaUpload } from "react-icons/fa";
+import { useSelector } from "react-redux";
 const initialFormData = {
   heading: "",
   subHeading: "",
@@ -59,7 +60,9 @@ const YourFormComponent = () => {
     }
     setEmptyFields([]);
   };
-
+  const { user } = useSelector((el) => {
+    return el.auth;
+  });
   const handleChangeImg1 = async () => {
     setUploading1(true);
     const file = formData.thumbnail[0][0];
@@ -126,7 +129,7 @@ const YourFormComponent = () => {
       setEmptyFields(emptyFieldsArray.map(([key, _]) => key));
       return;
     }
-    console.log(formData);
+    setFormData({ ...formData, author: user });
     try {
       const response = await axios.post("http://localhost:8080/news", formData);
       console.log(response);
@@ -324,16 +327,6 @@ const YourFormComponent = () => {
                 </Flex>
               )}
             </Box>
-            <FormControl mb={4}>
-              <FormLabel>Author</FormLabel>
-              <Input
-                focusBorderColor="#cb202d"
-                type="text"
-                name="author"
-                value={formData.author}
-                onChange={handleChange}
-              />
-            </FormControl>
             <FormControl mb={4}>
               <FormLabel>Instagram Link</FormLabel>
               <Input

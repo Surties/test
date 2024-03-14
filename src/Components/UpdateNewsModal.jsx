@@ -335,16 +335,6 @@ function UpdateNewsModal({ id, fetchData }) {
                         </Flex>
                       )}
                     </Box>
-                    <FormControl mb={4}>
-                      <FormLabel>Author</FormLabel>
-                      <Input
-                        focusBorderColor="#cb202d"
-                        type="text"
-                        name="author"
-                        value={formData.author}
-                        onChange={handleChange}
-                      />
-                    </FormControl>
 
                     <FormControl mb={4}>
                       <FormLabel>Trending</FormLabel>

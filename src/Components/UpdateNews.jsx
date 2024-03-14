@@ -17,6 +17,7 @@ import Pagination from "./Pagination";
 import Searchbar from "./Searchbar";
 import { FaFilter } from "react-icons/fa";
 import Filtering from "./Filtering";
+import { useSelector } from "react-redux";
 const cata = [
   "top",
   "latest",
@@ -41,6 +42,7 @@ function UpdateNews() {
   const [totalPage, setTotalPage] = useState(1);
   const [filter, setFilter] = useState("");
   const [query, setQuery] = useState("");
+
 
   const handleDelete = (el) => {
     setLoad(true);
@@ -140,23 +142,33 @@ function UpdateNews() {
                 flexDirection={"column"}
                 justifyContent={"center"}
               >
-                <Image
-                  src={newsItem.thumbnail}
-                  alt={newsItem.Heading}
-                  maxH="200px"
-                  objectFit="cover"
-                />
+                <Center h={"200px"} overflow={"hidden"}>
+                  <Image
+                    w={"100%"}
+                    src={newsItem.thumbnail}
+                    alt={newsItem.Heading}
+                    objectFit="cover"
+                  />
+                </Center>
                 <Text fontSize="xl" mt={2}>
-                  {newsItem.heading}
+                  {newsItem.heading.slice(0, 60) + "..."}
                 </Text>
                 <Text fontSize="md" mt={2}>
-                  {newsItem.subHeading}
+                  {newsItem.subHeading.slice(0, 100) + "..."}
                 </Text>
-                <Stack direction="row" mt={2} spacing={4} align="center">
-                  <Badge colorScheme="teal">
+                <Flex
+                  justifyContent={"space-between"}
+                  direction="row"
+                  mt={2}
+                  spacing={4}
+                  align="center"
+                >
+                  <Badge colorScheme="green">
                     {`${newsItem.catagory[0]} ${newsItem.catagory[1]}`}
                   </Badge>
                   <Text>{new Date(newsItem.date).toLocaleDateString()}</Text>
+                </Flex>
+                <Stack>
                   <Text>{newsItem.author}</Text>
                 </Stack>
                 <Flex mt={"15px"} justifyContent={"space-between"}>
@@ -166,7 +178,10 @@ function UpdateNews() {
                   >
                     Delete
                   </Button>
-                  <UpdateNewsModal fetchData={fetchData} id={newsItem._id} />
+                  <Center>
+                    <Text>Views : {newsItem.clicks}</Text>
+                  </Center>
+                  <UpdateNewsModal  fetchData={fetchData} id={newsItem._id} />
                 </Flex>
               </Box>
             ))}
