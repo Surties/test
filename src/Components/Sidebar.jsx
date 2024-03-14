@@ -11,6 +11,7 @@ import { IoPhonePortraitOutline } from "react-icons/io5";
 import { Box, Button, ListItem, UnorderedList } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import Socials from "./Socials";
+import Newsletter from "./NewsLetter";
 
 function Sidebar() {
   const [show, setShow] = useState(false);
@@ -86,6 +87,10 @@ function Sidebar() {
           <hr h={"2px"} />
 
           <Socials />
+          <Box padding={"0px 20px"} backgroundColor={"#cb404d"}>
+            {" "}
+            <Newsletter />
+          </Box>
         </Box>
       </Box>
       <Box

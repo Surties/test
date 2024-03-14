@@ -134,10 +134,7 @@ function News() {
           )}
         </Box>
       </Flex>
-      <Box padding={"40px"} backgroundColor={"#cb404d"}>
-        {" "}
-        <NewsLetter />
-      </Box>
+      
     </>
   );
 }

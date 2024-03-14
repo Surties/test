@@ -23,9 +23,12 @@ const Newsletter = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    postData(email);
-    setSubscribed(true);
-    setEmail("");
+    if (email) {
+      postData(email);
+      setSubscribed(true);
+      setEmail("");
+    }
+    return;
   };
   const postData = (email) => {
     axios
@@ -52,19 +55,13 @@ const Newsletter = () => {
               textAlign={"center"}
               color={"white"}
             >
-              <Text marginBottom={"20px"} fontWeight={"bold"} fontSize={"24px"}>
+              <Text marginBottom={"10px"} fontWeight={"bold"} fontSize={"18px"}>
                 Subscribe to Our Newsletter{" "}
-              </Text>
-              <Text>
-                1. You will get important Updates of Surat on your Email.
-                <br />
-                2. You will also get Great offers and Coupons of Food, Movies,
-                Gamezones, apparels and many More on Your Email.
               </Text>
             </Center>
             <form onSubmit={handleSubmit}>
               <FormControl>
-                <Flex marginTop={"30px"}>
+                <Flex marginTop={"10px"}>
                   <Input
                     color={"white"}
                     _placeholder={{ color: "white" }}

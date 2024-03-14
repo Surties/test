@@ -120,16 +120,16 @@ const YourFormComponent = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setFormData({ ...formData, author: user });
+    console.log(formData);
     const emptyFieldsArray = Object.entries(formData).filter(([key, value]) =>
       Array.isArray(value) ? value.length === 0 : !value
     );
     if (emptyFieldsArray.length > 0) {
-      setloading(true);
       setEmptyFields(emptyFieldsArray.map(([key, _]) => key));
       return;
     }
-    setFormData({ ...formData, author: user });
+    setloading(true);
     try {
       const response = await axios.post("http://localhost:8080/news", formData);
       console.log(response);
