@@ -12,7 +12,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 // import OAuth from "./OAuth";
@@ -29,19 +29,18 @@ export default function LoginForm() {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { message1 } = useSelector((store) => {
     return store.auth;
   });
   const { auth } = useSelector((store) => {
     return store.auth;
   });
-  const navigate = useNavigate();
   const [Info, setInfo] = useState({
     email: "",
     pass: "12345",
   });
-  const dispatch = useDispatch();
-
   const handleChange = (event) => {
     setInfo({
       ...Info,
@@ -92,7 +91,11 @@ export default function LoginForm() {
       setLoading(false);
     }
   };
-
+  useEffect(() => {
+    if (auth) {
+      navigate("/");
+    }
+  }, [auth]);
   return (
     <Flex
       minH={{ base: "0vh", md: "30vh", lg: "100vh" }}

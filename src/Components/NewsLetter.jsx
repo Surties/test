@@ -10,6 +10,7 @@ import {
   Text,
   Center,
 } from "@chakra-ui/react";
+import axios from "axios";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -22,11 +23,20 @@ const Newsletter = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    postData(email);
     setSubscribed(true);
     setEmail("");
   };
-
+  const postData = (email) => {
+    axios
+      .post("https://surtiesserver.onrender.com/email-list", { email })
+      .then((response) => {
+        console.log("Response:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
   return (
     <Box maxW="md" mx="auto">
       <>

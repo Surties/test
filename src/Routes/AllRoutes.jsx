@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Link, Navigate, Route, Routes } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import ContactUs from "../Pages/ContactUs";
 import AboutUs from "../Pages/AboutUs";
@@ -13,6 +13,7 @@ import UnAuthorized from "../Components/UnAuthorized";
 import DetailNews from "../Pages/DetailNews";
 
 import CatagoryPage from "../Pages/CatagoryPage";
+import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 function AllRoutes() {
   return (
     <>
@@ -82,15 +83,7 @@ function AllRoutes() {
             </>
           }
         />
-        <Route
-          path="/news"
-          element={
-            <>
-              <Navbar />
-              {/* <News /> */}
-            </>
-          }
-        />
+
         <Route
           path="/news/id/:id"
           element={
@@ -117,8 +110,36 @@ function AllRoutes() {
             </>
           }
         />
-        {/* <Route path="*" element={<Navigate to="/404" />} />
-        <Route path="/404" element={<>Not Found 404 </>} /> */}
+        <Route path="*" element={<Navigate to="/404" />} />
+        <Route
+          path="/404"
+          element={
+            <Box backgroundColor={"#cb404d"}>
+              <Flex
+                direction="column"
+                align="center"
+                justify="center"
+                h="100vh"
+              >
+                <img
+                  width={"160px"}
+                  src="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Layer%201%20copy%202.png?alt=media&token=51af1e21-b9ef-430a-97e8-0df099d2e048"
+                  alt=""
+                />
+                <Heading color="white" mb="4">
+                  404 - Page Not Found
+                </Heading>
+
+                <Text color={"white"} mb="4">
+                  The page you are looking for does not exist.
+                </Text>
+                <Link to="/">
+                  <Button colorScheme="red">Go to Home</Button>
+                </Link>
+              </Flex>{" "}
+            </Box>
+          }
+        />
       </Routes>
     </>
   );
