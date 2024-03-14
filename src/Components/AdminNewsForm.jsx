@@ -28,7 +28,7 @@ const initialFormData = {
   subHeading: "",
   author: "",
   trending: "no",
-
+  instaLink: "",
   catagory: [],
   article: "",
   imgs: [],
@@ -117,20 +117,18 @@ const YourFormComponent = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setloading(true);
+
     const emptyFieldsArray = Object.entries(formData).filter(([key, value]) =>
       Array.isArray(value) ? value.length === 0 : !value
     );
     if (emptyFieldsArray.length > 0) {
-      // Set empty fields to state for displaying error message
+      setloading(true);
       setEmptyFields(emptyFieldsArray.map(([key, _]) => key));
       return;
     }
+    console.log(formData);
     try {
-      const response = await axios.post(
-        "https://surtiesserver.onrender.com/news",
-        formData
-      );
+      const response = await axios.post("http://localhost:8080/news", formData);
       console.log(response);
       setloading(false);
     } catch (error) {
@@ -333,6 +331,16 @@ const YourFormComponent = () => {
                 type="text"
                 name="author"
                 value={formData.author}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl mb={4}>
+              <FormLabel>Instagram Link</FormLabel>
+              <Input
+                focusBorderColor="#cb202d"
+                type="text"
+                name="instaLink"
+                value={formData.instaLink}
                 onChange={handleChange}
               />
             </FormControl>

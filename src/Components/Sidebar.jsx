@@ -10,6 +10,7 @@ import { TbHandFinger, TbWriting } from "react-icons/tb";
 import { IoPhonePortraitOutline } from "react-icons/io5";
 import { Box, Button, ListItem, UnorderedList } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
+import Socials from "./Socials";
 
 function Sidebar() {
   const [show, setShow] = useState(false);
@@ -81,6 +82,11 @@ function Sidebar() {
             </ListItem>
           ))}
         </UnorderedList>
+        <Box marginTop={"30px"}>
+          <hr h={"2px"} />
+
+          <Socials />
+        </Box>
       </Box>
       <Box
         marginTop={"-50px"}

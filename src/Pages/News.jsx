@@ -10,6 +10,7 @@ import { LOGIN_LOADING } from "../Redux/auth/auth.actiontype";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import NewsLetter from "../Components/NewsLetter";
 axios.defaults.withCredentials = true;
 const containerStyles = {
   width: "90%",
@@ -133,6 +134,10 @@ function News() {
           )}
         </Box>
       </Flex>
+      <Box padding={"40px"} backgroundColor={"#cb404d"}>
+        {" "}
+        <NewsLetter />
+      </Box>
     </>
   );
 }

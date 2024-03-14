@@ -65,8 +65,9 @@ export default function Navbar() {
             >
               <Link to="/">
                 <Img
-                  width={"130px"}
-                  src="https://surties.com/wp-content/uploads/2022/07/f-surties-logo.png"
+                  padding={"10px 0"}
+                  width={"140px"}
+                  src="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Layer%201%20copy%202.png?alt=media&token=51af1e21-b9ef-430a-97e8-0df099d2e048"
                 />
               </Link>
             </Text>
