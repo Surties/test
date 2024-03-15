@@ -1,28 +1,56 @@
-import { Box, Center, Spinner, Text } from "@chakra-ui/react";
+import { Center, Text, useDisclosure } from "@chakra-ui/react";
 
 import { InstagramEmbed } from "react-social-media-embed";
 
+import { useRef } from "react";
+import ImgGalleryModel from "./ImgGalleryModel";
+
 function DetailNewsComponent({ para, articleData }) {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const finalRef = useRef(null);
+  const handleClick = () => {
+    onOpen();
+  };
   return (
     <Center flexDirection={"column"} p={5}>
-      <Text fontSize="28px" fontWeight="bold">
+      <Text
+        marginTop={"10px"}
+        fontSize="28px"
+        lineHeight={"29px"}
+        fontWeight="bold"
+        marginBottom={"10px"}
+      >
         {articleData.heading}
       </Text>
-      <Center overflow={'hidden'} w={"100%"} h={"400px"}>
+      <ImgGalleryModel
+        finalRef={finalRef}
+        isOpen={isOpen}
+        onOpen={onOpen}
+        data={[...articleData.imgs, articleData.thumbnail]}
+        onClose={onClose}
+      />
+      <Center
+        alignItems={"flex-end"}
+        onClick={handleClick}
+        overflow={"hidden"}
+        w={{ base: "400px", md: "600px" }}
+        h={{ base: "280px", md: "400px" }}
+      >
         <img src={articleData.thumbnail} alt="Thumbnail" mt={4} mb={4} />
       </Center>
-
-      <Text fontSize="xl" color="gray.500">
-        {articleData.subHeading}
-      </Text>
-      <Text fontSize="md" color="gray.500">
+      <Text marginTop={"10px"} fontSize="md" color="gray.500">
         Author: {articleData.author} | Date:{articleData.date}
       </Text>
-
-      <Text fontSize="xl" fontWeight="bold">
-        Article
+      <Text
+        marginTop={{ base: "10px", md: "10px" }}
+        lineHeight={"20px"}
+        fontSize="xl"
+        color="gray.600"
+      >
+        {articleData.subHeading}
       </Text>
-      <Text fontSize="md" whiteSpace="pre-line">
+
+      <Text marginTop={"10px"} fontSize="md" whiteSpace="pre-line">
         {articleData.article}
       </Text>
 
@@ -30,7 +58,9 @@ function DetailNewsComponent({ para, articleData }) {
         Image Gallery
       </Text>
       {articleData.imgs.map((img, index) => {
-        return <img key={img + index} alt={index} src={img} />;
+        return (
+          <img onClick={handleClick} key={img + index} alt={index} src={img} />
+        );
       })}
       <Center marginTop={"40px"} w={{ base: "100%", md: "80%" }}>
         <InstagramEmbed url={articleData.instaLink || ""} width={"100%"} />

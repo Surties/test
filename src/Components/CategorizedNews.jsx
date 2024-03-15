@@ -10,8 +10,8 @@ function CategorizedNews({ data, catagory, cata }) {
         <Text
           fontWeight={"500"}
           fontSize={"12px"}
-          color={"#cb404d"}
-          border={"1px solid #cb404d"}
+          color={"#d91e26"}
+          border={"1px solid #d91e26"}
           textAlign={"center"}
           padding={{ base: "5px", md: "5px 10px" }}
           borderRadius={"40px"}
@@ -25,21 +25,21 @@ function CategorizedNews({ data, catagory, cata }) {
         <Box
           h={"0.5px"}
           w={"75%"}
-          border={"1px solid #cb404d "}
+          border={"1px solid #d91e26 "}
           opacity={"0.5"}
         ></Box>
         <Button
           height={"30px"}
           fontSize={"12px"}
           padding={"10px 18px"}
-          backgroundColor={"#cb404d"}
+          backgroundColor={"#d91e26"}
           color={"white"}
           borderRadius={"40px"}
-          border={"1px solid #cb404d"}
+          border={"1px solid #d91e26"}
           _hover={{
-            color: "#cb404d",
+            color: "#d91e26",
             backgroundColor: "white",
-            border: "1px solid #cb404d",
+            border: "1px solid #d91e26",
           }}
         >
           View all
@@ -49,7 +49,6 @@ function CategorizedNews({ data, catagory, cata }) {
         <Grid
           mt={"2%"}
           p={"10px"}
-          
           gridGap={"5px"}
           templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(4, 1fr)" }}
         >

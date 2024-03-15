@@ -19,7 +19,7 @@ function Sidebar() {
     <Box>
       <Box
         overflow={"hidden"}
-        backgroundColor={"#cb404d"}
+        backgroundColor={"#d91e26"}
         width={{ base: "100%", md: "100%" }}
         height={{ base: `${!show ? "44px" : "215px"}`, md: "auto" }}
         mb={{ base: "40px", md: "" }}
@@ -55,9 +55,9 @@ function Sidebar() {
             { link: "tech", icon: <IoPhonePortraitOutline /> },
           ].map((el, index) => (
             <ListItem
-              border={{ base: "1px solid #cb404d ", md: "none" }}
-              backgroundColor={{ base: "white", md: "#cb404d" }}
-              color={{ base: "#cb404d", md: "white" }}
+              border={{ base: "1px solid #d91e26 ", md: "none" }}
+              backgroundColor={{ base: "white", md: "#d91e26" }}
+              color={{ base: "#d91e26", md: "white" }}
               display={"flex"}
               borderRadius={"10px"}
               alignItems={"center"}
@@ -87,7 +87,7 @@ function Sidebar() {
           <hr h={"2px"} />
 
           <Socials />
-          <Box padding={"0px 20px"} backgroundColor={"#cb404d"}>
+          <Box padding={"0px 20px"} backgroundColor={"#d91e26"}>
             {" "}
             <Newsletter />
           </Box>
@@ -107,8 +107,8 @@ function Sidebar() {
           backgroundColor={"white"}
           fontSize={"8px"}
           p={"5px 25px 5px 25px"}
-          border={"1px solid #cb404d"}
-          color={"#cb404d"}
+          border={"1px solid #d91e26"}
+          color={"#d91e26"}
           top={"15px"}
           borderRadius={"40px"}
         >

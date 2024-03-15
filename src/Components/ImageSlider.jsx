@@ -47,10 +47,30 @@ const ImageSlider = ({ slides }) => {
           m={"0px 20px"}
           alignItems={"center"}
         >
-          <Button backgroundColor={"#FAF5FF"} onClick={handlePrev}>
-            <FaArrowLeft color="black" />
+          <Button
+            border={"1px solid #FAF5FF"}
+            backgroundColor={"transparent"}
+            onClick={handlePrev}
+            color="#FAF5FF"
+            _hover={{
+              backgroundColor: "rgba(255, 255, 255, 0.4)",
+              color: "black",
+              border: "1px solid rgba(255, 255, 255, 0.4)",
+            }}
+          >
+            <FaArrowLeft />
           </Button>
-          <Button onClick={handleNext} backgroundColor={"#FAF5FF"}>
+          <Button
+            backgroundColor={"transparent"}
+            onClick={handleNext}
+            border={"1px solid #FAF5FF"}
+            color="#FAF5FF"
+            _hover={{
+              backgroundColor: "rgba(255, 255, 255, 0.4)",
+              color: "black",
+              border: "1px solid rgba(255, 255, 255, 0.4)",
+            }}
+          >
             <FaArrowRight />
           </Button>
         </Flex>

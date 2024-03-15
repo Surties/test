@@ -14,18 +14,19 @@ function NewsCard({ data }) {
         alignItems={"center"}
         flexDirection={"column"}
         borderRadius={"6px"}
-        h={'350px'}
+        h={"350px"}
       >
         <Flex
           flexDirection={"column"}
           alignItems={"center"}
           justifyContent={"center"}
         >
-          <Box w={'300px'} overflow={"hidden"} h={"160px"}>
+          <Box overflow={"hidden"} h={"160px"}>
             <img src={data.thumbnail} alt="" />
           </Box>
           <Box p={"10px"}>
             <Text
+              marginTop={{ base: "-30px", md: 0 }}
               fontWeight={{ base: "500", md: "600" }}
               textTransform={"capitalize"}
               fontSize={{ base: "14px", md: "18px" }}

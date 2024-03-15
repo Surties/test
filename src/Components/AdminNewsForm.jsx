@@ -182,7 +182,7 @@ const YourFormComponent = () => {
             <FormControl mb={4}>
               <FormLabel>Heading</FormLabel>
               <Input
-                focusBorderColor="#cb202d"
+                focusBorderColor="#d91e26"
                 type="text"
                 name="heading"
                 value={formData.heading}
@@ -192,7 +192,7 @@ const YourFormComponent = () => {
             <FormControl mb={4}>
               <FormLabel>Subheading</FormLabel>
               <Input
-                focusBorderColor="#cb202d"
+                focusBorderColor="#d91e26"
                 type="text"
                 name="subHeading"
                 value={formData.subHeading}
@@ -202,7 +202,7 @@ const YourFormComponent = () => {
             <FormControl mb={4}>
               <FormLabel>Article</FormLabel>
               <Textarea
-                focusBorderColor="#cb202d"
+                focusBorderColor="#d91e26"
                 name="article"
                 className="jobProfileSelector"
                 rows={6}
@@ -214,7 +214,7 @@ const YourFormComponent = () => {
               <FormLabel>Thumbnail</FormLabel>
               <Flex gap={"10px"}>
                 <Input
-                  focusBorderColor="#cb202d"
+                  focusBorderColor="#d91e26"
                   type="file"
                   name="thumbnail"
                   onChange={handleChange}
@@ -223,11 +223,11 @@ const YourFormComponent = () => {
                   isDisabled={formData.thumbnail === null}
                   pos={"static"}
                   loadingText=""
-                  bg={"#cb202d"}
+                  bg={"#d91e26"}
                   color={"white"}
                   _hover={{
                     bg: "yellow",
-                    color: "#cb202d",
+                    color: "#d91e26",
                   }}
                   isLoading={uploading1}
                   onClick={handleChangeImg1}
@@ -269,7 +269,7 @@ const YourFormComponent = () => {
               <FormLabel>Images</FormLabel>
               <Flex gap={"10px"}>
                 <Input
-                  focusBorderColor="#cb202d"
+                  focusBorderColor="#d91e26"
                   multiple="multiple"
                   type="file"
                   name="imgs"
@@ -280,11 +280,11 @@ const YourFormComponent = () => {
                 <Button
                   type="button"
                   pos={"static"}
-                  bg={"#cb202d"}
+                  bg={"#d91e26"}
                   color={"white"}
                   _hover={{
                     bg: "yellow",
-                    color: "#cb202d",
+                    color: "#d91e26",
                   }}
                   isLoading={uploading2}
                   onClick={handleChangeImg2}
@@ -330,7 +330,7 @@ const YourFormComponent = () => {
             <FormControl mb={4}>
               <FormLabel>Instagram Link</FormLabel>
               <Input
-                focusBorderColor="#cb202d"
+                focusBorderColor="#d91e26"
                 type="text"
                 name="instaLink"
                 value={formData.instaLink}
@@ -340,7 +340,7 @@ const YourFormComponent = () => {
             <FormControl mb={4}>
               <FormLabel>Trending</FormLabel>
               <Select
-                focusBorderColor="#cb202d"
+                focusBorderColor="#d91e26"
                 name="trending"
                 value={formData.trending}
                 onChange={handleChange}
@@ -373,16 +373,16 @@ const YourFormComponent = () => {
                 ].map((label, index) => (
                   <Button
                     key={index}
-                    _hover={{ border: "1px solid #cb404d" }}
+                    _hover={{ border: "1px solid #d91e26" }}
                     fontSize={"14px"}
                     fontWeight={"400"}
                     color={
-                      selectedButtons.includes(label) ? "white" : "#cb404d"
+                      selectedButtons.includes(label) ? "white" : "#d91e26"
                     }
                     onClick={() => handleButtonClick(label, index)}
                     backgroundColor={
                       selectedButtons.includes(label)
-                        ? "#cb404d"
+                        ? "#d91e26"
                         : "transparent"
                     }
                   >
@@ -395,11 +395,11 @@ const YourFormComponent = () => {
               <Button
                 isLoading={loading}
                 loadingText={"Uplaoding..."}
-                bg={"#cb202d"}
+                bg={"#d91e26"}
                 color={"white"}
                 _hover={{
                   bg: "yellow",
-                  color: "#cb202d",
+                  color: "#d91e26",
                 }}
                 type="submit"
                 mt={4}
@@ -408,7 +408,7 @@ const YourFormComponent = () => {
               </Button>
             </Stack>
             {emptyFields.length > 0 && (
-              <Text color={"#cb404d"} textAlign={"center"}>
+              <Text color={"#d91e26"} textAlign={"center"}>
                 {`Please fill in the following fields: ${emptyFields.join(
                   ", "
                 )}`}

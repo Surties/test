@@ -83,7 +83,6 @@ const SignupForm = () => {
     }
   };
   const signup = async (user) => {
-  
     setLoading(true);
     try {
       dispatch({
@@ -131,12 +130,12 @@ const SignupForm = () => {
                   <FormLabel>First Name</FormLabel>
                   <Input
                     pos={"static"}
-                    focusBorderColor={nameError ? "#cb202d" : "green.400"}
+                    focusBorderColor={nameError ? "#d91e26" : "green.400"}
                     name="firstName"
                     onChange={handleChange}
                     type="text"
                   />
-                  <FormHelperText color="#cb202d">{nameError}</FormHelperText>
+                  <FormHelperText color="#d91e26">{nameError}</FormHelperText>
                 </FormControl>
               </Box>
               <Box>
@@ -145,11 +144,11 @@ const SignupForm = () => {
                   <Input
                     onChange={handleChange}
                     pos={"static"}
-                    focusBorderColor={ageError ? "#cb202d" : "green.400"}
+                    focusBorderColor={ageError ? "#d91e26" : "green.400"}
                     name="lastName"
                     type="text"
                   />
-                  <FormHelperText color="#cb202d">{ageError}</FormHelperText>
+                  <FormHelperText color="#d91e26">{ageError}</FormHelperText>
                 </FormControl>
               </Box>
             </HStack>
@@ -157,12 +156,12 @@ const SignupForm = () => {
               <FormLabel>Email address</FormLabel>
               <Input
                 pos={"static"}
-                focusBorderColor={emailError ? "#cb202d" : "green.400"}
+                focusBorderColor={emailError ? "#d91e26" : "green.400"}
                 onChange={handleChange}
                 name="email"
                 type="email"
               />
-              <FormHelperText color="#cb202d">{emailError}</FormHelperText>
+              <FormHelperText color="#d91e26">{emailError}</FormHelperText>
             </FormControl>
 
             <FormControl pos={"static"} id="password" isRequired>
@@ -171,7 +170,7 @@ const SignupForm = () => {
                 <Input
                   borderRight={"none"}
                   pos={"static"}
-                  focusBorderColor={passwordError ? "#cb202d" : "green.400"}
+                  focusBorderColor={passwordError ? "#d91e26" : "green.400"}
                   focusBorderLeft="none"
                   name="pass"
                   borderRightRadius="0"
@@ -191,13 +190,13 @@ const SignupForm = () => {
                   }
                 >
                   {showPassword ? (
-                    <ViewIcon color={"#cb202d"} />
+                    <ViewIcon color={"#d91e26"} />
                   ) : (
-                    <ViewOffIcon color={"#cb202d"} />
+                    <ViewOffIcon color={"#d91e26"} />
                   )}
                 </Button>
               </Flex>
-              <FormHelperText color="#cb202d">{passwordError}</FormHelperText>
+              <FormHelperText color="#d91e26">{passwordError}</FormHelperText>
             </FormControl>
             <Stack spacing={10} pt={2}>
               <Button
@@ -209,11 +208,11 @@ const SignupForm = () => {
                 pos={"static"}
                 loadingText="Submitting"
                 size="lg"
-                bg={"#cb202d"}
+                bg={"#d91e26"}
                 color={"white"}
                 _hover={{
                   bg: "yellow",
-                  color: "#cb202d",
+                  color: "#d91e26",
                 }}
                 onClick={postData}
               >
@@ -228,7 +227,7 @@ const SignupForm = () => {
             <Box display={"flex"} gap={"6px"}>
               <Text>Already Have Account </Text>
               <Link to="/login">
-                <Text color={"#cb202d"}>
+                <Text color={"#d91e26"}>
                   <b>Login</b>
                 </Text>
               </Link>

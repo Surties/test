@@ -84,7 +84,7 @@ const Newsletter = () => {
                     borderLeft={"none"}
                     borderLeftRadius="0"
                     color={"white"}
-                    _hover={{ color: "#cb404d", backgroundColor: "white" }}
+                    _hover={{ color: "#d91e26", backgroundColor: "white" }}
                     variant={"ghost"}
                   >
                     <LuMailPlus fontSize={"20px"} />

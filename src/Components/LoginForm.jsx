@@ -119,7 +119,7 @@ export default function LoginForm() {
                 required
                 name="email"
                 onChange={handleChange}
-                focusBorderColor={isValidEmail ? "green.400" : "#cb202d"}
+                focusBorderColor={isValidEmail ? "green.400" : "#d91e26"}
                 placeholder="Email"
                 type="email"
               />
@@ -134,7 +134,7 @@ export default function LoginForm() {
                   pos={"static"}
                   focusBorderLeft="none"
                   name="pass"
-                  focusBorderColor={isValidPassword ? "green.400" : "#cb202d"}
+                  focusBorderColor={isValidPassword ? "green.400" : "#d91e26"}
                   borderRightRadius="0"
                   onChange={handleChange}
                   type={showPassword ? "text" : "password"}
@@ -152,9 +152,9 @@ export default function LoginForm() {
                   }
                 >
                   {showPassword ? (
-                    <ViewIcon color={"#cb202d"} />
+                    <ViewIcon color={"#d91e26"} />
                   ) : (
-                    <ViewOffIcon color={"#cb202d"} />
+                    <ViewOffIcon color={"#d91e26"} />
                   )}
                 </Button>
               </Flex>
@@ -171,11 +171,11 @@ export default function LoginForm() {
                 onClick={submit}
                 loadingText={"signin..."}
                 pos={"static"}
-                bg={"#cb202d"}
+                bg={"#d91e26"}
                 color={"white"}
                 _hover={{
                   bg: "yellow",
-                  color: "#cb202d",
+                  color: "#d91e26",
                 }}
               >
                 Sign in
@@ -188,7 +188,7 @@ export default function LoginForm() {
             <Box display={"flex"} gap={"6px"}>
               <Text>Don't Have Account </Text>
               <Link to="/signup">
-                <Text color={"#cb202d"}>
+                <Text color={"#d91e26"}>
                   {" "}
                   <b>Create One</b>
                 </Text>

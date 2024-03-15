@@ -45,7 +45,7 @@ function CatagoryPage() {
         clear={"both"}
       >
         <Box
-          backgroundColor={"#cb404d"}
+          backgroundColor={"#d91e26"}
           mb={"20px"}
           width={{ base: "100%", md: "20%" }}
         >
@@ -64,7 +64,7 @@ function CatagoryPage() {
                 thickness="4px"
                 speed="0.65s"
                 emptyColor="gray.200"
-                color="#cb404d"
+                color="#d91e26"
                 size="xl"
               />
             </Flex>

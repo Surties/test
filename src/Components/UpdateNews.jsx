@@ -43,7 +43,6 @@ function UpdateNews() {
   const [filter, setFilter] = useState("");
   const [query, setQuery] = useState("");
 
-
   const handleDelete = (el) => {
     setLoad(true);
     axios
@@ -103,7 +102,7 @@ function UpdateNews() {
       >
         <Searchbar onSearch={onSearch} />
         <Filtering onFilter={onFilter} cata={cata} />
-        <Button onClick={handleReset} backgroundColor={"#cb404d"}>
+        <Button onClick={handleReset} backgroundColor={"#d91e26"}>
           <Flex alignItems={"center"} gap={"15px"}>
             <Text color={"white"}>Reset</Text>
             <FaFilter color="white" />
@@ -116,7 +115,7 @@ function UpdateNews() {
             thickness="4px"
             speed="0.65s"
             emptyColor="gray.200"
-            color="#cb404d"
+            color="#d91e26"
             size="xl"
           />
         </Center>
@@ -181,7 +180,7 @@ function UpdateNews() {
                   <Center>
                     <Text>Views : {newsItem.clicks}</Text>
                   </Center>
-                  <UpdateNewsModal  fetchData={fetchData} id={newsItem._id} />
+                  <UpdateNewsModal fetchData={fetchData} id={newsItem._id} />
                 </Flex>
               </Box>
             ))}

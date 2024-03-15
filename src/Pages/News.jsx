@@ -81,7 +81,7 @@ function News() {
         <meta name="Home" content="Get news of all categories" />
       </Helmet>{" "}
       <Flex flexDirection={{ base: "column", md: "row" }}>
-        <Box backgroundColor={"#cb404d"} width={{ base: "100%", md: "20%" }}>
+        <Box backgroundColor={"#d91e26"} width={{ base: "100%", md: "20%" }}>
           <StickyBox offsetTop={20} offsetBottom={20}>
             <Sidebar />
           </StickyBox>
@@ -95,7 +95,7 @@ function News() {
                     thickness="4px"
                     speed="0.65s"
                     emptyColor="gray.200"
-                    color="#cb404d"
+                    color="#d91e26"
                     size="xl"
                   />
                 </Center>
@@ -111,7 +111,7 @@ function News() {
                   thickness="4px"
                   speed="0.65s"
                   emptyColor="gray.200"
-                  color="#cb404d"
+                  color="#d91e26"
                   size="xl"
                 />
               </Center>
@@ -134,7 +134,6 @@ function News() {
           )}
         </Box>
       </Flex>
-      
     </>
   );
 }

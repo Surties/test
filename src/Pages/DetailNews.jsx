@@ -68,13 +68,13 @@ function DetailNews() {
             thickness="4px"
             speed="0.65s"
             emptyColor="gray.200"
-            color="#cb404d"
+            color="#d91e26"
             size="xl"
           />
         </Center>
       ) : (
         <Flex flexDirection={{ base: "column", md: "row" }}>
-          <Box backgroundColor={"#cb404d"} width={{ base: "100%", md: "20%" }}>
+          <Box backgroundColor={"#d91e26"} width={{ base: "100%", md: "20%" }}>
             <StickyBox offsetTop={20} offsetBottom={20}>
               <Sidebar />
             </StickyBox>
@@ -92,7 +92,7 @@ function DetailNews() {
               <ShareOn />
               <Box p={"10px"}>
                 <Text
-                  color={"#cb404d"}
+                  color={"#d91e26"}
                   fontWeight={"bold"}
                   marginBottom={"15px"}
                 >

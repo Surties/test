@@ -122,7 +122,7 @@ const AboutUs = () => {
 
         <Box
           p={8}
-          bgColor="#cb404d"
+          bgColor="#d91e26"
           color="white"
           borderRadius="10px"
           mt="-50px"
@@ -166,7 +166,7 @@ const AboutUs = () => {
                   <Heading size="sm" mt={2}>
                     {member.name}
                   </Heading>
-                  <Text fontSize="sm" color="#cb404d">
+                  <Text fontSize="sm" color="#d91e26">
                     {member.role}
                   </Text>
                 </Box>

@@ -114,7 +114,7 @@ function NewsSlider() {
               <FormLabel>Upload File</FormLabel>
               <Flex gap={"10px"}>
                 <Input
-                  focusBorderColor="#cb202d"
+                  focusBorderColor="#d91e26"
                   type="file"
                   name="img"
                   onChange={handleChange}
@@ -122,11 +122,11 @@ function NewsSlider() {
                 <Button
                   pos={"static"}
                   loadingText=""
-                  bg={"#cb202d"}
+                  bg={"#d91e26"}
                   color={"white"}
                   _hover={{
                     bg: "yellow",
-                    color: "#cb202d",
+                    color: "#d91e26",
                   }}
                   isLoading={uploading}
                   onClick={handleUploadImg}
@@ -166,7 +166,7 @@ function NewsSlider() {
             <FormControl id="heading">
               <FormLabel>Heading</FormLabel>
               <Input
-                focusBorderColor="#cb202d"
+                focusBorderColor="#d91e26"
                 type="text"
                 name="heading"
                 onChange={handleChange}
@@ -180,7 +180,7 @@ function NewsSlider() {
               <Input
                 name="link"
                 value={formData.link}
-                focusBorderColor="#cb202d"
+                focusBorderColor="#d91e26"
                 type="text"
                 onChange={handleChange}
                 placeholder="Enter link"
@@ -199,11 +199,11 @@ function NewsSlider() {
               <Button
                 isLoading={uploading}
                 loadingText={"Loading..."}
-                bg={"#cb202d"}
+                bg={"#d91e26"}
                 color={"white"}
                 _hover={{
                   bg: "yellow",
-                  color: "#cb202d",
+                  color: "#d91e26",
                 }}
                 type="submit"
                 mt={4}

@@ -42,7 +42,6 @@ const CareerForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    
     if (Object.values(formData).some((value) => value === "")) {
       toast({
         position: "top",
@@ -116,7 +115,7 @@ const CareerForm = () => {
             <FormLabel>Name</FormLabel>{" "}
             <Input
               pos={"static"}
-              focusBorderColor="#cb202d"
+              focusBorderColor="#d91e26"
               type="text"
               name="name"
               value={formData.name}
@@ -128,7 +127,7 @@ const CareerForm = () => {
             <FormLabel>Email</FormLabel>{" "}
             <Input
               pos={"static"}
-              focusBorderColor="#cb202d"
+              focusBorderColor="#d91e26"
               type="email"
               name="email"
               value={formData.email}
@@ -139,7 +138,7 @@ const CareerForm = () => {
             {" "}
             <FormLabel>Job Profile</FormLabel>{" "}
             <Select
-              focusBorderColor="#cb202d"
+              focusBorderColor="#d91e26"
               className="jobProfileSelector"
               name="postion"
               value={formData.postion}
@@ -163,7 +162,7 @@ const CareerForm = () => {
             <FormLabel>Phone Number</FormLabel>{" "}
             <Input
               pos={"static"}
-              focusBorderColor="#cb202d"
+              focusBorderColor="#d91e26"
               type="tel"
               name="phoneNumber"
               value={formData.phoneNumber}
@@ -175,7 +174,7 @@ const CareerForm = () => {
             <FormLabel>Resume</FormLabel>{" "}
             <Input
               pos={"static"}
-              focusBorderColor="#cb202d"
+              focusBorderColor="#d91e26"
               type="file"
               name="file"
               value={formData.file}
@@ -188,8 +187,8 @@ const CareerForm = () => {
             <Button
               pos={"static"}
               transition={"bgColor 1s"}
-              bgColor={"#cb202d"}
-              _hover={{ bgColor: "yellow", color: "#cb202d" }}
+              bgColor={"#d91e26"}
+              _hover={{ bgColor: "yellow", color: "#d91e26" }}
               isLoading={uploading}
               loadingText="Uploading..."
               type="submit"

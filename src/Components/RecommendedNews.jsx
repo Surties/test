@@ -25,7 +25,7 @@ function RecommendNews({ data }) {
                   />
                   <Box padding={"10px"}>
                     <Text
-                      color={"#cb404d"}
+                      
                       fontWeight={"bold"}
                       fontSize={"12px"}
                     >

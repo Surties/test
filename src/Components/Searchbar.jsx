@@ -14,14 +14,14 @@ const Searchbar = ({ onSearch }) => {
       <Input
         type="text"
         placeholder="Search..."
-        focusBorderColor="#cb404d"
+        focusBorderColor="#d91e26"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         mr={2}
       />
       <Button
         color={"white"}
-        backgroundColor={"#cb404d"}
+        backgroundColor={"#d91e26"}
         onClick={handleSearch}
       >
         <FaSearch />

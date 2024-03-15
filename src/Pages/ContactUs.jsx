@@ -12,7 +12,7 @@ function ContactUs() {
       </Helmet>
       <Flex
         p={"20px"}
-        background={"#cb404d"}
+        background={"#d91e26"}
         justifyContent={"center"}
         alignItems={"center"}
         flexDirection={{ base: "column", md: "row" }}

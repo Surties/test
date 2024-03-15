@@ -1,5 +1,7 @@
 * {
-  font-family: "Noto Sans", sans-serif;
+  font-family: "Nunito", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
   font-style: normal;
 }
 ::file-selector-button {
@@ -7,7 +9,7 @@
   margin-top: 1px;
   border: none;
   height: 36px;
-  background: #cb404d;
+  background: #d91e26;
   padding: 0 20px;
   border-radius: 10px;
   color: #fff;

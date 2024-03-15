@@ -26,7 +26,7 @@ export default function Navbar() {
           py={{ base: 2 }}
           px={{ base: 2 }}
           borderStyle={"solid"}
-          backgroundColor={"#cb404d"}
+          backgroundColor={"#d91e26"}
           borderBottom={"1px solid lightgrey"}
           align={"center"}
         >
@@ -170,7 +170,7 @@ const MobileNavItem = ({ label, href }) => {
             textDecoration: "none",
           }}
         >
-          <Text fontWeight={600} color={"#cb404d"}>
+          <Text fontWeight={600} color={"#d91e26"}>
             {label}
           </Text>
         </Flex>

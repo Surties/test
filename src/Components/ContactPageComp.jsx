@@ -116,7 +116,7 @@ const ContactPageComp = () => {
                 textTransform={"capitalize"}
                 id="errormessage"
                 className={errorMsg ? "show" : ""}
-                color="#cb404d"
+                color="#d91e26"
                 textAlign="center"
                 padding="15px"
                 fontWeight="600"
@@ -132,8 +132,8 @@ const ContactPageComp = () => {
                   value={contactData.name || ""}
                   onChange={(e) => handleChange(e)}
                   onBlur={handleBlur}
-                  color="#cb404d"
-                  focusBorderColor="#cb404d"
+                  color="#d91e26"
+                  focusBorderColor="#d91e26"
                 />
               </FormControl>
               <FormControl mb={4}>
@@ -143,7 +143,7 @@ const ContactPageComp = () => {
                   type="text"
                   maxLength={10}
                   onBlur={handleBlur}
-                  focusBorderColor="#cb404d"
+                  focusBorderColor="#d91e26"
                   value={contactData.mobile || ""}
                   onChange={(e) => handleChange(e)}
                 />
@@ -156,7 +156,7 @@ const ContactPageComp = () => {
                   value={contactData.subject || ""}
                   onChange={(e) => handleChange(e)}
                   onBlur={handleBlur}
-                  focusBorderColor="#cb404d"
+                  focusBorderColor="#d91e26"
                 />
               </FormControl>
               <FormControl mb={4}>
@@ -167,7 +167,7 @@ const ContactPageComp = () => {
                   value={contactData.email || ""}
                   onChange={(e) => handleChange(e)}
                   onBlur={handleBlur}
-                  focusBorderColor="#cb404d"
+                  focusBorderColor="#d91e26"
                 />
               </FormControl>
               <FormControl mb={4}>
@@ -178,7 +178,7 @@ const ContactPageComp = () => {
                   value={contactData.message || ""}
                   onChange={(e) => handleChange(e)}
                   onBlur={handleBlur}
-                  focusBorderColor="#cb404d"
+                  focusBorderColor="#d91e26"
                   rows="5"
                 />
               </FormControl>
@@ -188,7 +188,7 @@ const ContactPageComp = () => {
                   loadingText="Submitting"
                   type="submit"
                   color={"white"}
-                  backgroundColor={"#cb404d"}
+                  backgroundColor={"#d91e26"}
                   _hover={{}}
                 >
                   Submit Now

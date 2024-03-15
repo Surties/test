@@ -114,7 +114,7 @@ function AllRoutes() {
         <Route
           path="/404"
           element={
-            <Box backgroundColor={"#cb404d"}>
+            <Box backgroundColor={"#d91e26"}>
               <Flex
                 direction="column"
                 align="center"

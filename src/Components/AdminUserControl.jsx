@@ -75,7 +75,7 @@ function AdminUserControl() {
             thickness="4px"
             speed="0.65s"
             emptyColor="gray.200"
-            color="#cb404d"
+            color="#d91e26"
             size="xl"
           />
         </Center>

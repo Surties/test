@@ -7,7 +7,7 @@ function Filtering({ onFilter, cata }) {
   return (
     <Select
       onChange={handleChange}
-      focusBorderColor="#cb404d"
+      focusBorderColor="#d91e26"
       placeholder="Select a category"
     >
       {cata.map((el) => {
