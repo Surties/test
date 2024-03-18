@@ -62,7 +62,8 @@ function DetailNews() {
         <title>News-{id}-Surtie's Digital Media </title>
         <meta name="Home" content={`Get all the content of the news ${id}`} />
         <link rel="icon" href={articleData.thumbnail} />
-        <link rel="icon" href={articleData.thumbnail} />
+        
+        <link rel="apple-touch-icon" href={articleData.thumbnail} />
         <meta />
       </Helmet>
       {loading ? (
