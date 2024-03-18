@@ -65,7 +65,6 @@ function DetailNews() {
         <meta name="og:title" content="Surties Digital Media" />
         <meta name="og:description" content={articleData.heading} />
         <meta name="og:image" content={articleData.thumbnail} />
-
         <link rel="apple-touch-icon" href={articleData.thumbnail} />
         <meta />
       </Helmet>
