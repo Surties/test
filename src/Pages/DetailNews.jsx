@@ -32,7 +32,7 @@ function DetailNews() {
   const patchData = () => {
     setLoading(true);
     axios
-      .patch(`https://surtiesserver.onrender.com/topweek/${id}`)
+      .patch(`https://surtiesserver.onrender.com/news/topweek/${id}`)
       .then((response) => {
         console.log(response);
       })
