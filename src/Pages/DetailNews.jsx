@@ -61,6 +61,9 @@ function DetailNews() {
       <Helmet>
         <title>News-{id}-Surtie's Digital Media </title>
         <meta name="Home" content={`Get all the content of the news ${id}`} />
+        <link rel="icon" href={articleData.thumbnail} />
+        <link rel="icon" href={articleData.thumbnail} />
+        <meta />
       </Helmet>
       {loading ? (
         <Center mt={"20px"}>
