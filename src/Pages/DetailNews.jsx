@@ -61,8 +61,11 @@ function DetailNews() {
       <Helmet>
         <title>News-{id}-Surtie's Digital Media </title>
         <meta name="Home" content={`Get all the content of the news ${id}`} />
-        <link rel="icon" href={articleData.thumbnail} />
-        
+        <meta name="description" content={articleData.heading} />
+        <meta name="og:title" content="Surties Digital Media" />
+        <meta name="og:description" content={articleData.heading} />
+        <meta name="og:image" content={articleData.thumbnail} />
+
         <link rel="apple-touch-icon" href={articleData.thumbnail} />
         <meta />
       </Helmet>
