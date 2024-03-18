@@ -26,7 +26,7 @@ function NewsCard({ data }) {
           </Box>
           <Box p={"10px"}>
             <Text
-              marginTop={{ base: "-30px", md: 0 }}
+              marginTop={{ base: "-30", md: 0 }}
               fontWeight={{ base: "500", md: "600" }}
               textTransform={"capitalize"}
               fontSize={{ base: "14px", md: "18px" }}

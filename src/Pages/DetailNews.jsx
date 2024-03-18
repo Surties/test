@@ -21,6 +21,7 @@ function DetailNews() {
       .get(`https://surtiesserver.onrender.com/news/${id}`)
       .then((response) => {
         setArticleData(response.data);
+        console.log(response.data, "1");
         setLoading(false);
       })
       .catch((error) => {
@@ -47,6 +48,7 @@ function DetailNews() {
         "https://surtiesserver.onrender.com/news/topweek"
       );
       setResponseData(response.data);
+      console.log(response.data, "2");
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -60,12 +62,15 @@ function DetailNews() {
     <div>
       <Helmet>
         <title>News-{id}-Surtie's Digital Media </title>
-        <meta name="Home" content={`Get all the content of the news ${id}`} />
-        <meta name="description" content={articleData.heading} />
-        <meta name="og:title" content="Surties Digital Media" />
-        <meta name="og:description" content={articleData.heading} />
-        <meta name="og:image" content={articleData.thumbnail} />
-        <link rel="apple-touch-icon" href={articleData.thumbnail} />
+        <meta name="description" content={articleData.article} />
+        <meta property="og:title" content={articleData.heading} />
+        <meta property="og:description" content={articleData.article} />
+        <meta property="og:image" content={articleData.thumbnail} />
+        <meta
+          property="og:url"
+          content={`http://localhost:3000/news/id/${articleData._id}`}
+        />
+        <meta property="og:type" content={articleData.article} />
         <meta />
       </Helmet>
       {loading ? (
