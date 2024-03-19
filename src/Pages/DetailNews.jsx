@@ -61,15 +61,42 @@ function DetailNews() {
   return (
     <div>
       <Helmet>
-        <title>News-{id}-Surtie's Digital Media </title>
-        <meta name="description" content={articleData.article} />
+        <title>Surtie's Digital Media</title>
+        <meta
+          name="description"
+          content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
+        />
 
-        <meta property="og:image" content={articleData.thumbnail} />
         <meta
           property="og:url"
-          content={`http://surties.in/news/id/${articleData._id}`}
+          content="http://surties.in/news/id/65effbe93557007c2c8a3079"
         />
-        <link property="og:image" content={articleData.thumbnail} />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Surtie's Digital Media" />
+        <meta
+          property="og:description"
+          content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
+        />
+        <meta
+          property="og:image"
+          content="https://opengraph.b-cdn.net/production/documents/9f450a84-a1c9-49f7-8569-8f07c9d9b9bc.jpg?token=NKugdLt8OGjzMM5fDQShJjjBy0Ez_13GrxGJAmW7lgs&height=1024&width=1024&expires=33246880837"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="surties.in" />
+        <meta
+          property="twitter:url"
+          content="http://surties.in/news/id/65effbe93557007c2c8a3079"
+        />
+        <meta name="twitter:title" content="Surtie's Digital Media" />
+        <meta
+          name="twitter:description"
+          content="Surties is a digital news media house based in Surat providing news in Gujarati and English"
+        />
+        <meta
+          name="twitter:image"
+          content="https://opengraph.b-cdn.net/production/documents/9f450a84-a1c9-49f7-8569-8f07c9d9b9bc.jpg?token=NKugdLt8OGjzMM5fDQShJjjBy0Ez_13GrxGJAmW7lgs&height=1024&width=1024&expires=33246880837"
+        />
       </Helmet>
       {loading ? (
         <Center mt={"20px"}>
