@@ -71,6 +71,7 @@ function DetailNews() {
           property="og:url"
           content={`http://localhost:3000/news/id/${articleData._id}`}
         />
+        <link property="og:image" content={articleData.thumbnail} />
         <meta property="og:type" content={articleData.article} />
         <meta />
       </Helmet>
