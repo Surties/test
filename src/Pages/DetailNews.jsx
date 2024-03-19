@@ -63,17 +63,13 @@ function DetailNews() {
       <Helmet>
         <title>News-{id}-Surtie's Digital Media </title>
         <meta name="description" content={articleData.article} />
-        <meta property="og:title" content={articleData.heading} />
-        <meta property="og:description" content={articleData.article} />
+
         <meta property="og:image" content={articleData.thumbnail} />
-        <link rel="icon" href={articleData.thumbnail} />
         <meta
           property="og:url"
-          content={`http://localhost:3000/news/id/${articleData._id}`}
+          content={`http://surties.in/news/id/${articleData._id}`}
         />
         <link property="og:image" content={articleData.thumbnail} />
-        <meta property="og:type" content={articleData.article} />
-        <meta />
       </Helmet>
       {loading ? (
         <Center mt={"20px"}>
