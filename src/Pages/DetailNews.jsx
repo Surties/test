@@ -77,10 +77,7 @@ function DetailNews() {
           property="og:description"
           content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
         />
-        <meta
-          property="og:image"
-          content="https://opengraph.b-cdn.net/production/documents/9f450a84-a1c9-49f7-8569-8f07c9d9b9bc.jpg?token=NKugdLt8OGjzMM5fDQShJjjBy0Ez_13GrxGJAmW7lgs&height=1024&width=1024&expires=33246880837"
-        />
+        <meta property="og:image" content={articleData.thumbnail} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="surties.in" />
@@ -93,10 +90,7 @@ function DetailNews() {
           name="twitter:description"
           content="Surties is a digital news media house based in Surat providing news in Gujarati and English"
         />
-        <meta
-          name="twitter:image"
-          content="https://opengraph.b-cdn.net/production/documents/9f450a84-a1c9-49f7-8569-8f07c9d9b9bc.jpg?token=NKugdLt8OGjzMM5fDQShJjjBy0Ez_13GrxGJAmW7lgs&height=1024&width=1024&expires=33246880837"
-        />
+        <meta name="twitter:image" content={articleData.thumbnail} />
       </Helmet>
       {loading ? (
         <Center mt={"20px"}>
