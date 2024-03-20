@@ -61,35 +61,26 @@ function DetailNews() {
   return (
     <div>
       <Helmet>
-        <title>Surtie's Digital Media</title>
-        <meta
-          name="description"
-          content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
-        />
+        <title>{articleData.heading }</title>
+        <meta name="description" content={articleData.subHeading} />
 
         <meta
           property="og:url"
           content="http://surties.in/news/id/65effbe93557007c2c8a3079"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Surtie's Digital Media" />
-        <meta
-          property="og:description"
-          content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
-        />
+        <meta property="og:title" content={articleData.heading} />
+        <meta property="og:description" content={articleData.article} />
         <meta property="og:image" content={articleData.thumbnail} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta property="twitter:domain" content="surties.in" />
         <meta
           property="twitter:url"
-          content="http://surties.in/news/id/65effbe93557007c2c8a3079"
+          content={`http://surties.in/news/id/${articleData._id}`}
         />
-        <meta name="twitter:title" content="Surtie's Digital Media" />
-        <meta
-          name="twitter:description"
-          content="Surties is a digital news media house based in Surat providing news in Gujarati and English"
-        />
+        <meta name="twitter:title" content={articleData.heading} />
+        <meta name="twitter:description" content={articleData.heading} />
         <meta name="twitter:image" content={articleData.thumbnail} />
       </Helmet>
       {loading ? (
