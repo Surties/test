@@ -19,6 +19,9 @@ import {
   Grid,
   Text,
   Textarea,
+  Radio,
+  RadioGroup,
+  Switch,
 } from "@chakra-ui/react";
 import {
   getDownloadURL,
@@ -39,6 +42,7 @@ const initialFormData = {
   article: "",
   imgs: [],
   thumbnail: null,
+  breakingL: "no",
 };
 
 function UpdateNewsModal({ id, fetchData }) {
@@ -49,12 +53,18 @@ function UpdateNewsModal({ id, fetchData }) {
   const [uploading2, setUploading2] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
+    const { name, value, type, files, checked } = e.target;
 
     if (type === "file") {
       setFormData({
         ...formData,
         [name]: [files],
+      });
+    }
+    if (type === "checkbox") {
+      setFormData({
+        ...formData,
+        [name]: checked,
       });
     } else {
       setFormData({
@@ -154,7 +164,7 @@ function UpdateNewsModal({ id, fetchData }) {
       setFormData({ ...formData, catagory: selectedButtons });
     } else {
       console.log(selectedButtons);
-      if (selectedButtons.length <= 2) {
+      if (selectedButtons.length <= 3) {
         setSelectedButtons([...selectedButtons, lable]);
         setFormData({ ...formData, catagory: selectedButtons });
       }
@@ -336,18 +346,37 @@ function UpdateNewsModal({ id, fetchData }) {
                       )}
                     </Box>
 
-                    <FormControl mb={4}>
-                      <FormLabel>Trending</FormLabel>
-                      <Select
-                        focusBorderColor="#d91e26"
-                        name="trending"
-                        value={formData.trending}
-                        onChange={handleChange}
-                      >
-                        <option value="yes">Yes</option>
-                        <option value="no">No</option>
-                      </Select>
-                    </FormControl>
+                    <Flex mt={"20px"} mb={"20px"} gap={"10px"}>
+                      <FormControl columns={{ base: 2, lg: 4 }}>
+                        <Flex alignItems={"center"}>
+                          <FormLabel fontWeight={"bold"}>
+                            Breaking News
+                          </FormLabel>
+                          <Switch
+                            size={"lg"}
+                            colorScheme="red"
+                            name="breaking"
+                            isChecked={formData.breaking}
+                            onChange={handleChange}
+                            color={"#d91e26"}
+                          />
+                        </Flex>
+                      </FormControl>
+                      <FormControl columns={{ base: 2, lg: 4 }}>
+                        <Flex alignItems={"center"}>
+                          <FormLabel fontWeight={"bold"}>
+                            Trending News
+                          </FormLabel>
+                          <Switch
+                            size={"lg"}
+                            colorScheme="red"
+                            name="trending"
+                            isChecked={formData.trending}
+                            onChange={handleChange}
+                          />
+                        </Flex>
+                      </FormControl>
+                    </Flex>
                     <Box>
                       <FormLabel>Catagory</FormLabel>
                       <Grid
@@ -356,17 +385,13 @@ function UpdateNewsModal({ id, fetchData }) {
                         mb={4}
                       >
                         {[
-                          "top",
-                          "latest",
-                          "state",
                           "country",
+                          "gujrati",
+                          "Surat",
+                          "National",
                           "entertainment",
-                          "women",
-                          "forgin",
                           "cricket",
-                          "sports",
-                          "lifeStyle",
-                          "job/Eduction",
+                          "religion",
                           "surties",
                         ].map((label, index) => (
                           <Button

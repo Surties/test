@@ -103,7 +103,6 @@ const aboutUsData = {
   },
 };
 
-// AboutUs component
 const AboutUs = () => {
   return (
     <>

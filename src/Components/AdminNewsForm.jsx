@@ -12,6 +12,10 @@ import {
   Grid,
   Text,
   Textarea,
+  RadioGroup,
+  Radio,
+  Switch,
+  Center,
 } from "@chakra-ui/react";
 import {
   getDownloadURL,
@@ -28,11 +32,12 @@ const initialFormData = {
   heading: "",
   subHeading: "",
   author: "",
-  trending: "no",
+  trending: false,
   instaLink: "",
   catagory: [],
   article: "",
   imgs: [],
+  breaking: false,
   thumbnail: null,
 };
 
@@ -45,12 +50,18 @@ const YourFormComponent = () => {
   const [emptyFields, setEmptyFields] = useState([]);
   const [loading, setloading] = useState(false);
   const handleChange = (e) => {
-    const { name, value, type, files } = e.target;
+    const { name, value, type, files, checked } = e.target;
 
     if (type === "file") {
       setFormData({
         ...formData,
         [name]: [files],
+      });
+    }
+    if (type === "checkbox") {
+      setFormData({
+        ...formData,
+        [name]: checked,
       });
     } else {
       setFormData({
@@ -58,6 +69,7 @@ const YourFormComponent = () => {
         [name]: value,
       });
     }
+    console.log(formData);
     setEmptyFields([]);
   };
   const { user } = useSelector((el) => {
@@ -131,7 +143,10 @@ const YourFormComponent = () => {
     }
     setloading(true);
     try {
-      const response = await axios.post("http://localhost:8080/news", formData);
+      const response = await axios.post(
+        "https://surtiesserver.onrender.com/news",
+        formData
+      );
       console.log(response);
       setloading(false);
     } catch (error) {
@@ -161,6 +176,7 @@ const YourFormComponent = () => {
       }
     }
   };
+
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
       <Stack
@@ -180,7 +196,7 @@ const YourFormComponent = () => {
         >
           <form onSubmit={handleSubmit}>
             <FormControl mb={4}>
-              <FormLabel>Heading</FormLabel>
+              <FormLabel fontWeight={"bold"}>Heading</FormLabel>
               <Input
                 focusBorderColor="#d91e26"
                 type="text"
@@ -190,7 +206,7 @@ const YourFormComponent = () => {
               />
             </FormControl>
             <FormControl mb={4}>
-              <FormLabel>Subheading</FormLabel>
+              <FormLabel fontWeight={"bold"}>Subheading</FormLabel>
               <Input
                 focusBorderColor="#d91e26"
                 type="text"
@@ -200,7 +216,7 @@ const YourFormComponent = () => {
               />
             </FormControl>
             <FormControl mb={4}>
-              <FormLabel>Article</FormLabel>
+              <FormLabel fontWeight={"bold"}>Article</FormLabel>
               <Textarea
                 focusBorderColor="#d91e26"
                 name="article"
@@ -211,7 +227,7 @@ const YourFormComponent = () => {
               />
             </FormControl>
             <FormControl mb={4}>
-              <FormLabel>Thumbnail</FormLabel>
+              <FormLabel fontWeight={"bold"}>Thumbnail</FormLabel>
               <Flex gap={"10px"}>
                 <Input
                   focusBorderColor="#d91e26"
@@ -266,7 +282,7 @@ const YourFormComponent = () => {
               )}
             </Box>
             <FormControl mb={4}>
-              <FormLabel>Images</FormLabel>
+              <FormLabel fontWeight={"bold"}>Images</FormLabel>
               <Flex gap={"10px"}>
                 <Input
                   focusBorderColor="#d91e26"
@@ -328,7 +344,7 @@ const YourFormComponent = () => {
               )}
             </Box>
             <FormControl mb={4}>
-              <FormLabel>Instagram Link</FormLabel>
+              <FormLabel fontWeight={"bold"}>Instagram Link</FormLabel>
               <Input
                 focusBorderColor="#d91e26"
                 type="text"
@@ -337,20 +353,35 @@ const YourFormComponent = () => {
                 onChange={handleChange}
               />
             </FormControl>
-            <FormControl mb={4}>
-              <FormLabel>Trending</FormLabel>
-              <Select
-                focusBorderColor="#d91e26"
-                name="trending"
-                value={formData.trending}
-                onChange={handleChange}
-              >
-                <option value="yes">Yes</option>
-                <option value="no">No</option>
-              </Select>
-            </FormControl>
+            <Flex mt={"20px"} mb={"20px"} gap={"10px"}>
+              <FormControl columns={{ base: 2, lg: 4 }}>
+                <Flex alignItems={"center"}>
+                  <FormLabel fontWeight={"bold"}>Breaking News</FormLabel>
+                  <Switch
+                    size={"lg"}
+                    colorScheme="red"
+                    name="breaking"
+                    isChecked={formData.breaking}
+                    onChange={handleChange}
+                    color={"#d91e26"}
+                  />
+                </Flex>
+              </FormControl>
+              <FormControl columns={{ base: 2, lg: 4 }}>
+                <Flex alignItems={"center"}>
+                  <FormLabel fontWeight={"bold"}>Trending News</FormLabel>
+                  <Switch
+                    size={"lg"}
+                    colorScheme="red"
+                    name="trending"
+                    isChecked={formData.trending}
+                    onChange={handleChange}
+                  />
+                </Flex>
+              </FormControl>
+            </Flex>
             <Box>
-              <FormLabel>Catagory</FormLabel>
+              <FormLabel fontWeight={"bold"}>Catagory</FormLabel>
               <Grid
                 fontSize={{ base: "14px", md: "16px" }}
                 templateColumns={"repeat(2, 1fr)"}
@@ -358,18 +389,14 @@ const YourFormComponent = () => {
                 mb={4}
               >
                 {[
-                  "top",
-                  "latest",
-                  "city/state",
                   "country",
+                  "gujrati",
+                  "Surat",
+                  "National",
                   "entertainment",
-                  "women",
-                  "forgin",
                   "cricket",
-                  "sports",
-                  "lifeStyle",
-                  "job/Eduction",
-                  "surties ",
+                  "religion",
+                  "Surties",
                 ].map((label, index) => (
                   <Button
                     key={index}

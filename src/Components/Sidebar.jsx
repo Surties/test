@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { FaCity, FaFootballBall } from "react-icons/fa";
+import { FaCity, FaFootballBall, FaGuilded } from "react-icons/fa";
 import { IoMdTrendingUp } from "react-icons/io";
 import { Link } from "react-router-dom";
 import { BiCricketBall } from "react-icons/bi";
-import { GiDramaMasks, GiIndianPalace } from "react-icons/gi";
-import { RiGovernmentFill, RiWomenFill } from "react-icons/ri";
+import { GiByzantinTemple, GiDramaMasks, GiIndianPalace } from "react-icons/gi";
+import { RiGovernmentFill, RiMapPin5Fill, RiWomenFill } from "react-icons/ri";
 import { CiGlobe } from "react-icons/ci";
 import { TbHandFinger, TbWriting } from "react-icons/tb";
 import { IoPhonePortraitOutline } from "react-icons/io5";
@@ -40,19 +40,14 @@ function Sidebar() {
           fontWeight={{ base: "bold", md: "600" }}
         >
           {[
-            { link: "top", icon: <IoMdTrendingUp /> },
-            { link: "election", icon: <TbHandFinger /> },
-            { link: "city", icon: <FaCity /> },
             { link: "country", icon: <GiIndianPalace /> },
+            { link: "gujrat", icon: <FaGuilded /> },
+            { link: "surat", icon: <FaCity /> },
+            { link: "national", icon: <RiMapPin5Fill /> },
             { link: "entertainment", icon: <GiDramaMasks /> },
-            { link: "women", icon: <RiWomenFill /> },
-            { link: "forign", icon: <CiGlobe /> },
             { link: "cricket", icon: <BiCricketBall /> },
-            { link: "sports", icon: <FaFootballBall /> },
-            { link: "lifestyle", icon: <StarIcon /> },
-            { link: "education", icon: <TbWriting /> },
+            { link: "religion", icon: <GiByzantinTemple /> },
             { link: "surties", icon: <RiGovernmentFill /> },
-            { link: "tech", icon: <IoPhonePortraitOutline /> },
           ].map((el, index) => (
             <ListItem
               border={{ base: "1px solid #d91e26 ", md: "none" }}

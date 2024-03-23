@@ -16,7 +16,7 @@ function SideNews() {
     >
       <Box>
         <img
-          src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BB1i2RwX.img?w=768&h=512&m=6&x=1993&y=543&s=565&d=565"
+          src="https://img-s-msn-com.aka maized.net/tenant/amp/entityid/BB1i2RwX.img?w=768&h=512&m=6&x=1993&y=543&s=565&d=565"
           alt=""
         />
       </Box>
