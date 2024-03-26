@@ -21,7 +21,6 @@ function DetailNews() {
       .get(`https://surtiesserver.onrender.com/news/${id}`)
       .then((response) => {
         setArticleData(response.data);
-        console.log(response.data, "1");
         setLoading(false);
       })
       .catch((error) => {
@@ -34,9 +33,7 @@ function DetailNews() {
     setLoading(true);
     axios
       .patch(`https://surtiesserver.onrender.com/news/topweek/${id}`)
-      .then((response) => {
-        console.log(response);
-      })
+      .then((response) => {})
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
@@ -48,7 +45,6 @@ function DetailNews() {
         "https://surtiesserver.onrender.com/news/topweek"
       );
       setResponseData(response.data);
-      console.log(response.data, "2");
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -61,7 +57,7 @@ function DetailNews() {
   return (
     <div>
       <Helmet>
-        <title>{articleData.heading }</title>
+        <title>{articleData.heading}</title>
         <meta name="description" content={articleData.subHeading} />
 
         <meta

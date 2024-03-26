@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Box, Text, Flex, Button } from "@chakra-ui/react";
+import { Box, Text, Flex, Button, Badge } from "@chakra-ui/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const ImageSlider = ({ slides }) => {
+  console.log(slides);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -30,7 +32,7 @@ const ImageSlider = ({ slides }) => {
   const slideStylesWithBackground = {
     ...slideStyles,
     backgroundImage: `url(${
-      slides ? slides[currentIndex].img : "https://placehold.co/600x400"
+      slides ? slides[currentIndex].thumbnail : "https://placehold.co/600x400"
     })`,
     backgroundSize: "100% 100%",
     backgroundRepeat: "no-repeat",
@@ -39,7 +41,10 @@ const ImageSlider = ({ slides }) => {
   };
 
   return (
-    <Flex>
+    <Link to={`/news/id/${slides[currentIndex]._id}`}>
+      <Badge w={"120px"} ml="1" fontSize="0.8em" colorScheme="red">
+        Breaking News
+      </Badge>
       <Box style={slideStylesWithBackground}>
         <Flex
           height={"80%"}
@@ -78,7 +83,7 @@ const ImageSlider = ({ slides }) => {
           {slides[currentIndex].heading}
         </Text>
       </Box>
-    </Flex>
+    </Link>
   );
 };
 

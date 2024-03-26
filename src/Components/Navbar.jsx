@@ -9,15 +9,43 @@ import {
   useBreakpointValue,
   useDisclosure,
   Img,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Button,
 } from "@chakra-ui/react";
 
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { LOGOUT_SUCCESS } from "../Redux/auth/auth.actiontype";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
+  const { user, auth, role } = useSelector((store) => {
+    return store.auth;
+  });
+  const news = useSelector((store) => {
+    return store;
+  });
+  console.log(news);
+  const dispatch = useDispatch();
 
+  const handleLogout = async () => {
+    try {
+      const response = await axios.get(
+        "https://surtiesserver.onrender.com/auth/logout"
+      );
+
+      dispatch({ type: LOGOUT_SUCCESS });
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error occurred during logout:", error);
+    }
+  };
   return (
     <>
       <Box>
@@ -116,15 +144,44 @@ export default function Navbar() {
             pr={{ base: "0px", md: "60px" }}
           >
             <Box display="flex" gap={{ base: 0, md: 3 }}></Box>
-            <Link to="/admin">
-              <Box display="flex" gap={2}>
-                <FaRegUserCircle
-                  style={{ marginRight: "6%" }}
-                  color="white"
-                  fontSize={"26px"}
-                />
-              </Box>
-            </Link>
+
+            <Menu>
+              <MenuButton color="white">
+                <Flex gap={"5px"} alignItems={"center"}>
+                  <Text display={{ base: "none", md: "inline" }}>
+                    {user ? user + "," : ""}
+                  </Text>
+                  <FaRegUserCircle
+                    style={{ marginRight: "6%" }}
+                    fontSize={"26px"}
+                  />
+                  <ChevronDownIcon />
+                </Flex>
+              </MenuButton>
+              <MenuList>
+                <MenuItem>
+                  {!auth ? (
+                    <Link to="/admin">
+                      <Box display="flex" gap={2}>
+                        Login
+                      </Box>
+                    </Link>
+                  ) : (
+                    <Box w={"100%"} onClick={handleLogout}>
+                      {" "}
+                      <Text>Logout</Text>
+                    </Box>
+                  )}
+                </MenuItem>
+                {role == "admin" || role == "newsEditor" ? (
+                  <MenuItem>
+                    <Link to={"/admin"}>{role}</Link>
+                  </MenuItem>
+                ) : (
+                  ""
+                )}
+              </MenuList>
+            </Menu>
           </Stack>
         </Flex>
 

@@ -8,3 +8,6 @@ export const SIGNUP_ERROR = "SIGNUP_ERROR";
 
 export const SET_SESSION = "SET_SESSION";
 export const RESET_AUTH = "RESET_AUTH";
+export const LOGOUT_LOADING = "LOGOUT_LOADING";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_ERROR = "LOGOUT_ERROR";

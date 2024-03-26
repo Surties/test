@@ -21,7 +21,7 @@ function Sidebar() {
         overflow={"hidden"}
         backgroundColor={"#d91e26"}
         width={{ base: "100%", md: "100%" }}
-        height={{ base: `${!show ? "44px" : "215px"}`, md: "auto" }}
+        height={{ base: `${!show ? "44px" : "140px"}`, md: "auto" }}
         mb={{ base: "40px", md: "" }}
       >
         <UnorderedList

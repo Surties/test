@@ -3,7 +3,7 @@ import ImageSlider from "../Components/ImageSlider";
 import axios from "axios";
 import StickyBox from "react-sticky-box";
 
-import { Box, Center, Flex, Spinner } from "@chakra-ui/react";
+import { Box, Center, Flex, Spinner, Text } from "@chakra-ui/react";
 import CategorizedNews from "../Components/CategorizedNews";
 import Sidebar from "../Components/Sidebar";
 import { LOGIN_LOADING } from "../Redux/auth/auth.actiontype";
@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import NewsLetter from "../Components/NewsLetter";
+import BreakingNews from "../Components/BreakingNews";
 axios.defaults.withCredentials = true;
 const containerStyles = {
   width: "90%",
@@ -21,6 +22,10 @@ function News() {
   const [loading, setLoading] = useState(true);
   const [error1, setError] = useState(false);
   const [first, SetFirst] = useState(true);
+  const [breakingNews, setBreakingNews] = useState([
+    { thumbnail: "", heading: "" },
+    { thumbnail: "", heading: "" },
+  ]);
   const [news, setNews] = useState([{ documents: [] }]);
   const [loading2, setLoading2] = useState(false);
   const dispatch = useDispatch();
@@ -28,7 +33,7 @@ function News() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://surtiesserver.onrender.com/slider"
+        "https://surtiesserver.onrender.com/news/breaking-news"
       );
       setSlides(response.data);
     } catch (error) {
@@ -68,11 +73,22 @@ function News() {
         .catch((err) => {});
     } else SetFirst(true);
   };
-
+  const breakingNewsFun = () => {
+    axios
+      .get("https://surtiesserver.onrender.com/news/breaking-news")
+      .then((res) => {
+        console.log(res.data);
+        setBreakingNews(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   useEffect(() => {
     fetchData();
     getNews();
     getUser();
+    breakingNewsFun();
   }, []);
   return (
     <>
@@ -104,6 +120,12 @@ function News() {
               )}
             </div>
           </Flex>
+          <>
+            <Box marginLeft={'5%'} marginTop={'20px'} marginBottom={'-30px'} fontWeight={'bold'} color={"#d91e26"}>
+              <Text>Top News</Text>
+            </Box>
+            {loading ? <></> : <BreakingNews data={breakingNews} />}
+          </>
           {!loading ? (
             !loading2 ? (
               <Center mt={"20px"}>

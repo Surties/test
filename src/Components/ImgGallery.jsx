@@ -5,6 +5,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 function ImgGallery({ imgs }) {
   const [el, setEl] = useState(0);
+
   const slideStyles = {
     width: "100%",
     paddingTop: "30%",
@@ -29,42 +30,38 @@ function ImgGallery({ imgs }) {
     setEl((prevIndex) => (prevIndex + 1) % imgs.length);
   };
   return (
-    <Box>
-      <>
-        <Box  style={slideStylesWithBackground}>
-          <Flex justifyContent={"space-between"} p={"20px"}>
-            {" "}
-            <Button
-              w={"20px"}
-              border={"1px solid #FAF5FF"}
-              backgroundColor={"transparent"}
-              onClick={handlePrev}
-              color="#FAF5FF"
-              _hover={{
-                backgroundColor: "rgba(255, 255, 255, 0.4)",
-                color: "black",
-                border: "1px solid rgba(255, 255, 255, 0.4)",
-              }}
-            >
-              <FaArrowLeft />
-            </Button>
-            <Button
-              w={"20px"}
-              backgroundColor={"transparent"}
-              onClick={handleNext}
-              border={"1px solid #FAF5FF"}
-              color="#FAF5FF"
-              _hover={{
-                backgroundColor: "rgba(255, 255, 255, 0.4)",
-                color: "black",
-                border: "1px solid rgba(255, 255, 255, 0.4)",
-              }}
-            >
-              <FaArrowRight />
-            </Button>
-          </Flex>
-        </Box>
-      </>
+    <Box style={slideStylesWithBackground}>
+      <Flex justifyContent={"space-between"} p={"20px"}>
+        {" "}
+        <Button
+          w={"20px"}
+          border={"1px solid #FAF5FF"}
+          backgroundColor={"transparent"}
+          onClick={handlePrev}
+          color="#FAF5FF"
+          _hover={{
+            backgroundColor: "rgba(255, 255, 255, 0.4)",
+            color: "black",
+            border: "1px solid black",
+          }}
+        >
+          <FaArrowLeft />
+        </Button>
+        <Button
+          w={"40px"}
+          backgroundColor={"transparent"}
+          onClick={handleNext}
+          border={"1px solid #FAF5FF"}
+          color="#FAF5FF"
+          _hover={{
+            backgroundColor: "rgba(255, 255, 255, 0.4)",
+            color: "black",
+            border: "1px solid black",
+          }}
+        >
+          <FaArrowRight />
+        </Button>
+      </Flex>
     </Box>
   );
 }

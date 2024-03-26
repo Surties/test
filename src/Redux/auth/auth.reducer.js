@@ -7,6 +7,7 @@ import {
   SIGNUP_ERROR,
   RESET_AUTH,
   SET_SESSION,
+  LOGOUT_SUCCESS,
 } from "./auth.actiontype";
 
 const initialState = {
@@ -14,7 +15,7 @@ const initialState = {
   error: false,
   message1: "",
   message2: "",
-  user: {},
+  user: "",
   auth: false,
 };
 
@@ -76,6 +77,9 @@ export const authReducer = (state = initialState, { type, payload }) => {
         ...state,
         user: payload,
       };
+    case LOGOUT_SUCCESS: {
+      return initialState;
+    }
     default:
       return state;
   }

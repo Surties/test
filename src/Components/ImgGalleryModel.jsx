@@ -1,12 +1,9 @@
 import {
-  Box,
-  Button,
   Center,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  
   ModalOverlay,
 } from "@chakra-ui/react";
 import React from "react";
@@ -14,7 +11,6 @@ import React from "react";
 import ImgGallery from "./ImgGallery";
 
 function ImgGalleryModel({ data, finalRef, isOpen, onOpen, onClose }) {
-  console.log(data);
   return (
     <Center>
       <Modal
