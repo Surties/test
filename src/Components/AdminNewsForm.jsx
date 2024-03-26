@@ -43,6 +43,7 @@ const initialFormData = {
 
 const YourFormComponent = () => {
   const [files, setFiles] = useState([]);
+  const [thumbnail, setThumbnail] = useState(null);
   const [formData, setFormData] = useState(initialFormData);
   const [uploading1, setUploading1] = useState(false);
   const [uploading2, setUploading2] = useState(false);
@@ -69,16 +70,13 @@ const YourFormComponent = () => {
         [name]: value,
       });
     }
-    console.log(formData);
-    setEmptyFields([]);
   };
   const { user } = useSelector((el) => {
     return el.auth;
   });
   const handleChangeImg1 = async () => {
+    const file = thumbnail;
     setUploading1(true);
-    const file = formData.thumbnail[0][0];
-
     if (file === null) return;
     const imgRef = ref(storage, `images/${file.name + Date.now()}`);
     try {
@@ -88,6 +86,7 @@ const YourFormComponent = () => {
         ...formData,
         thumbnail: downloadURL,
       });
+
       setUploading1(false);
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -233,10 +232,10 @@ const YourFormComponent = () => {
                   focusBorderColor="#d91e26"
                   type="file"
                   name="thumbnail"
-                  onChange={handleChange}
+                  onChange={(e) => setThumbnail(e.target.files[0])}
                 />
                 <Button
-                  isDisabled={formData.thumbnail === null}
+                  isDisabled={thumbnail === null}
                   pos={"static"}
                   loadingText=""
                   bg={"#d91e26"}

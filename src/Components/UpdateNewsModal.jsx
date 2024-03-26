@@ -36,13 +36,13 @@ const initialFormData = {
   heading: "",
   subHeading: "",
   author: "",
-  trending: "no",
+  trending: false,
   numberOfClick: 0,
   catagory: [],
   article: "",
   imgs: [],
   thumbnail: null,
-  breakingL: "no",
+  breakingL: false,
 };
 
 function UpdateNewsModal({ id, fetchData }) {
@@ -83,7 +83,7 @@ function UpdateNewsModal({ id, fetchData }) {
   const handleChangeImg1 = async () => {
     setUploading1(true);
     const file = formData.thumbnail[0][0];
-
+    console.log(file);
     if (file === null) return;
     const imgRef = ref(storage, `images/${file.name + Date.now()}`);
     try {
@@ -122,6 +122,7 @@ function UpdateNewsModal({ id, fetchData }) {
         (snapshot) => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(progress);
         },
         (error) => {
           reject(error);
@@ -442,8 +443,6 @@ function UpdateNewsModal({ id, fetchData }) {
               </Stack>
             </Flex>
           </ModalBody>
-
-          <ModalFooter></ModalFooter>
         </ModalContent>
       </Modal>
     </div>
