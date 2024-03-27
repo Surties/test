@@ -14,6 +14,7 @@ import DetailNews from "../Pages/DetailNews";
 
 import CatagoryPage from "../Pages/CatagoryPage";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import ProfilePage from "../Pages/ProfilePage";
 function AllRoutes() {
   return (
     <>
@@ -62,6 +63,15 @@ function AllRoutes() {
             <>
               <Navbar />
               <ContactUs />
+            </>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <>
+              <Navbar />
+              <ProfilePage />
             </>
           }
         />

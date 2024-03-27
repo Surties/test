@@ -180,6 +180,11 @@ export default function Navbar() {
                 ) : (
                   ""
                 )}
+                <MenuItem>
+                  <Link style={{ width: "100%" }} to={"/profile"}>
+                    Profile
+                  </Link>
+                </MenuItem>
               </MenuList>
             </Menu>
           </Stack>

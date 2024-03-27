@@ -21,36 +21,17 @@ const ImageSlider = ({ slides }) => {
     }, 3000);
     return () => clearInterval(intervalId);
   }, []);
-  const slideStyles = {
-    width: "100%",
-    paddingTop: "30%",
-    display: "flex",
-    color: "white",
-    borderRadius: "12px",
-  };
-
-  const slideStylesWithBackground = {
-    ...slideStyles,
-    backgroundImage: `url(${
-      slides ? slides[currentIndex].thumbnail : "https://placehold.co/600x400"
-    })`,
-    backgroundSize: "100% 100%",
-    backgroundRepeat: "no-repeat",
-    display: "flex",
-    flexDirection: "column",
-  };
 
   return (
     <>
       <Flex
         alignContent={"center"}
-        gap={"10px"}
-        height={"80%"}
-        justifyContent={"space-between"}
-        m={"0px 20px"}
+        justifyContent={"center"}
         alignItems={"center"}
+        gap={'10px'}
       >
         <Button
+          width={{ base: "10px", md: "auto" }}
           border={"1px solid black"}
           backgroundColor={"transparent"}
           onClick={handlePrev}
@@ -63,19 +44,27 @@ const ImageSlider = ({ slides }) => {
         >
           <FaArrowLeft />
         </Button>
-        <Link
-          to={`/news/id/${slides[currentIndex]._id}`}
-          style={slideStylesWithBackground}
-        >
-          <Text
-            padding={"20px"}
-            fontSize={{ base: "14px", md: "24px" }}
-            fontWeight="bold"
+        <Link to={`/news/id/${slides[currentIndex]._id}`}>
+          <Box
+            h={{ base: "200px", md:'350px'}}
+            color={"white"}
+            borderRadius={"12px"}
+            backgroundImage={`url(${slides[currentIndex].thumbnail})`}
+            backgroundPosition="center"
+            backgroundRepeat="no-repeat"
+            backgroundSize="100% 100%"
           >
-            {slides[currentIndex].heading}
-          </Text>
+            <Text
+              padding={"20px"}
+              fontSize={{ base: "14px", md: "24px" }}
+              fontWeight="bold"
+            >
+              {slides[currentIndex].heading}
+            </Text>
+          </Box>
         </Link>
         <Button
+          width={{ base: "10px", md: "auto" }}
           backgroundColor={"transparent"}
           onClick={handleNext}
           border={"1px solid black"}

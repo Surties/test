@@ -17,6 +17,7 @@ const initialState = {
   message2: "",
   user: "",
   auth: false,
+  profile: "",
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {
@@ -35,6 +36,7 @@ export const authReducer = (state = initialState, { type, payload }) => {
         role: payload.role,
         auth: true,
         error: false,
+        profile: payload.profile,
       };
     case LOGIN_ERROR:
       return {

@@ -13,9 +13,7 @@ import { Helmet } from "react-helmet";
 import NewsLetter from "../Components/NewsLetter";
 import BreakingNews from "../Components/BreakingNews";
 axios.defaults.withCredentials = true;
-const containerStyles = {
-  width: "90%",
-};
+
 
 function News() {
   const [slides, setSlides] = useState([{ img: "" }]);
@@ -103,8 +101,8 @@ function News() {
           </StickyBox>
         </Box>
         <Box w={{ base: "100%", md: "76%" }}>
-          <Flex mt={"60px"} justifyContent={"center"}>
-            <div style={containerStyles}>
+          <Flex marginTop={'20px'}  justifyContent={"center"}>
+            <Box>
               {loading ? (
                 <Center  mt={"20px"}>
                   <Spinner
@@ -118,7 +116,7 @@ function News() {
               ) : (
                 <ImageSlider slides={slides} />
               )}
-            </div>
+            </Box>
           </Flex>
           <>
             {loading ? (
