@@ -34,9 +34,9 @@ function BreakingNews({ data }) {
         {" "}
         <Link to={`/news/id/${data[currentIndex]._id}`}>
           <Flex>
-            <Box>
+            <Center>
               <img width={"300px"} src={data[currentIndex].thumbnail} alt="" />
-            </Box>
+            </Center>
             <Box textAlign={"left"} p={"10px"}>
               <Text>{data[currentIndex].heading}</Text>
             </Box>
@@ -54,9 +54,9 @@ function BreakingNews({ data }) {
         <Link to={`/news/id/${data[currentIndex2]._id}`}>
           {" "}
           <Flex>
-            <Box>
+            <Center>
               <img width={"300px"} src={data[currentIndex2].thumbnail} alt="" />
-            </Box>
+            </Center>
             <Box p={"10px"} textAlign={"left"}>
               <Text>{data[currentIndex2].heading}</Text>
             </Box>

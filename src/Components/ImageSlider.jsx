@@ -79,7 +79,11 @@ const ImageSlider = ({ slides }) => {
             <FaArrowRight />
           </Button>
         </Flex>
-        <Text padding={"20px"} fontSize="3xl" fontWeight="bold">
+        <Text
+          padding={"20px"}
+          fontSize={{ base: "14px", md: "24px" }}
+          fontWeight="bold"
+        >
           {slides[currentIndex].heading}
         </Text>
       </Box>
