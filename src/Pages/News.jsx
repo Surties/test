@@ -103,10 +103,10 @@ function News() {
           </StickyBox>
         </Box>
         <Box w={{ base: "100%", md: "76%" }}>
-          <Flex mt={"30px"} justifyContent={"center"}>
+          <Flex mt={"60px"} justifyContent={"center"}>
             <div style={containerStyles}>
               {loading ? (
-                <Center mt={"20px"}>
+                <Center  mt={"20px"}>
                   <Spinner
                     thickness="4px"
                     speed="0.65s"
@@ -121,10 +121,22 @@ function News() {
             </div>
           </Flex>
           <>
-            <Box marginLeft={'5%'} marginTop={'20px'} marginBottom={'-30px'} fontWeight={'bold'} color={"#d91e26"}>
-              <Text>Top News</Text>
-            </Box>
-            {loading ? <></> : <BreakingNews data={breakingNews} />}
+            {loading ? (
+              <></>
+            ) : (
+              <>
+                <Box
+                  marginLeft={"5%"}
+                  marginTop={"20px"}
+                  marginBottom={"-30px"}
+                  fontWeight={"bold"}
+                  color={"#d91e26"}
+                >
+                  <Text>Top News</Text>
+                </Box>
+                <BreakingNews data={breakingNews} />
+              </>
+            )}
           </>
           {!loading ? (
             !loading2 ? (

@@ -41,53 +41,55 @@ const ImageSlider = ({ slides }) => {
   };
 
   return (
-    <Link to={`/news/id/${slides[currentIndex]._id}`}>
-      <Badge w={"120px"} ml="1" fontSize="0.8em" colorScheme="red">
-        Breaking News
-      </Badge>
-      <Box style={slideStylesWithBackground}>
-        <Flex
-          height={"80%"}
-          justifyContent={"space-between"}
-          m={"0px 20px"}
-          alignItems={"center"}
+    <>
+      <Flex
+        alignContent={"center"}
+        gap={"10px"}
+        height={"80%"}
+        justifyContent={"space-between"}
+        m={"0px 20px"}
+        alignItems={"center"}
+      >
+        <Button
+          border={"1px solid black"}
+          backgroundColor={"transparent"}
+          onClick={handlePrev}
+          color="black"
+          _hover={{
+            backgroundColor: "rgba(255, 255, 255, 0.4)",
+            color: "black",
+            border: "1px solid rgba(255, 255, 255, 0.4)",
+          }}
         >
-          <Button
-            border={"1px solid #FAF5FF"}
-            backgroundColor={"transparent"}
-            onClick={handlePrev}
-            color="#FAF5FF"
-            _hover={{
-              backgroundColor: "rgba(255, 255, 255, 0.4)",
-              color: "black",
-              border: "1px solid rgba(255, 255, 255, 0.4)",
-            }}
-          >
-            <FaArrowLeft />
-          </Button>
-          <Button
-            backgroundColor={"transparent"}
-            onClick={handleNext}
-            border={"1px solid #FAF5FF"}
-            color="#FAF5FF"
-            _hover={{
-              backgroundColor: "rgba(255, 255, 255, 0.4)",
-              color: "black",
-              border: "1px solid rgba(255, 255, 255, 0.4)",
-            }}
-          >
-            <FaArrowRight />
-          </Button>
-        </Flex>
-        <Text
-          padding={"20px"}
-          fontSize={{ base: "14px", md: "24px" }}
-          fontWeight="bold"
+          <FaArrowLeft />
+        </Button>
+        <Link
+          to={`/news/id/${slides[currentIndex]._id}`}
+          style={slideStylesWithBackground}
         >
-          {slides[currentIndex].heading}
-        </Text>
-      </Box>
-    </Link>
+          <Text
+            padding={"20px"}
+            fontSize={{ base: "14px", md: "24px" }}
+            fontWeight="bold"
+          >
+            {slides[currentIndex].heading}
+          </Text>
+        </Link>
+        <Button
+          backgroundColor={"transparent"}
+          onClick={handleNext}
+          border={"1px solid black"}
+          color="black"
+          _hover={{
+            backgroundColor: "rgba(255, 255, 255, 0.4)",
+            color: "black",
+            border: "1px solid rgba(255, 255, 255, 0.4)",
+          }}
+        >
+          <FaArrowRight />
+        </Button>
+      </Flex>
+    </>
   );
 };
 
