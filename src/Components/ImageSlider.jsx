@@ -56,7 +56,7 @@ const ImageSlider = ({ slides }) => {
           onClick={handlePrev}
           color="black"
           _hover={{
-            backgroundColor: "rgba(255, 255, 255, 0.4)",
+            backgroundColor: "RGBA(0, 0, 0, 0.08)",
             color: "black",
             border: "1px solid rgba(255, 255, 255, 0.4)",
           }}
@@ -81,7 +81,7 @@ const ImageSlider = ({ slides }) => {
           border={"1px solid black"}
           color="black"
           _hover={{
-            backgroundColor: "rgba(255, 255, 255, 0.4)",
+            backgroundColor: "RGBA(0, 0, 0, 0.08)",
             color: "black",
             border: "1px solid rgba(255, 255, 255, 0.4)",
           }}
