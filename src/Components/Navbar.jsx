@@ -172,11 +172,7 @@ export default function Navbar() {
                       </Box>
                     </Link>
                   ) : (
-                    <Box
-                      w={"100%"}
-                      border={"1px solid blue"}
-                      onClick={handleLogout}
-                    >
+                    <Box w={"100%"} onClick={handleLogout}>
                       {" "}
                       <Text>Logout</Text>
                     </Box>

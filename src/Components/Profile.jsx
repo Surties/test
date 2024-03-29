@@ -9,6 +9,8 @@ import {
   Button,
   Text,
   useColorModeValue,
+  Center,
+  Spinner,
 } from "@chakra-ui/react";
 
 import { useEffect, useRef, useState } from "react";
@@ -23,6 +25,7 @@ import { EMAIL_UPDATE } from "../Redux/auth/auth.actiontype";
 const Profile = () => {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [loading2, setLoading2] = useState(false);
   const [contactInfo, setContactInfo] = useState({
     email: "",
     name: "",
@@ -43,13 +46,16 @@ const Profile = () => {
 
     const imgRef = ref(storage, `profiles/${file.name + Date.now()}`);
     try {
+      setLoading2(true);
       const snapshot = await uploadBytes(imgRef, file);
       const downloadURL = await getDownloadURL(snapshot.ref);
       setContactInfo({
         ...contactInfo,
         profilePic: downloadURL,
       });
+      setLoading2(false);
     } catch (error) {
+      setLoading2(false);
       console.error("Error uploading image:", error);
     }
   };
@@ -105,7 +111,15 @@ const Profile = () => {
       bg={useColorModeValue("gray.50", "gray.800")}
     >
       {loading ? (
-        <>Loading</>
+        <Center mt={"20px"}>
+          <Spinner
+            thickness="4px"
+            speed="0.65s"
+            emptyColor="gray.200"
+            color="#d91e26"
+            size="xl"
+          />
+        </Center>
       ) : (
         <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
           <Flex
@@ -114,7 +128,6 @@ const Profile = () => {
             flexDirection={"column"}
             rounded={"lg"}
             marginTop={"20px"}
-            // bg={useColorModeValue("white", "gray.700")}
             boxShadow={"lg"}
             p={8}
           >
@@ -130,18 +143,32 @@ const Profile = () => {
               cursor={"pointer"}
               overflow={"hidden"}
             >
-              <img
-                width={"150px"}
-                h={"150px"}
-                src={contactInfo.profilePic}
-                alt=""
-              />
-              <input
-                ref={inputFileRef}
-                onChangeCapture={onFileChangeCapture}
-                style={{ display: "none" }}
-                type="file"
-              />
+              {loading2 ? (
+                <Center mt={"20px"}>
+                  <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="#d91e26"
+                    size="xl"
+                  />
+                </Center>
+              ) : (
+                <>
+                  <img
+                    width={"150px"}
+                    h={"150px"}
+                    src={contactInfo.profilePic}
+                    alt=""
+                  />
+                  <input
+                    ref={inputFileRef}
+                    onChangeCapture={onFileChangeCapture}
+                    style={{ display: "none" }}
+                    type="file"
+                  />
+                </>
+              )}
             </Box>
             <Stack spacing={4}>
               <HStack>
