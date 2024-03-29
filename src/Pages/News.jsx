@@ -111,26 +111,38 @@ function News() {
   return (
     <>
       <Helmet>
-        <title>{data.name}</title>
-        <meta name="description" content={data.description} />
-        <meta property="og:title" content={data.name} />
-        <meta property="og:description" content={data.description} />
-        <meta property="og:image" content={data.icons[0].src} />
-        <meta property="og:image:type" content={data.icons[0].type} />
-        <meta property="og:image:width" content="200" />{" "}
-        {/* Adjust as needed */}
-        <meta property="og:image:height" content="200" />{" "}
-        {/* Adjust as needed */}
-        <meta property="og:url" content="https://example.com" />{" "}
-        {/* Replace with your actual URL */}
+        <title>Surtie's Digital Media</title>
+        <meta name="title" content="Surtie's Digital Media" />
+        <meta
+          name="description"
+          content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
+        />
+
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={data.name} />
-        <meta name="twitter:description" content={data.description} />
-        <meta name="twitter:image" content={data.icons[0].src} />
-        <link rel="icon" href={data.icons[0].src} />
-        <link rel="apple-touch-icon" href={data.icons[1].src} />
-        <meta name="theme-color" content={data.theme_color} />
+        <meta
+          property="og:url"
+          content="https://surties.in/news/id/660310b481d2b4376b8e0656"
+        />
+        <meta property="og:title" content="Surtie's Digital Media" />
+        <meta
+          property="og:description"
+          content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
+        />
+        <meta
+          property="og:image"
+          content="https://metatags.io/images/meta-tags.png"
+        />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://surties.in/news/id/660310b481d2b4376b8e0656"
+        />
+        <meta property="twitter:title" content="Surtie's Digital Media" />
+        <meta
+          property="twitter:description"
+          content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
+        />
       </Helmet>
       <Flex flexDirection={{ base: "column", md: "row" }}>
         <Box backgroundColor={"#d91e26"} width={{ base: "100%", md: "20%" }}>

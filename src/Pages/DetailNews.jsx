@@ -57,36 +57,38 @@ function DetailNews() {
   return (
     <div>
       <Helmet>
-        <title>{articleData.heading}</title>
-        <meta name="description" content={articleData.article} />
-        <meta property="og:title" content={articleData.heading} />
-        <meta property="og:description" content={articleData.subHeading} />
-        <meta property="og:image" content={articleData.thumbnail} />
-        <meta property="og:image:type" content={""} />
-        <meta property="og:image:width" content="200" />{" "}
-        
-        <meta property="og:image:height" content="200" />{" "}
-       
-        <meta property="og:url" content="https://surties.in" />{" "}
-        
+        <title>Surtie's Digital Media</title>
+        <meta name="title" content="Surtie's Digital Media" />
+        <meta
+          name="description"
+          content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
+        />
+
         <meta property="og:type" content="website" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={articleData.heading} />
-        <meta name="twitter:description" content={articleData.article} />
-        <meta name="twitter:image" content={articleData.thumbnail} />
-        <link
-          rel="icon"
-          href={
-            "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
-          }
+        <meta
+          property="og:url"
+          content="https://surties.in/news/id/660310b481d2b4376b8e0656"
         />
-        <link
-          rel="apple-touch-icon"
-          href={
-            "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
-          }
+        <meta property="og:title" content="Surtie's Digital Media" />
+        <meta
+          property="og:description"
+          content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
         />
-        <meta name="theme-color" content={"red"} />
+        <meta
+          property="og:image"
+          content="https://metatags.io/images/meta-tags.png"
+        />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://surties.in/news/id/660310b481d2b4376b8e0656"
+        />
+        <meta property="twitter:title" content="Surtie's Digital Media" />
+        <meta
+          property="twitter:description"
+          content="Surties is a digital news media house based in Surat providing news in Gujarati and English."
+        />
       </Helmet>
       {loading ? (
         <Center mt={"20px"}>
