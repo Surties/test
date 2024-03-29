@@ -64,11 +64,11 @@ function DetailNews() {
         <meta property="og:image" content={articleData.thumbnail} />
         <meta property="og:image:type" content={""} />
         <meta property="og:image:width" content="200" />{" "}
-        {/* Adjust as needed */}
+        
         <meta property="og:image:height" content="200" />{" "}
-        {/* Adjust as needed */}
+       
         <meta property="og:url" content="https://surties.in" />{" "}
-        {/* Replace with your actual URL */}
+        
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={articleData.heading} />
