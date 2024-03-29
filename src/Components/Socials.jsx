@@ -29,7 +29,7 @@ function Socials() {
   return (
     <Center color={"white"} flexDirection={"column"} paddingTop={"30px"}>
       <Text fontSize={"16px"} fontWeight={"600"} marginBottom={"10px"}>
-        Got a Questions?
+        Find us on
       </Text>
       <Flex
         w={"100%"}
@@ -37,9 +37,9 @@ function Socials() {
         justifyContent={"center"}
         gap={"10%"}
       >
-        {data.map((el,index) => {
+        {data.map((el, index) => {
           return (
-            <Flex key={el.link+index}  fontSize={"24px"} alignItems={"center"}>
+            <Flex key={el.link + index} fontSize={"24px"} alignItems={"center"}>
               <a href={el.link}>{el.logo}</a>
             </Flex>
           );
@@ -57,7 +57,6 @@ function Socials() {
         >
           Contact us
         </Link>{" "}
-        and we’ll get back to you as soon as possible.
       </Text>
     </Center>
   );

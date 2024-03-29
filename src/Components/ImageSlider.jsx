@@ -3,7 +3,7 @@ import { Box, Text, Flex, Button, Badge } from "@chakra-ui/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const ImageSlider = ({ slides }) => {
-  console.log(slides);
+  
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {

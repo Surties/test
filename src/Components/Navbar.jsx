@@ -96,7 +96,7 @@ export default function Navbar() {
                 <Img
                   padding={"10px 0"}
                   width={"140px"}
-                  src="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Layer%201%20copy%202.png?alt=media&token=51af1e21-b9ef-430a-97e8-0df099d2e048"
+                  src="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Thoda%20Jyada%20Sidha%20Logo.png?alt=media&token=e07f2e95-f242-4cfb-beec-55f7ed06cf30"
                 />
               </Link>
             </Text>

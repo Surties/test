@@ -15,6 +15,7 @@ import DetailNews from "../Pages/DetailNews";
 import CatagoryPage from "../Pages/CatagoryPage";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import ProfilePage from "../Pages/ProfilePage";
+import ResetPage from "../Pages/ResetPage";
 function AllRoutes() {
   return (
     <>
@@ -86,6 +87,9 @@ function AllRoutes() {
             </>
           }
         />
+        <Route path="/reset-pass" element={<ResetPage />} />
+
+        <Route path="/forgot-password:/id/token" element={<ResetPage />} />
         <Route
           path="/career"
           element={

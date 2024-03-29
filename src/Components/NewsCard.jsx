@@ -38,7 +38,8 @@ function NewsCard({ data }) {
             <Text fontSize={{ base: "12px", md: "14px" }}>
               {data.article.length <= 200
                 ? data.article
-                : data.article.slice(0, 200) + "..."}
+                : data.article.slice(0, 200) + " "}
+              {<b style={{ color: "#d91e26" }}>Read more</b>}
             </Text>
           </Box>
         </Flex>

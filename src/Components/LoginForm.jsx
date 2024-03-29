@@ -180,7 +180,6 @@ export default function LoginForm() {
               >
                 Sign in
               </Button>
-              {/* <OAuth /> */}
             </Stack>
             <Text textAlign={"center"} color={"red"}>
               {message1}{" "}
@@ -194,6 +193,15 @@ export default function LoginForm() {
                 </Text>
               </Link>
             </Box>
+            <Stack
+              direction={{ base: "column", sm: "row" }}
+              align={"start"}
+              justify={"space-between"}
+            >
+              <Link to={"/reset-pass"}>
+                <Text color={"#d91e26"}>Forgot password?</Text>
+              </Link>
+            </Stack>
           </Stack>
         </Box>
       </Stack>

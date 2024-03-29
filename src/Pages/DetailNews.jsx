@@ -57,27 +57,36 @@ function DetailNews() {
   return (
     <div>
       <Helmet>
-        <title>{articleData.heading}</title>
-        <meta name="description" content={articleData.subHeading} />
-
-        <meta
-          property="og:url"
-          content="http://surties.in/news/id/65effbe93557007c2c8a3079"
-        />
-        <meta property="og:type" content="website" />
+        <title>{"name"}</title>
+        <meta name="description" content={articleData.article} />
         <meta property="og:title" content={articleData.heading} />
-        <meta property="og:description" content={articleData.article} />
+        <meta property="og:description" content={articleData.subHeading} />
         <meta property="og:image" content={articleData.thumbnail} />
-
+        <meta property="og:image:type" content={""} />
+        <meta property="og:image:width" content="200" />{" "}
+        {/* Adjust as needed */}
+        <meta property="og:image:height" content="200" />{" "}
+        {/* Adjust as needed */}
+        <meta property="og:url" content="https://surties.in" />{" "}
+        {/* Replace with your actual URL */}
+        <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta property="twitter:domain" content="surties.in" />
-        <meta
-          property="twitter:url"
-          content={`http://surties.in/news/id/${articleData._id}`}
-        />
         <meta name="twitter:title" content={articleData.heading} />
-        <meta name="twitter:description" content={articleData.heading} />
+        <meta name="twitter:description" content={articleData.article} />
         <meta name="twitter:image" content={articleData.thumbnail} />
+        <link
+          rel="icon"
+          href={
+            "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
+          }
+        />
+        <link
+          rel="apple-touch-icon"
+          href={
+            "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
+          }
+        />
+        <meta name="theme-color" content={"red"} />
       </Helmet>
       {loading ? (
         <Center mt={"20px"}>
@@ -113,7 +122,7 @@ function DetailNews() {
                   fontWeight={"bold"}
                   marginBottom={"15px"}
                 >
-                  You Might Also Enjoy{" "}
+                  You Might Also Instersted{" "}
                 </Text>
                 <RecommendNews data={responseData} />
               </Box>

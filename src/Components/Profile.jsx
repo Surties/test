@@ -72,7 +72,6 @@ const Profile = () => {
     axios
       .get(`https://surtiesserver.onrender.com/auth/${id}?email=${email}`)
       .then((res) => {
-        console.log(res.data);
         setContactInfo({
           email: res.data.email,
           name: res.data.name,
@@ -87,15 +86,13 @@ const Profile = () => {
     getData();
   }, []);
   const postData = async () => {
-    console.log(contactInfo);
     setLoading(true);
-    console.log("last");
     await axios
       .patch(`https://surtiesserver.onrender.com/auth/user/${id}`, contactInfo)
       .then((res) => {
+        setLoading(false);
         dispatch({ type: EMAIL_UPDATE, payload: contactInfo });
         getData();
-        setLoading(false);
       })
       .catch((err) => {
         console.log(err);

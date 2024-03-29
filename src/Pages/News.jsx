@@ -14,7 +14,6 @@ import NewsLetter from "../Components/NewsLetter";
 import BreakingNews from "../Components/BreakingNews";
 axios.defaults.withCredentials = true;
 
-
 function News() {
   const [slides, setSlides] = useState([{ img: "" }]);
   const [loading, setLoading] = useState(true);
@@ -88,12 +87,51 @@ function News() {
     getUser();
     breakingNewsFun();
   }, []);
+  const data = {
+    name: "Surtie's-surat no.1  digital media",
+    short_name: "Surtie's",
+    description:
+      "Surtie's is a digital news media house based in surat which provide news about surat city in gurati and English",
+    icons: [
+      {
+        src: "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed",
+        type: "image/png",
+      },
+      {
+        src: "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed",
+        type: "image/png",
+      },
+    ],
+    start_url: "/",
+    display: "standalone",
+    background_color: "#ffffff",
+    theme_color: "#d91e26",
+  };
+
   return (
     <>
       <Helmet>
-        <title>News-Surtie's Digital Media </title>
-        <meta name="Home" content="Get news of all categories" />
-      </Helmet>{" "}
+        <title>{data.name}</title>
+        <meta name="description" content={data.description} />
+        <meta property="og:title" content={data.name} />
+        <meta property="og:description" content={data.description} />
+        <meta property="og:image" content={data.icons[0].src} />
+        <meta property="og:image:type" content={data.icons[0].type} />
+        <meta property="og:image:width" content="200" />{" "}
+        {/* Adjust as needed */}
+        <meta property="og:image:height" content="200" />{" "}
+        {/* Adjust as needed */}
+        <meta property="og:url" content="https://example.com" />{" "}
+        {/* Replace with your actual URL */}
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={data.name} />
+        <meta name="twitter:description" content={data.description} />
+        <meta name="twitter:image" content={data.icons[0].src} />
+        <link rel="icon" href={data.icons[0].src} />
+        <link rel="apple-touch-icon" href={data.icons[1].src} />
+        <meta name="theme-color" content={data.theme_color} />
+      </Helmet>
       <Flex flexDirection={{ base: "column", md: "row" }}>
         <Box backgroundColor={"#d91e26"} width={{ base: "100%", md: "20%" }}>
           <StickyBox offsetTop={20} offsetBottom={20}>
@@ -101,10 +139,10 @@ function News() {
           </StickyBox>
         </Box>
         <Box w={{ base: "100%", md: "76%" }}>
-          <Flex marginTop={'20px'}  justifyContent={"center"}>
+          <Flex marginTop={"20px"} justifyContent={"center"}>
             <Box>
               {loading ? (
-                <Center  mt={"20px"}>
+                <Center mt={"20px"}>
                   <Spinner
                     thickness="4px"
                     speed="0.65s"
