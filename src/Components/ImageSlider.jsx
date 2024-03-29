@@ -28,7 +28,7 @@ const ImageSlider = ({ slides }) => {
         alignContent={"center"}
         justifyContent={"center"}
         alignItems={"center"}
-        gap={'10px'}
+        gap={"10px"}
       >
         <Button
           width={{ base: "10px", md: "auto" }}
@@ -46,20 +46,25 @@ const ImageSlider = ({ slides }) => {
         </Button>
         <Link to={`/news/id/${slides[currentIndex]._id}`}>
           <Box
-            h={{ base: "200px", md:'350px'}}
+            h={{ base: "200px", md: "350px" }}
             color={"white"}
             borderRadius={"12px"}
             backgroundImage={`url(${slides[currentIndex].thumbnail})`}
             backgroundPosition="center"
             backgroundRepeat="no-repeat"
             backgroundSize="100% 100%"
+            paddingTop={{ base: "120px", md: "275px" }}
           >
             <Text
+              borderBottomLeftRadius={"12px"}
+              borderBottomRightRadius={"12px"}
               padding={"20px"}
               fontSize={{ base: "14px", md: "24px" }}
               fontWeight="bold"
+              color={"white"}
+              backgroundColor={"RGBA(0, 0, 0, 0.64)"}
             >
-              {slides[currentIndex].heading}
+              {slides[currentIndex].heading.slice(0, 69) + "..."}
             </Text>
           </Box>
         </Link>

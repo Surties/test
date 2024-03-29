@@ -12,6 +12,7 @@ import {
   Center,
   Stack,
   Spinner,
+  Switch,
 } from "@chakra-ui/react";
 import { CheckIcon, CloseIcon } from "@chakra-ui/icons";
 import axios from "axios";
@@ -89,11 +90,13 @@ function AdminUserControl() {
                 <Th>Email</Th>
 
                 <Th display={{ base: "none", md: "table-cell" }}>Role</Th>
-                <Th display={{ base: "none", md: "table-cell" }}>Block</Th>
+
                 <Th display={{ base: "none", md: "table-cell" }}>
                   Profile Picture
                 </Th>
                 <Th>Change Role</Th>
+                <Th>Admin Block</Th>
+                <Th>Let them Change password</Th>
               </Tr>
             </Thead>
             <Tbody>
@@ -111,12 +114,8 @@ function AdminUserControl() {
                   >
                     {user.email}
                   </Td>
-
                   <Td display={{ base: "none", md: "table-cell" }}>
                     {user.role === "newsEditor" ? "News Editor" : "User"}
-                  </Td>
-                  <Td display={{ base: "none", md: "table-cell" }}>
-                    {user.block ? "Yes" : "No"}
                   </Td>
                   <Td display={{ base: "none", md: "table-cell" }}>
                     <Box
@@ -153,6 +152,14 @@ function AdminUserControl() {
                         )
                       }
                     />
+                  </Td>
+                  <Td>
+                    {" "}
+                    <Switch size="lg" colorScheme="red" />
+                  </Td>{" "}
+                  <Td>
+                    {" "}
+                    <Switch size="lg" colorScheme="red" />
                   </Td>
                 </Tr>
               ))}

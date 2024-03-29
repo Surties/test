@@ -8,6 +8,7 @@ import {
   RESET_AUTH,
   SET_SESSION,
   LOGOUT_SUCCESS,
+  EMAIL_UPDATE,
 } from "./auth.actiontype";
 
 const initialState = {
@@ -17,7 +18,8 @@ const initialState = {
   message2: "",
   user: "",
   auth: false,
-  profile: "",
+  profilePic: "",
+  email: "",
 };
 
 export const authReducer = (state = initialState, { type, payload }) => {
@@ -34,9 +36,11 @@ export const authReducer = (state = initialState, { type, payload }) => {
         message1: payload.msg,
         user: payload.userName,
         role: payload.role,
+        id: payload.id,
         auth: true,
         error: false,
-        profile: payload.profile,
+        profilePic: payload.profilePic,
+        email: payload.email,
       };
     case LOGIN_ERROR:
       return {
@@ -81,6 +85,14 @@ export const authReducer = (state = initialState, { type, payload }) => {
       };
     case LOGOUT_SUCCESS: {
       return initialState;
+    }
+    case EMAIL_UPDATE: {
+      return {
+        ...state,
+        email: payload.email,
+        profilePic: payload.profilePic,
+        name: payload.name,
+      };
     }
     default:
       return state;

@@ -70,8 +70,10 @@ function AllRoutes() {
           path="/profile"
           element={
             <>
-              <Navbar />
-              <ProfilePage />
+              <PrivateRoutes>
+                <Navbar />
+                <ProfilePage />
+              </PrivateRoutes>
             </>
           }
         />

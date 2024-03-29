@@ -25,7 +25,7 @@ import { LOGOUT_SUCCESS } from "../Redux/auth/auth.actiontype";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
-  const { user, auth, role } = useSelector((store) => {
+  const { user, auth, role, profile } = useSelector((store) => {
     return store.auth;
   });
   const news = useSelector((store) => {
@@ -35,6 +35,7 @@ export default function Navbar() {
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
+    console.log("last");
     try {
       const response = await axios.get(
         "https://surtiesserver.onrender.com/auth/logout"
@@ -147,7 +148,11 @@ export default function Navbar() {
 
             <Menu>
               <MenuButton color="white">
-                <Flex gap={"5px"} alignItems={"center"}>
+                <Flex
+                  w={{ base: "auto", md: "260px" }}
+                  gap={"5px"}
+                  alignItems={"center"}
+                >
                   <Text display={{ base: "none", md: "inline" }}>
                     {user ? user + "," : ""}
                   </Text>
@@ -161,13 +166,17 @@ export default function Navbar() {
               <MenuList>
                 <MenuItem>
                   {!auth ? (
-                    <Link to="/admin">
+                    <Link style={{ width: "100%" }} to="/admin">
                       <Box display="flex" gap={2}>
                         Login
                       </Box>
                     </Link>
                   ) : (
-                    <Box w={"100%"} onClick={handleLogout}>
+                    <Box
+                      w={"100%"}
+                      border={"1px solid blue"}
+                      onClick={handleLogout}
+                    >
                       {" "}
                       <Text>Logout</Text>
                     </Box>
@@ -180,11 +189,15 @@ export default function Navbar() {
                 ) : (
                   ""
                 )}
-                <MenuItem>
-                  <Link style={{ width: "100%" }} to={"/profile"}>
-                    Profile
-                  </Link>
-                </MenuItem>
+                {auth ? (
+                  <MenuItem>
+                    <Link style={{ width: "100%" }} to={"/profile"}>
+                      Profile
+                    </Link>
+                  </MenuItem>
+                ) : (
+                  ""
+                )}
               </MenuList>
             </Menu>
           </Stack>

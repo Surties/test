@@ -15,7 +15,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-// import OAuth from "./OAuth";
+
 
 import { useDispatch } from "react-redux";
 
@@ -36,8 +36,7 @@ const SignupForm = () => {
   const [contactInfo, setContactInfo] = useState({
     email: "",
     pass: "",
-    lastName: "",
-    firstName: "",
+    name: "",
   });
 
   const dispatch = useDispatch();
@@ -124,34 +123,18 @@ const SignupForm = () => {
           p={8}
         >
           <Stack spacing={4}>
-            <HStack>
-              <Box>
-                <FormControl pos={"static"} id="firstName" isRequired>
-                  <FormLabel>First Name</FormLabel>
-                  <Input
-                    pos={"static"}
-                    focusBorderColor={nameError ? "#d91e26" : "green.400"}
-                    name="firstName"
-                    onChange={handleChange}
-                    type="text"
-                  />
-                  <FormHelperText color="#d91e26">{nameError}</FormHelperText>
-                </FormControl>
-              </Box>
-              <Box>
-                <FormControl pos={"static"} id="lastName" isRequired>
-                  <FormLabel>Last Name</FormLabel>
-                  <Input
-                    onChange={handleChange}
-                    pos={"static"}
-                    focusBorderColor={ageError ? "#d91e26" : "green.400"}
-                    name="lastName"
-                    type="text"
-                  />
-                  <FormHelperText color="#d91e26">{ageError}</FormHelperText>
-                </FormControl>
-              </Box>
-            </HStack>
+            <FormControl pos={"static"} id="name" isRequired>
+              <FormLabel>Name</FormLabel>
+              <Input
+                onChange={handleChange}
+                pos={"static"}
+                focusBorderColor={ageError ? "#d91e26" : "green.400"}
+                name="name"
+                type="text"
+              />
+              <FormHelperText color="#d91e26">{ageError}</FormHelperText>
+            </FormControl>
+
             <FormControl pos={"static"} id="email" isRequired>
               <FormLabel>Email address</FormLabel>
               <Input
