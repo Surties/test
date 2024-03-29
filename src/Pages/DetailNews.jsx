@@ -57,7 +57,7 @@ function DetailNews() {
   return (
     <div>
       <Helmet>
-        <title>{"name"}</title>
+        <title>{articleData.heading}</title>
         <meta name="description" content={articleData.article} />
         <meta property="og:title" content={articleData.heading} />
         <meta property="og:description" content={articleData.subHeading} />
