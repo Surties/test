@@ -14,7 +14,6 @@ import NewsLetter from "../Components/NewsLetter";
 import BreakingNews from "../Components/BreakingNews";
 axios.defaults.withCredentials = true;
 
-
 function News() {
   const [slides, setSlides] = useState([{ img: "" }]);
   const [loading, setLoading] = useState(true);
@@ -91,8 +90,53 @@ function News() {
   return (
     <>
       <Helmet>
-        <title>News-Surtie's Digital Media </title>
-        <meta name="Home" content="Get news of all categories" />
+        <title>Surties Surat's No. 1 Digital channel</title>
+        <meta name="title" content="Surties Surat's No. 1 Digital channel " />
+        <meta
+          name="description"
+          content="Surtie's is a digital news media house based in surat which provide news about surat city in gurati and English"
+        />
+        <link
+          rel="icon"
+          href="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
+        />
+        <link
+          rel="apple-touch-icon"
+          href="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
+        />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://surtie.in" />
+        <meta
+          property="og:title"
+          content="Surties Surat's No. 1 Digital channel "
+        />
+        <meta
+          property="og:description"
+          content="Surtie's is a digital news media house based in surat which provide news about surat city in gurati and English"
+        />
+        <meta
+          property="og:image"
+          content="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
+        />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
+        />
+        <meta
+          property="twitter:title"
+          content="Surties Surat's No. 1 Digital channel "
+        />
+        <meta
+          property="twitter:description"
+          content="Surtie's is a digital news media house based in surat which provide news about surat city in gurati and English"
+        />
+        <meta
+          property="twitter:image"
+          content="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
+        />
       </Helmet>{" "}
       <Flex flexDirection={{ base: "column", md: "row" }}>
         <Box backgroundColor={"#d91e26"} width={{ base: "100%", md: "20%" }}>
@@ -101,10 +145,10 @@ function News() {
           </StickyBox>
         </Box>
         <Box w={{ base: "100%", md: "76%" }}>
-          <Flex marginTop={'20px'}  justifyContent={"center"}>
+          <Flex marginTop={"20px"} justifyContent={"center"}>
             <Box>
               {loading ? (
-                <Center  mt={"20px"}>
+                <Center mt={"20px"}>
                   <Spinner
                     thickness="4px"
                     speed="0.65s"

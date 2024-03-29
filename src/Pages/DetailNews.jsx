@@ -21,6 +21,7 @@ function DetailNews() {
       .get(`https://surtiesserver.onrender.com/news/${id}`)
       .then((response) => {
         setArticleData(response.data);
+   
         setLoading(false);
       })
       .catch((error) => {
@@ -59,18 +60,7 @@ function DetailNews() {
       <Helmet>
         <title>{articleData.heading}</title>
         <meta name="title" content={articleData.heading} />
-        <meta
-          name="description"
-          content="Surtie's is a digital news media house based in surat which provide news about surat city in gurati and English"
-        />
-        <link
-          rel="icon"
-          href="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
-        />
+        <meta name="description" content={articleData.article} />
 
         <meta property="og:type" content="website" />
         <meta
@@ -82,7 +72,10 @@ function DetailNews() {
         <meta property="og:image" content={articleData.thumbnail} />
 
         <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content={articleData.thumbnail} />
+        <meta
+          property="twitter:url"
+          content={`https://surtie.in/news${articleData._id}`}
+        />
         <meta property="twitter:title" content={articleData.heading} />
         <meta property="twitter:description" content={articleData.article} />
         <meta property="twitter:image" content={articleData.thumbnail} />
