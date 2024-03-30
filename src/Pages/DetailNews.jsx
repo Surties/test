@@ -21,7 +21,7 @@ function DetailNews() {
       .get(`https://surtiesserver.onrender.com/news/${id}`)
       .then((response) => {
         setArticleData(response.data);
-   
+
         setLoading(false);
       })
       .catch((error) => {
@@ -65,7 +65,7 @@ function DetailNews() {
         <meta property="og:type" content="website" />
         <meta
           property="og:url"
-          content={`https://surtie.in/news${articleData._id}`}
+          content={`https://surtie.in/news/${articleData._id}`}
         />
         <meta property="og:title" content={articleData.heading} />
         <meta property="og:description" content={articleData.article} />
@@ -74,7 +74,7 @@ function DetailNews() {
         <meta property="twitter:card" content="summary_large_image" />
         <meta
           property="twitter:url"
-          content={`https://surtie.in/news${articleData._id}`}
+          content={`https://surtie.in/news/${articleData._id}`}
         />
         <meta property="twitter:title" content={articleData.heading} />
         <meta property="twitter:description" content={articleData.article} />
@@ -114,7 +114,7 @@ function DetailNews() {
                   fontWeight={"bold"}
                   marginBottom={"15px"}
                 >
-                  You Might Also Instersted{" "}
+                  You Might Also Instersted
                 </Text>
                 <RecommendNews data={responseData} />
               </Box>
