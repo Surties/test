@@ -1,4 +1,4 @@
-import { Center, Text, useDisclosure } from "@chakra-ui/react";
+import { Box, Center, Text, useDisclosure } from "@chakra-ui/react";
 
 import { InstagramEmbed } from "react-social-media-embed";
 
@@ -33,7 +33,7 @@ function DetailNewsComponent({ para, articleData }) {
         alignItems={"flex-end"}
         onClick={handleClick}
         overflow={"hidden"}
-        w={{ base: "400px", md: "600px" }}
+        w={{ base: "450px", md: "600px" }}
         h={{ base: "280px", md: "400px" }}
       >
         <img src={articleData.thumbnail} alt="Thumbnail" mt={4} mb={4} />
@@ -57,11 +57,21 @@ function DetailNewsComponent({ para, articleData }) {
       <Text fontSize="xl" fontWeight="bold" mt={4}>
         Image Gallery
       </Text>
-      {articleData.imgs.map((img, index) => {
-        return (
-          <img onClick={handleClick} key={img + index} alt={index} src={img} />
-        );
-      })}
+      <Center gap={"10px"} flexDirection={"column"}>
+        {articleData.imgs.map((img, index) => {
+          return (
+            <Box w={{ base: "450px", md: "600px" }}>
+              {" "}
+              <img
+                onClick={handleClick}
+                key={img + index}
+                alt={index}
+                src={img}
+              />
+            </Box>
+          );
+        })}
+      </Center>
       <Center marginTop={"40px"} w={{ base: "100%", md: "80%" }}>
         <InstagramEmbed url={articleData.instaLink || ""} width={"100%"} />
       </Center>

@@ -1,7 +1,7 @@
 import { Box, Center, Text } from "@chakra-ui/react";
 import React from "react";
 import { CiShare2 } from "react-icons/ci";
-import { FaInstagram } from "react-icons/fa";
+
 import {
   FacebookIcon,
   FacebookShareButton,
