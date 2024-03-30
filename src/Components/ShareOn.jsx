@@ -5,7 +5,6 @@ import { FaInstagram } from "react-icons/fa";
 import {
   FacebookIcon,
   FacebookShareButton,
-  InstapaperShareButton,
   TwitterIcon,
   TwitterShareButton,
   WhatsappIcon,
@@ -15,7 +14,7 @@ function ShareOn() {
   const shareUrl = window.location.href;
 
   return (
-    <Box >
+    <Box>
       <Center marginTop={"20px"} fontSize={"18px"} gap={"4%"}>
         <CiShare2 fontSize={"22px"} />
         <Text>SHARE ON</Text>
@@ -27,9 +26,6 @@ function ShareOn() {
         <FacebookShareButton url={shareUrl}>
           <FacebookIcon size={32} round={true} />
         </FacebookShareButton>
-        <InstapaperShareButton url={shareUrl}>
-          <FaInstagram color="purple" size={32} round={true} />
-        </InstapaperShareButton>
         <TwitterShareButton url={shareUrl}>
           <TwitterIcon size={32} round={true} />
         </TwitterShareButton>

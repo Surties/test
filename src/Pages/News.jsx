@@ -91,7 +91,7 @@ function News() {
     <>
       <Helmet>
         <title>Surties Surat's No. 1 Digital channel</title>
-        <meta name="title" content="Surties Surat's No. 1 Digital channel " />
+        <meta name="title" content="Surties Surat's No. 1 Digital channel" />
         <meta
           name="description"
           content="Surtie's is a digital news media house based in surat which provide news about surat city in gurati and English"

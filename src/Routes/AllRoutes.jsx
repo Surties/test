@@ -87,9 +87,15 @@ function AllRoutes() {
             </>
           }
         />
-        <Route path="/reset-pass" element={<ResetPage />} />
-
-        <Route path="/forgot-password:/id/token" element={<ResetPage />} />
+        <Route
+          path="/reset-pass"
+          element={
+            <>
+              <Navbar />
+              <ResetPage />
+            </>
+          }
+        />
         <Route
           path="/career"
           element={
