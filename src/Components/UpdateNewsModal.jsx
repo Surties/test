@@ -48,7 +48,7 @@ const initialFormData = {
 function UpdateNewsModal({ id, fetchData }) {
   const [files, setFiles] = useState(null);
   const [formData, setFormData] = useState(initialFormData);
-  const [selectedButtons, setSelectedButtons] = useState([]);
+  const [thumbnailFile, setThumbnailFile] = useState(null);
   const [uploading1, setUploading1] = useState(false);
   const [uploading2, setUploading2] = useState(false);
 
@@ -76,14 +76,13 @@ function UpdateNewsModal({ id, fetchData }) {
   const getSingleData = () => {
     axios.get(`https://surtiesserver.onrender.com/news/${id}`).then((res) => {
       setFormData(res.data);
-      setSelectedButtons(res.data.catagory);
     });
   };
 
   const handleChangeImg1 = async () => {
+    const file = thumbnailFile;
+    
     setUploading1(true);
-    const file = formData.thumbnail[0][0];
-    console.log(file);
     if (file === null) return;
     const imgRef = ref(storage, `images/${file.name + Date.now()}`);
     try {
@@ -93,6 +92,7 @@ function UpdateNewsModal({ id, fetchData }) {
         ...formData,
         thumbnail: downloadURL,
       });
+      
       setUploading1(false);
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -159,18 +159,11 @@ function UpdateNewsModal({ id, fetchData }) {
 
     setFormData({ ...formData, imgs: newData });
   };
+
   const handleButtonClick = (lable) => {
-    if (selectedButtons.includes(lable)) {
-      setSelectedButtons(selectedButtons.filter((item) => item !== lable));
-      setFormData({ ...formData, catagory: selectedButtons });
-    } else {
-      console.log(selectedButtons);
-      if (selectedButtons.length <= 3) {
-        setSelectedButtons([...selectedButtons, lable]);
-        setFormData({ ...formData, catagory: selectedButtons });
-      }
-    }
+    setFormData({ ...formData, catagory: lable });
   };
+
   useEffect(() => {
     getSingleData();
   }, []);
@@ -235,9 +228,12 @@ function UpdateNewsModal({ id, fetchData }) {
                           focusBorderColor="#d91e26"
                           type="file"
                           name="thumbnail"
-                          onChange={handleChange}
+                          onChange={(e) => {
+                            setThumbnailFile(e.target.files[0]);
+                          }}
                         />
                         <Button
+                          isDisabled={thumbnailFile == null}
                           pos={"static"}
                           loadingText=""
                           bg={"#d91e26"}
@@ -387,7 +383,7 @@ function UpdateNewsModal({ id, fetchData }) {
                       >
                         {[
                           "country",
-                          "gujrati",
+                          "gujrat",
                           "Surat",
                           "National",
                           "entertainment",
@@ -396,29 +392,21 @@ function UpdateNewsModal({ id, fetchData }) {
                           "surties",
                         ].map((label, index) => (
                           <Button
-                            key={label + index}
+                            key={index}
                             _hover={{ border: "1px solid #d91e26" }}
                             fontSize={"14px"}
+                            fontWeight={"400"}
                             color={
-                              selectedButtons.includes(label)
-                                ? "white"
-                                : "#d91e26"
+                              formData.catagory == label ? "white" : "#d91e26"
                             }
-                            onClick={() => {
-                              handleButtonClick(label, index);
-                            }}
+                            onClick={() => handleButtonClick(label)}
                             backgroundColor={
-                              selectedButtons.includes(label)
+                              formData.catagory == label
                                 ? "#d91e26"
                                 : "transparent"
                             }
                           >
-                            <Text
-                              fontWeight={"400"}
-                              textTransform={"capitalize"}
-                            >
-                              {label}
-                            </Text>
+                            <Text textTransform={"capitalize"}> {label}</Text>
                           </Button>
                         ))}
                       </Grid>

@@ -37,6 +37,7 @@ const initialFormData = {
   catagory: [],
   article: "",
   imgs: [],
+  twitterLink: "",
   breaking: false,
   thumbnail: null,
 };
@@ -48,7 +49,7 @@ const YourFormComponent = () => {
   const [uploading1, setUploading1] = useState(false);
   const [uploading2, setUploading2] = useState(false);
   const [selectedButtons, setSelectedButtons] = useState([]);
-  const [emptyFields, setEmptyFields] = useState([]);
+
   const [loading, setloading] = useState(false);
   const handleChange = (e) => {
     const { name, value, type, files, checked } = e.target;
@@ -132,15 +133,9 @@ const YourFormComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormData({ ...formData, author: user });
-    console.log(formData);
-    const emptyFieldsArray = Object.entries(formData).filter(([key, value]) =>
-      Array.isArray(value) ? value.length === 0 : !value
-    );
-    if (emptyFieldsArray.length > 0) {
-      setEmptyFields(emptyFieldsArray.map(([key, _]) => key));
-      return;
-    }
+
     setloading(true);
+
     try {
       const response = await axios.post(
         "https://surtiesserver.onrender.com/news",
@@ -153,6 +148,7 @@ const YourFormComponent = () => {
       console.error("Error:", error);
     }
     setFormData(initialFormData);
+    setSelectedButtons([]);
   };
   const handleDelete = () => {
     setFormData({ ...formData, thumbnail: null });
@@ -164,16 +160,10 @@ const YourFormComponent = () => {
 
     setFormData({ ...formData, imgs: newData });
   };
-  const handleButtonClick = (lable, index) => {
-    if (selectedButtons.includes(lable)) {
-      setSelectedButtons(selectedButtons.filter((item) => item !== lable));
-      setFormData({ ...formData, catagory: selectedButtons });
-    } else {
-      if (selectedButtons.length <= 2) {
-        setSelectedButtons([...selectedButtons, lable]);
-        setFormData({ ...formData, catagory: selectedButtons });
-      }
-    }
+  const handleButtonClick = (lable) => {
+    
+    setFormData({ ...formData, catagory: lable });
+    
   };
 
   return (
@@ -352,6 +342,16 @@ const YourFormComponent = () => {
                 onChange={handleChange}
               />
             </FormControl>
+            <FormControl mb={4}>
+              <FormLabel fontWeight={"bold"}>Twitter Link</FormLabel>
+              <Input
+                focusBorderColor="#d91e26"
+                type="text"
+                name="twitterLink"
+                value={formData.twitterLink}
+                onChange={handleChange}
+              />
+            </FormControl>
             <Flex mt={"20px"} mb={"20px"} gap={"10px"}>
               <FormControl columns={{ base: 2, lg: 4 }}>
                 <Flex alignItems={"center"}>
@@ -389,27 +389,23 @@ const YourFormComponent = () => {
               >
                 {[
                   "country",
-                  "gujrati",
+                  "gujrat",
                   "Surat",
                   "National",
                   "entertainment",
                   "cricket",
                   "religion",
-                  "Surties",
+                  "surties",
                 ].map((label, index) => (
                   <Button
                     key={index}
                     _hover={{ border: "1px solid #d91e26" }}
                     fontSize={"14px"}
                     fontWeight={"400"}
-                    color={
-                      selectedButtons.includes(label) ? "white" : "#d91e26"
-                    }
-                    onClick={() => handleButtonClick(label, index)}
+                    color={formData.catagory == label ? "white" : "#d91e26"}
+                    onClick={() => handleButtonClick(label)}
                     backgroundColor={
-                      selectedButtons.includes(label)
-                        ? "#d91e26"
-                        : "transparent"
+                      formData.catagory == label ? "#d91e26" : "transparent"
                     }
                   >
                     <Text textTransform={"capitalize"}> {label}</Text>
@@ -433,13 +429,6 @@ const YourFormComponent = () => {
                 Submit
               </Button>
             </Stack>
-            {emptyFields.length > 0 && (
-              <Text color={"#d91e26"} textAlign={"center"}>
-                {`Please fill in the following fields: ${emptyFields.join(
-                  ", "
-                )}`}
-              </Text>
-            )}{" "}
           </form>
         </Box>
       </Stack>

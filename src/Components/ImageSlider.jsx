@@ -3,7 +3,6 @@ import { Box, Text, Flex, Button, Badge } from "@chakra-ui/react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 const ImageSlider = ({ slides }) => {
-  
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handleNext = () => {
@@ -64,7 +63,7 @@ const ImageSlider = ({ slides }) => {
               color={"white"}
               backgroundColor={"RGBA(0, 0, 0, 0.64)"}
             >
-              {slides[currentIndex].heading.slice(0, 69) + "..."}
+              {slides[currentIndex].heading}
             </Text>
           </Box>
         </Link>

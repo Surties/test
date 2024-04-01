@@ -17,23 +17,16 @@ import Pagination from "./Pagination";
 import Searchbar from "./Searchbar";
 import { FaFilter } from "react-icons/fa";
 import Filtering from "./Filtering";
-import { useSelector } from "react-redux";
+
 const cata = [
-  "top",
-  "latest",
-  "cricket",
-  "election",
-  "surties",
-  "state_city",
-  "entertainment",
-  "life_style",
-  "job/eduction",
-  "women",
   "country",
-  "forign",
-  "horoscope",
-  "tech",
-  "sports",
+  "gujrat",
+  "Surat",
+  "National",
+  "entertainment",
+  "cricket",
+  "religion",
+  "surties",
 ];
 function UpdateNews() {
   const [newsData, setNewsData] = useState([]);

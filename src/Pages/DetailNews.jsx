@@ -149,7 +149,7 @@ function DetailNews() {
             flexDirection={{ base: "column", md: "row" }}
           >
             <Box>
-              <DetailNewsComponent articleData={articleData} para={id} />
+              <DetailNewsComponent articleData={articleData} />
             </Box>
           </Flex>
           <Box backgroundColor="#ffffff" width={{ base: "100%", md: "30%" }}>

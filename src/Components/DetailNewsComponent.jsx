@@ -5,7 +5,10 @@ import { InstagramEmbed } from "react-social-media-embed";
 import { useRef } from "react";
 import ImgGalleryModel from "./ImgGalleryModel";
 
-function DetailNewsComponent({ para, articleData }) {
+import { Tweet } from "react-tweet";
+
+function DetailNewsComponent({ articleData }) {
+  console.log(articleData);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = useRef(null);
   const handleClick = () => {
@@ -72,8 +75,18 @@ function DetailNewsComponent({ para, articleData }) {
           );
         })}
       </Center>
-      <Center marginTop={"40px"} w={{ base: "100%", md: "80%" }}>
-        <InstagramEmbed url={articleData.instaLink || ""} width={"100%"} />
+      <Center
+        alignItems={"center"}
+        flexDirection={"column"}
+        marginTop={"40px"}
+        w={{ base: "100%", md: "80%" }}
+      >
+        {articleData.instaLink ? (
+          <InstagramEmbed url={articleData.instaLink || ""} width={"100%"} />
+        ) : (
+          ""
+        )}
+        {articleData.twitterLink ? <Tweet id={articleData.twitterLink} /> : ""}
       </Center>
     </Center>
   );
