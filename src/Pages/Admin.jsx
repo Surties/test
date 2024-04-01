@@ -6,7 +6,7 @@ import UpdateNews from "../Components/UpdateNews";
 import AdminUserControl from "../Components/AdminUserControl";
 import AdminAccess from "../Components/AdminAccess";
 import NewsEditorAccess from "../Components/NewsEditorAccess";
-import { Helmet } from "react-helmet";
+
 
 function Admin() {
   const [activeComponent, setActiveComponent] = useState(
@@ -19,18 +19,7 @@ function Admin() {
   };
   return (
     <>
-      <Helmet>
-        <title>Admin-Surtie's Digital Media</title>
-        <meta name="Home" content="Privilege access to admin and newseditor" />
-        <link
-          rel="icon"
-          href="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
-        />
-      </Helmet>
+    
       <Box mt={"50px"}>
         <Center
           display={"grid"}

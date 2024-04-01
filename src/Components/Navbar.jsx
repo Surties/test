@@ -107,12 +107,12 @@ export default function Navbar() {
               gap={"15px"}
               ml={10}
             >
-              <Link to={"/news/catagory/top"}>
+              <Link to={"/trending-news"}>
                 <Text fontWeight={"700"} color={"white"}>
                   Top
                 </Text>
               </Link>
-              <Link to={"/news/catagory/latest"}>
+              <Link to={"/breaking-news"}>
                 <Text fontWeight={"700"} color={"white"}>
                   Latest
                 </Text>
@@ -253,11 +253,11 @@ const MobileNavItem = ({ label, href }) => {
 const NAV_ITEMS = [
   {
     label: "Top",
-    href: "/news/catagory/top",
+    href: "/trending-news",
   },
   {
     label: "Latest",
-    href: "/news/catagory/latest",
+    href: "/breaking-news",
   },
 
   {

@@ -16,6 +16,8 @@ import CatagoryPage from "../Pages/CatagoryPage";
 import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import ProfilePage from "../Pages/ProfilePage";
 import ResetPage from "../Pages/ResetPage";
+import BreakingNews from "../Pages/BreakingNews";
+import TrendingNews from "../Pages/TrendingNews";
 function AllRoutes() {
   return (
     <>
@@ -46,6 +48,24 @@ function AllRoutes() {
             <>
               <Navbar />
               <Login />
+            </>
+          }
+        />
+        <Route
+          path="/breaking-news"
+          element={
+            <>
+              <Navbar />
+              <BreakingNews />
+            </>
+          }
+        />
+        <Route
+          path="/trending-news"
+          element={
+            <>
+              <Navbar />
+              <TrendingNews />
             </>
           }
         />
@@ -132,8 +152,8 @@ function AllRoutes() {
             </>
           }
         />
-        <Route path="*" element={<Navigate to="/404" />} />
-        <Route
+        {/* <Route path="*" element={<Navigate to="/404" />} /> */}
+        {/* <Route
           path="/404"
           element={
             <Box backgroundColor={"#d91e26"}>
@@ -161,7 +181,7 @@ function AllRoutes() {
               </Flex>{" "}
             </Box>
           }
-        />
+        /> */}
       </Routes>
     </>
   );
