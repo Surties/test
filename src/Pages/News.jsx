@@ -10,7 +10,7 @@ import { LOGIN_LOADING } from "../Redux/auth/auth.actiontype";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import NewsLetter from "../Components/NewsLetter";
+
 import BreakingNews from "../Components/BreakingNews";
 axios.defaults.withCredentials = true;
 

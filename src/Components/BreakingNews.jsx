@@ -33,13 +33,13 @@ function BreakingNews({ data }) {
       >
         {" "}
         <Link to={`/news/id/${data[currentIndex]._id}`}>
-          <Flex>
+          <Flex h={"150px"} overflow={"hidden"}>
             <Center>
-              <img width={"300px"} src={data[currentIndex].thumbnail} alt="" />
+              <img width={"150px"} src={data[currentIndex].thumbnail} alt="" />
+              <Box textAlign={"left"} p={"10px"}>
+                <Text>{data[currentIndex].heading}</Text>
+              </Box>
             </Center>
-            <Box textAlign={"left"} p={"10px"}>
-              <Text>{data[currentIndex].heading}</Text>
-            </Box>
           </Flex>
         </Link>
       </Flex>
@@ -54,12 +54,13 @@ function BreakingNews({ data }) {
         <Link to={`/news/id/${data[currentIndex2]._id}`}>
           {" "}
           <Flex>
-            <Center>
-              <img width={"300px"} src={data[currentIndex2].thumbnail} alt="" />
+            <Center h={"150px"} overflow={"hidden"}>
+              <img width={"150px"} src={data[currentIndex2].thumbnail} alt="" />
+
+              <Box p={"10px"} textAlign={"left"}>
+                <Text>{data[currentIndex2].heading}</Text>
+              </Box>
             </Center>
-            <Box p={"10px"} textAlign={"left"}>
-              <Text>{data[currentIndex2].heading}</Text>
-            </Box>
           </Flex>
         </Link>
       </Flex>

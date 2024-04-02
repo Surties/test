@@ -155,9 +155,7 @@ function UpdateNews() {
                   spacing={4}
                   align="center"
                 >
-                  <Badge colorScheme="green">
-                    {`${newsItem.catagory[0]} ${newsItem.catagory[1]}`}
-                  </Badge>
+                  <Badge colorScheme="green">{`${newsItem.catagory} `}</Badge>
                   <Text>{new Date(newsItem.date).toLocaleDateString()}</Text>
                 </Flex>
                 <Stack>
