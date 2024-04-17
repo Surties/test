@@ -34,12 +34,12 @@ function AllRoutes() {
         <Route
           path="/admin"
           element={
-            <PrivateRoutes>
+            // <PrivateRoutes>
               <>
                 <Navbar />
                 <Admin />
               </>
-            </PrivateRoutes>
+            // </PrivateRoutes>
           }
         />
         <Route

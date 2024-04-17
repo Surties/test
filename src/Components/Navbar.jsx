@@ -13,7 +13,6 @@ import {
   MenuButton,
   MenuItem,
   MenuList,
-  Button,
 } from "@chakra-ui/react";
 
 import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
@@ -25,17 +24,13 @@ import { LOGOUT_SUCCESS } from "../Redux/auth/auth.actiontype";
 
 export default function Navbar() {
   const { isOpen, onToggle } = useDisclosure();
-  const { user, auth, role, profile } = useSelector((store) => {
+  const { user, auth, role } = useSelector((store) => {
     return store.auth;
   });
-  const news = useSelector((store) => {
-    return store;
-  });
-  console.log(news);
+
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
-    console.log("last");
     try {
       const response = await axios.get(
         "https://surtiesserver.onrender.com/auth/logout"
@@ -49,7 +44,7 @@ export default function Navbar() {
   };
   return (
     <>
-      <Box>
+      <Box >
         <Flex
           minH={"60px"}
           py={{ base: 2 }}

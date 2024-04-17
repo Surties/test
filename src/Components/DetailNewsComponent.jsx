@@ -8,7 +8,6 @@ import ImgGalleryModel from "./ImgGalleryModel";
 import { Tweet } from "react-tweet";
 
 function DetailNewsComponent({ articleData }) {
-  console.log(articleData);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = useRef(null);
   const handleClick = () => {
@@ -21,6 +20,7 @@ function DetailNewsComponent({ articleData }) {
         fontSize="28px"
         lineHeight={"29px"}
         fontWeight="bold"
+        color={"#d91e26"}
         marginBottom={"10px"}
       >
         {articleData.heading}
@@ -36,8 +36,8 @@ function DetailNewsComponent({ articleData }) {
         alignItems={"flex-end"}
         onClick={handleClick}
         overflow={"hidden"}
-        w={{ base: "450px", md: "600px" }}
-        h={{ base: "280px", md: "400px" }}
+        w={{ base: "360px", md: "600px" }}
+        h={{ base: "220px", md: "400px" }}
       >
         <img src={articleData.thumbnail} alt="Thumbnail" mt={4} mb={4} />
       </Center>
@@ -54,22 +54,22 @@ function DetailNewsComponent({ articleData }) {
       </Text>
 
       <Text marginTop={"10px"} fontSize="md" whiteSpace="pre-line">
-        {articleData.article}
+        <div dangerouslySetInnerHTML={{ __html: articleData.article }} />
       </Text>
 
       <Text fontSize="xl" fontWeight="bold" mt={4}>
         Image Gallery
       </Text>
       <Center gap={"10px"} flexDirection={"column"}>
-        {articleData.imgs.map((img, index) => {
+        {articleData.imgs.map((el, index) => {
           return (
-            <Box w={{ base: "450px", md: "600px" }}>
+            <Box overflow={"hidden"} w={{ base: "360px", md: "600px" }}>
               {" "}
               <img
                 onClick={handleClick}
-                key={img + index}
+                key={el.img + index}
                 alt={index}
-                src={img}
+                src={el.img}
               />
             </Box>
           );

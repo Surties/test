@@ -10,9 +10,9 @@ import NewsEditorAccess from "../Components/NewsEditorAccess";
 
 function Admin() {
   const [activeComponent, setActiveComponent] = useState(
-    <NewsEditorAccess>
+    // <NewsEditorAccess>
       <AdminNewsForm />
-    </NewsEditorAccess>
+    // </NewsEditorAccess>
   );
   const renderComponent = (component) => {
     setActiveComponent(component);
@@ -35,9 +35,9 @@ function Admin() {
             backgroundColor={"transparent"}
             onClick={() =>
               renderComponent(
-                <AdminAccess>
+                // <AdminAccess>
                   <AdminUserControl />
-                </AdminAccess>
+                // </AdminAccess>
               )
             }
           >
@@ -47,9 +47,9 @@ function Admin() {
             backgroundColor={"transparent"}
             onClick={() =>
               renderComponent(
-                <NewsEditorAccess>
+                // <NewsEditorAccess>
                   <NewsSlider />
-                </NewsEditorAccess>
+                // </NewsEditorAccess>
               )
             }
           >
@@ -59,9 +59,9 @@ function Admin() {
             backgroundColor={"transparent"}
             onClick={() =>
               renderComponent(
-                <NewsEditorAccess>
+                // <NewsEditorAccess>
                   <AdminNewsForm />
-                </NewsEditorAccess>
+                // </NewsEditorAccess>
               )
             }
           >
@@ -71,9 +71,9 @@ function Admin() {
             backgroundColor={"transparent"}
             onClick={() =>
               renderComponent(
-                <NewsEditorAccess>
+                // <NewsEditorAccess>
                   <UpdateNews />
-                </NewsEditorAccess>
+                // </NewsEditorAccess>
               )
             }
           >

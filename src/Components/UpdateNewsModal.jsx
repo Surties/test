@@ -81,7 +81,7 @@ function UpdateNewsModal({ id, fetchData }) {
 
   const handleChangeImg1 = async () => {
     const file = thumbnailFile;
-    
+
     setUploading1(true);
     if (file === null) return;
     const imgRef = ref(storage, `images/${file.name + Date.now()}`);
@@ -92,7 +92,7 @@ function UpdateNewsModal({ id, fetchData }) {
         ...formData,
         thumbnail: downloadURL,
       });
-      
+
       setUploading1(false);
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -375,6 +375,28 @@ function UpdateNewsModal({ id, fetchData }) {
                       </FormControl>
                     </Flex>
                     <Box>
+                      <FormControl mb={4}>
+                        <FormLabel fontWeight={"bold"}>
+                          Instagram Link
+                        </FormLabel>
+                        <Input
+                          focusBorderColor="#d91e26"
+                          type="text"
+                          name="instaLink"
+                          value={formData.instaLink}
+                          onChange={handleChange}
+                        />
+                      </FormControl>
+                      <FormControl mb={4}>
+                        <FormLabel fontWeight={"bold"}>Twitter Link</FormLabel>
+                        <Input
+                          focusBorderColor="#d91e26"
+                          type="text"
+                          name="twitterLink"
+                          value={formData.twitterLink}
+                          onChange={handleChange}
+                        />
+                      </FormControl>
                       <FormLabel>Catagory</FormLabel>
                       <Grid
                         templateColumns={"repeat(3, 1fr)"}

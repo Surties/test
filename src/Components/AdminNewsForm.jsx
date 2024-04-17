@@ -5,17 +5,13 @@ import {
   FormLabel,
   Input,
   Button,
-  Select,
   Flex,
   Stack,
   useColorModeValue,
   Grid,
   Text,
   Textarea,
-  RadioGroup,
-  Radio,
   Switch,
-  Center,
 } from "@chakra-ui/react";
 import {
   getDownloadURL,
@@ -28,6 +24,8 @@ import { app, storage } from "../firebase/firebase";
 import axios from "axios";
 import { FaUpload } from "react-icons/fa";
 import { useSelector } from "react-redux";
+import ReactQuill from "react-quill";
+import "quill/dist/quill.snow.css";
 const initialFormData = {
   heading: "",
   subHeading: "",
@@ -40,16 +38,16 @@ const initialFormData = {
   twitterLink: "",
   breaking: false,
   thumbnail: null,
+  imgDescribtion: [],
 };
 
-const YourFormComponent = () => {
+const AdminNewsForm = () => {
   const [files, setFiles] = useState([]);
   const [thumbnail, setThumbnail] = useState(null);
   const [formData, setFormData] = useState(initialFormData);
   const [uploading1, setUploading1] = useState(false);
   const [uploading2, setUploading2] = useState(false);
-  const [selectedButtons, setSelectedButtons] = useState([]);
-
+  const [imgArticle, setImgArticle] = useState([]);
   const [loading, setloading] = useState(false);
   const handleChange = (e) => {
     const { name, value, type, files, checked } = e.target;
@@ -83,11 +81,12 @@ const YourFormComponent = () => {
     try {
       const snapshot = await uploadBytes(imgRef, file);
       const downloadURL = await getDownloadURL(snapshot.ref);
+
       setFormData({
         ...formData,
         thumbnail: downloadURL,
       });
-
+      console.log(formData);
       setUploading1(false);
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -102,7 +101,8 @@ const YourFormComponent = () => {
       array.push(storeImg(files[i]));
     }
     Promise.all(array).then((urls) => {
-      setFormData({ ...formData, imgs: formData.imgs.concat(urls) });
+      const objs = urls.map((url) => ({ img: url, imgArticle: "" }));
+      setImgArticle(objs);
       setUploading2(false);
     });
   };
@@ -133,9 +133,7 @@ const YourFormComponent = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormData({ ...formData, author: user });
-
     setloading(true);
-
     try {
       const response = await axios.post(
         "https://surtiesserver.onrender.com/news",
@@ -148,7 +146,6 @@ const YourFormComponent = () => {
       console.error("Error:", error);
     }
     setFormData(initialFormData);
-    setSelectedButtons([]);
   };
   const handleDelete = () => {
     setFormData({ ...formData, thumbnail: null });
@@ -161,11 +158,91 @@ const YourFormComponent = () => {
     setFormData({ ...formData, imgs: newData });
   };
   const handleButtonClick = (lable) => {
-    
     setFormData({ ...formData, catagory: lable });
-    
   };
 
+  var modules = {
+    toolbar: [
+      [{ size: ["small", false, "large", "huge"] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["images", "link"],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+        { align: [] },
+      ],
+      [
+        {
+          color: [
+            "#000000",
+            "#e60000",
+            "#ff9900",
+            "#ffff00",
+            "#008a00",
+            "#0066cc",
+            "#9933ff",
+            "#ffffff",
+            "#facccc",
+            "#ffebcc",
+            "#ffffcc",
+            "#cce8cc",
+            "#cce0f5",
+            "#ebd6ff",
+            "#bbbbbb",
+            "#f06666",
+            "#ffc266",
+            "#ffff66",
+            "#66b966",
+            "#66a3e0",
+            "#c285ff",
+            "#888888",
+            "#a10000",
+            "#b26b00",
+            "#b2b200",
+            "#006100",
+            "#0047b2",
+            "#6b24b2",
+            "#444444",
+            "#5c0000",
+            "#663d00",
+            "#666600",
+            "#003700",
+            "#002966",
+            "#3d1466",
+            "custom-color",
+          ],
+        },
+      ],
+    ],
+  };
+
+  var formats = [
+    "header",
+    "height",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "color",
+    "bullet",
+    "indent",
+    "link",
+    "align",
+    "size",
+    "images",
+  ];
+
+  const handleProcedureContentChange = (content) => {
+    setFormData({ ...formData, article: content });
+  };
+  const handleProcedureContentChange2 = (name, content) => {
+    console.log(name, content);
+  };
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
       <Stack
@@ -204,17 +281,21 @@ const YourFormComponent = () => {
                 onChange={handleChange}
               />
             </FormControl>
-            <FormControl mb={4}>
-              <FormLabel fontWeight={"bold"}>Article</FormLabel>
-              <Textarea
-                focusBorderColor="#d91e26"
-                name="article"
-                className="jobProfileSelector"
-                rows={6}
-                value={formData.article}
-                onChange={handleChange}
-              />
-            </FormControl>
+            <Box
+              marginTop={"20px"}
+              marginBottom={"60px"}
+              display={"grid"}
+              justifyContent={"center"}
+            >
+              <ReactQuill
+                theme="snow"
+                modules={modules}
+                formats={formats}
+                placeholder="write your content ...."
+                onChange={handleProcedureContentChange}
+                style={{ height: "220px" }}
+              ></ReactQuill>
+            </Box>
             <FormControl mb={4}>
               <FormLabel fontWeight={"bold"}>Thumbnail</FormLabel>
               <Flex gap={"10px"}>
@@ -274,6 +355,7 @@ const YourFormComponent = () => {
               <FormLabel fontWeight={"bold"}>Images</FormLabel>
               <Flex gap={"10px"}>
                 <Input
+                  max
                   focusBorderColor="#d91e26"
                   multiple="multiple"
                   type="file"
@@ -300,11 +382,11 @@ const YourFormComponent = () => {
               </Flex>
             </FormControl>
             <Box>
-              {typeof formData.imgs[0] !== "string" ? (
+              {!typeof imgArticle[0] ? (
                 <></>
               ) : (
-                <Flex gap={"10px"}>
-                  {formData.imgs.map((el, index) => {
+                <Grid templateColumns={"repeat(2,1fr)"} gap={"10px"}>
+                  {imgArticle.map((el, index) => {
                     return (
                       <Flex
                         justifyContent={"center"}
@@ -314,8 +396,8 @@ const YourFormComponent = () => {
                         key={index}
                       >
                         <img
-                          style={{ width: "160px", borderRadius: "10px" }}
-                          src={el}
+                          style={{ width: "200px", borderRadius: "10px" }}
+                          src={el.img}
                           alt=""
                         />
                         <Button
@@ -326,13 +408,25 @@ const YourFormComponent = () => {
                         >
                           Delete
                         </Button>
+                        <Flex h={{ base: "334px", md: "" }} mb={4}>
+                          <ReactQuill
+                            theme="snow"
+                            name={el.img}
+                            modules={modules}
+                            content={el.imgArticle}
+                            formats={formats}
+                            placeholder="write your content ...."
+                            onChange={handleProcedureContentChange2}
+                            style={{ height: "200px" }}
+                          ></ReactQuill>
+                        </Flex>
                       </Flex>
                     );
                   })}
-                </Flex>
+                </Grid>
               )}
             </Box>
-            <FormControl mb={4}>
+            <FormControl marginTop={"10px"} mb={4}>
               <FormLabel fontWeight={"bold"}>Instagram Link</FormLabel>
               <Input
                 focusBorderColor="#d91e26"
@@ -436,4 +530,4 @@ const YourFormComponent = () => {
   );
 };
 
-export default YourFormComponent;
+export default AdminNewsForm;
