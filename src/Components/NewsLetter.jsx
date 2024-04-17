@@ -44,7 +44,7 @@ const Newsletter = () => {
     <Box maxW="md" mx="auto">
       <>
         {subscribed ? (
-          <Center color={"white"} fontWeight={"bold"} textAlign={"center"}>
+          <Center color={"black"} fontWeight={"bold"} textAlign={"center"}>
             {" "}
             <Text>Thank you for subscribing!</Text>
           </Center>
@@ -53,7 +53,7 @@ const Newsletter = () => {
             <Center
               flexDirection={"column"}
               textAlign={"center"}
-              color={"white"}
+              color={"black"}
             >
               <Text marginBottom={"10px"} fontWeight={"bold"} fontSize={"18px"}>
                 Subscribe to Our Newsletter{" "}
@@ -63,15 +63,16 @@ const Newsletter = () => {
               <FormControl>
                 <Flex marginTop={"10px"}>
                   <Input
-                    color={"white"}
-                    _placeholder={{ color: "white" }}
+                    color={"black"}
+                    border={"1px solid black"}
+                    _placeholder={{ color: "black" }}
                     placeholder="Your email address"
                     autoComplete="off"
                     borderRight={"none"}
                     pos={"static"}
                     focusBorderLeft="none"
                     name="email"
-                    focusBorderColor="white"
+                    focusBorderColor="black"
                     borderRightRadius="0"
                     onChange={handleChange}
                   />
@@ -80,11 +81,11 @@ const Newsletter = () => {
                     type="submit"
                     pos={"static"}
                     marginLeft={"-1px"}
-                    border={"1px solid #E2E8F0"}
+                    border={"1px solid black"}
                     borderLeft={"none"}
                     borderLeftRadius="0"
-                    color={"white"}
-                    _hover={{ color: "#d91e26", backgroundColor: "white" }}
+                    color={"black"}
+                    _hover={{ color: "#E2E8F0", backgroundColor: "black" }}
                     variant={"ghost"}
                   >
                     <LuMailPlus fontSize={"20px"} />

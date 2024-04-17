@@ -27,7 +27,7 @@ function Socials() {
     },
   ];
   return (
-    <Center color={"white"} flexDirection={"column"} paddingTop={"30px"}>
+    <Center color={"black"} flexDirection={"column"} paddingTop={"30px"}>
       <Text fontSize={"16px"} fontWeight={"600"} marginBottom={"10px"}>
         Find us on
       </Text>

@@ -35,12 +35,12 @@ function AllRoutes() {
         <Route
           path="/admin"
           element={
-            // <PrivateRoutes>
+            <PrivateRoutes>
             <>
               <Navbar />
               <Admin />
             </>
-            // </PrivateRoutes>
+            </PrivateRoutes>
           }
         />
         <Route
@@ -162,8 +162,8 @@ function AllRoutes() {
             </>
           }
         />
-        {/* <Route path="*" element={<Navigate to="/404" />} /> */}
-        {/* <Route
+         <Route path="*" element={<Navigate to="/404" />} /> 
+         <Route
           path="/404"
           element={
             <Box backgroundColor={"#d91e26"}>
@@ -191,7 +191,7 @@ function AllRoutes() {
               </Flex>{" "}
             </Box>
           }
-        /> */}
+        /> 
       </Routes>
     </>
   );

@@ -94,14 +94,17 @@ const AdminNewsForm = () => {
     }
   };
   const handleChangeImg2 = async () => {
-    setUploading2(true);
     const array = [];
 
-    for (var i = 0; i < files.length; i++) {
-      array.push(storeImg(files[i]));
+    if (files.length <= 2) {
+      setUploading2(true);
+
+      for (var i = 0; i < files.length; i++) {
+        array.push(storeImg(files[i]));
+      }
     }
     Promise.all(array).then((urls) => {
-      const objs = urls.map((url) => ({ img: url, imgArticle: "" }));
+      const objs = urls.map((url) => ({ img: url, content: "" }));
       setImgArticle(objs);
       setUploading2(false);
     });
@@ -132,7 +135,7 @@ const AdminNewsForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormData({ ...formData, author: user });
+    setFormData({ ...formData, author: user, imgs: imgArticle });
     setloading(true);
     try {
       const response = await axios.post(
@@ -151,11 +154,10 @@ const AdminNewsForm = () => {
     setFormData({ ...formData, thumbnail: null });
   };
   const handleDelete1 = (el) => {
-    const newData = formData.imgs.filter((element) => {
+    const newData = imgArticle.filter((element) => {
       return element !== el;
     });
-
-    setFormData({ ...formData, imgs: newData });
+    setFormData({ ...imgArticle, imgs: newData });
   };
   const handleButtonClick = (lable) => {
     setFormData({ ...formData, catagory: lable });
@@ -240,8 +242,11 @@ const AdminNewsForm = () => {
   const handleProcedureContentChange = (content) => {
     setFormData({ ...formData, article: content });
   };
-  const handleProcedureContentChange2 = (name, content) => {
-    console.log(name, content);
+  const handleProcedureContentChange2 = (index, newContent) => {
+    const updatedImgArticle = [...imgArticle];
+    updatedImgArticle[index].content = newContent;
+    setImgArticle(updatedImgArticle);
+    console.log(imgArticle);
   };
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
@@ -411,12 +416,13 @@ const AdminNewsForm = () => {
                         <Flex h={{ base: "334px", md: "" }} mb={4}>
                           <ReactQuill
                             theme="snow"
-                            name={el.img}
                             modules={modules}
-                            content={el.imgArticle}
+                            value={el.content}
                             formats={formats}
-                            placeholder="write your content ...."
-                            onChange={handleProcedureContentChange2}
+                            placeholder="Write your content ..."
+                            onChange={(newContent) =>
+                              handleProcedureContentChange2(index, newContent)
+                            }
                             style={{ height: "200px" }}
                           ></ReactQuill>
                         </Flex>

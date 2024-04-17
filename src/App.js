@@ -42,10 +42,7 @@ function App() {
   return (
     <>
       <AllRoutes />
-      <Center color={'red'}>
-        this website follows the dnpa code of ethics© copyright ndtv convergence
-        limited 2024. all rights reserved.
-      </Center>
+      
     </>
   );
 }

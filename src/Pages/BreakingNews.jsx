@@ -31,18 +31,6 @@ function BreakingNews() {
   }, []);
   return (
     <>
-      {/* <Helmet>
-        <title>News-top news-Surtie's Digital Media </title>
-
-        <link
-          rel="icon"
-          href="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
-        />
-        <link
-          rel="apple-touch-icon"
-          href="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
-        />
-      </Helmet> */}
       <Box
         display={{ base: "flex", md: "flex" }}
         gap={"2%"}
@@ -50,7 +38,7 @@ function BreakingNews() {
         clear={"both"}
       >
         <Box
-          backgroundColor={"#d91e26"}
+          backgroundColor={"#E2E8F0"}
           mb={"20px"}
           width={{ base: "100%", md: "20%" }}
         >

@@ -49,7 +49,7 @@ function TrendingNews() {
         clear={"both"}
       >
         <Box
-          backgroundColor={"#d91e26"}
+          backgroundColor={"#E2E8F0"}
           mb={"20px"}
           width={{ base: "100%", md: "20%" }}
         >

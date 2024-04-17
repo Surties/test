@@ -139,7 +139,7 @@ function News() {
         />
       </Helmet>{" "}
       <Flex flexDirection={{ base: "column", md: "row" }}>
-        <Box backgroundColor={"#d91e26"} width={{ base: "100%", md: "20%" }}>
+        <Box backgroundColor={"#E2E8F0"} width={{ base: "100%", md: "20%" }}>
           <StickyBox offsetTop={20} offsetBottom={20}>
             <Sidebar />
           </StickyBox>

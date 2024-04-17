@@ -19,7 +19,7 @@ function Sidebar() {
     <Box>
       <Box
         overflow={"hidden"}
-        backgroundColor={"#d91e26"}
+        backgroundColor={"#E2E8F0"}
         width={{ base: "100%", md: "100%" }}
         height={{ base: `${!show ? "44px" : "140px"}`, md: "auto" }}
         mb={{ base: "40px", md: "" }}
@@ -33,7 +33,7 @@ function Sidebar() {
           gap={"20px"}
           pl={"6%"}
           position={"sticky"}
-          color={"white"}
+          color={"#E2E8F0"}
           mt={"10px"}
           justifyContent={{ base: "center", md: "flex-start" }}
           fontSize={{ base: "12px", md: "16px" }}
@@ -50,9 +50,9 @@ function Sidebar() {
             { link: "surties", icon: <RiGovernmentFill /> },
           ].map((el, index) => (
             <ListItem
-              border={{ base: "1px solid #d91e26 ", md: "none" }}
-              backgroundColor={{ base: "white", md: "#d91e26" }}
-              color={{ base: "#d91e26", md: "white" }}
+              border={{ base: "1px solid black ", md: "none" }}
+              backgroundColor={"#E2E8F0"}
+              color={{ base: "black", md: "black" }}
               display={"flex"}
               borderRadius={"10px"}
               alignItems={"center"}
@@ -82,7 +82,7 @@ function Sidebar() {
           <hr h={"2px"} />
 
           <Socials />
-          <Box padding={"0px 20px"} backgroundColor={"#d91e26"}>
+          <Box padding={"0px 20px"} backgroundColor={"#E2E8F0"}>
             {" "}
             <Newsletter />
           </Box>
@@ -102,8 +102,8 @@ function Sidebar() {
           backgroundColor={"white"}
           fontSize={"8px"}
           p={"5px 25px 5px 25px"}
-          border={"1px solid #d91e26"}
-          color={"#d91e26"}
+          border={"1px solid black"}
+          color={"black"}
           top={"15px"}
           borderRadius={"40px"}
         >
