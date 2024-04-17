@@ -18,6 +18,7 @@ import ProfilePage from "../Pages/ProfilePage";
 import ResetPage from "../Pages/ResetPage";
 import BreakingNews from "../Pages/BreakingNews";
 import TrendingNews from "../Pages/TrendingNews";
+import PrivacyPolicy from "../Pages/PrivacyPolicy";
 function AllRoutes() {
   return (
     <>
@@ -35,10 +36,10 @@ function AllRoutes() {
           path="/admin"
           element={
             // <PrivateRoutes>
-              <>
-                <Navbar />
-                <Admin />
-              </>
+            <>
+              <Navbar />
+              <Admin />
+            </>
             // </PrivateRoutes>
           }
         />
@@ -84,6 +85,15 @@ function AllRoutes() {
             <>
               <Navbar />
               <ContactUs />
+            </>
+          }
+        />
+        <Route
+          path="/privacy-policy"
+          element={
+            <>
+              <Navbar />
+              <PrivacyPolicy />
             </>
           }
         />
