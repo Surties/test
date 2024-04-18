@@ -36,6 +36,8 @@ const initialFormData = {
   article: "",
   imgs: [],
   twitterLink: "",
+  facebookLink: "",
+  youtubeLink: "",
   breaking: false,
   thumbnail: null,
   imgDescribtion: [],
@@ -135,12 +137,13 @@ const AdminNewsForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormData({ ...formData, author: user, imgs: imgArticle });
+    const updatedFormData = { ...formData, author: user, imgs: imgArticle };
+    setFormData(updatedFormData);
     setloading(true);
     try {
       const response = await axios.post(
         "https://surtiesserver.onrender.com/news",
-        formData
+        updatedFormData
       );
       console.log(response);
       setloading(false);
@@ -149,6 +152,7 @@ const AdminNewsForm = () => {
       console.error("Error:", error);
     }
     setFormData(initialFormData);
+    setImgArticle([]);
   };
   const handleDelete = () => {
     setFormData({ ...formData, thumbnail: null });
@@ -157,7 +161,7 @@ const AdminNewsForm = () => {
     const newData = imgArticle.filter((element) => {
       return element !== el;
     });
-    setFormData({ ...imgArticle, imgs: newData });
+    setImgArticle(newData);
   };
   const handleButtonClick = (lable) => {
     setFormData({ ...formData, catagory: lable });
@@ -241,12 +245,12 @@ const AdminNewsForm = () => {
 
   const handleProcedureContentChange = (content) => {
     setFormData({ ...formData, article: content });
+    console.log(content);
   };
   const handleProcedureContentChange2 = (index, newContent) => {
     const updatedImgArticle = [...imgArticle];
     updatedImgArticle[index].content = newContent;
     setImgArticle(updatedImgArticle);
-    console.log(imgArticle);
   };
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
@@ -293,6 +297,7 @@ const AdminNewsForm = () => {
               justifyContent={"center"}
             >
               <ReactQuill
+                value={formData.article}
                 theme="snow"
                 modules={modules}
                 formats={formats}
@@ -439,6 +444,26 @@ const AdminNewsForm = () => {
                 type="text"
                 name="instaLink"
                 value={formData.instaLink}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl marginTop={"10px"} mb={4}>
+              <FormLabel fontWeight={"bold"}>Youtube Link</FormLabel>
+              <Input
+                focusBorderColor="#d91e26"
+                type="text"
+                name="youtubeLink"
+                value={formData.youtubeLink}
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl marginTop={"10px"} mb={4}>
+              <FormLabel fontWeight={"bold"}>Facebook Link</FormLabel>
+              <Input
+                focusBorderColor="#d91e26"
+                type="text"
+                name="facebookLink"
+                value={formData.facebookLink}
                 onChange={handleChange}
               />
             </FormControl>

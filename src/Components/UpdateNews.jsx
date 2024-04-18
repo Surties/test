@@ -143,10 +143,10 @@ function UpdateNews() {
                   />
                 </Center>
                 <Text fontSize="xl" mt={2}>
-                  {newsItem.heading.slice(0, 60) + "..."}
+                  {newsItem.heading}
                 </Text>
                 <Text fontSize="md" mt={2}>
-                  {newsItem.subHeading.slice(0, 100) + "..."}
+                  {newsItem.subHeading}
                 </Text>
                 <Flex
                   justifyContent={"space-between"}

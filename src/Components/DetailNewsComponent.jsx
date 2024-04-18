@@ -1,13 +1,17 @@
 import { Box, Center, Text, useDisclosure } from "@chakra-ui/react";
 
-import { InstagramEmbed } from "react-social-media-embed";
+import {
+  FacebookEmbed,
+  InstagramEmbed,
+  XEmbed,
+  YouTubeEmbed,
+} from "react-social-media-embed";
 
 import { useRef } from "react";
 import ImgGalleryModel from "./ImgGalleryModel";
 
-import { Tweet } from "react-tweet";
-
 function DetailNewsComponent({ articleData }) {
+  console.log(articleData);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = useRef(null);
   const handleClick = () => {
@@ -57,9 +61,6 @@ function DetailNewsComponent({ articleData }) {
         <div dangerouslySetInnerHTML={{ __html: articleData.article }} />
       </Text>
 
-      <Text fontSize="xl" fontWeight="bold" mt={4}>
-        Image Gallery
-      </Text>
       <Center gap={"10px"} flexDirection={"column"}>
         {articleData.imgs.map((el, index) => {
           return (
@@ -71,6 +72,9 @@ function DetailNewsComponent({ articleData }) {
                 alt={index}
                 src={el.img}
               />
+              <Text marginTop={"10px"} fontSize="md" whiteSpace="pre-line">
+                <div dangerouslySetInnerHTML={{ __html: el.content }} />
+              </Text>
             </Box>
           );
         })}
@@ -82,11 +86,31 @@ function DetailNewsComponent({ articleData }) {
         w={{ base: "100%", md: "80%" }}
       >
         {articleData.instaLink ? (
-          <InstagramEmbed url={articleData.instaLink || ""} width={"100%"} />
+          <InstagramEmbed url={articleData.instaLink} width={328} />
         ) : (
           ""
         )}
-        {articleData.twitterLink ? <Tweet id={articleData.twitterLink} /> : ""}
+        {articleData.twitterLink ? (
+          <>
+            <XEmbed url={articleData.twitterLink} width={325} />
+          </>
+        ) : (
+          ""
+        )}
+        {articleData.youtubeLink ? (
+          <YouTubeEmbed
+            url={articleData.youtubeLink}
+            width={425}
+            height={320}
+          />
+        ) : (
+          ""
+        )}
+        {articleData.facebookLink ? (
+          <FacebookEmbed url={articleData.facebookLink} width={325} />
+        ) : (
+          ""
+        )}
       </Center>
     </Center>
   );

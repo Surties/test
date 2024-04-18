@@ -26,7 +26,7 @@ function RecommendNews({ data }) {
                   />
                   <Box padding={"10px"}>
                     <Text fontWeight={"bold"} fontSize={"12px"}>
-                      {el.heading.slice(0, 80) + "..."}
+                      {/* {el.heading.slice(0, 80) + "..."} */}
                     </Text>
                   </Box>
                 </Flex>

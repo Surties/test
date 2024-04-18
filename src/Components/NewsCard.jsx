@@ -36,9 +36,15 @@ function NewsCard({ data }) {
                 : data.heading.slice(0, 40) + "..."}
             </Text>
             <Text fontSize={{ base: "12px", md: "14px" }}>
-              {data.article.length <= 200
-                ? data.article
-                : data.article.slice(0, 200) + " "}
+              {!data.article.length <= 200 ? (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data.article.slice(0, 200) + " ",
+                  }}
+                />
+              ) : (
+                <div dangerouslySetInnerHTML={{ __html: data.article }} />
+              )}
               {<b style={{ color: "#d91e26" }}>Read more</b>}
             </Text>
           </Box>

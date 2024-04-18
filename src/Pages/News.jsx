@@ -146,40 +146,48 @@ function News() {
         </Box>
         <Box w={{ base: "100%", md: "76%" }}>
           <Flex marginTop={"20px"} justifyContent={"center"}>
-            <Box>
-              {loading ? (
-                <Center mt={"20px"}>
-                  <Spinner
-                    thickness="4px"
-                    speed="0.65s"
-                    emptyColor="gray.200"
-                    color="#d91e26"
-                    size="xl"
-                  />
-                </Center>
-              ) : (
-                <ImageSlider slides={slides} />
-              )}
-            </Box>
-          </Flex>
-          <>
-            {loading ? (
-              <></>
+            {slides[0] ? (
+              <Box>
+                {loading ? (
+                  <Center mt={"20px"}>
+                    <Spinner
+                      thickness="4px"
+                      speed="0.65s"
+                      emptyColor="gray.200"
+                      color="#d91e26"
+                      size="xl"
+                    />
+                  </Center>
+                ) : (
+                  <ImageSlider slides={slides} />
+                )}
+              </Box>
             ) : (
-              <>
-                <Box
-                  marginLeft={"5%"}
-                  marginTop={"20px"}
-                  marginBottom={"-30px"}
-                  fontWeight={"bold"}
-                  color={"#d91e26"}
-                >
-                  <Text>Top News</Text>
-                </Box>
-                <BreakingNews data={breakingNews} />
-              </>
+              ""
             )}
-          </>
+          </Flex>
+          {breakingNews[0] ? (
+            <>
+              {loading ? (
+                <></>
+              ) : (
+                <>
+                  <Box
+                    marginLeft={"5%"}
+                    marginTop={"20px"}
+                    marginBottom={"-30px"}
+                    fontWeight={"bold"}
+                    color={"#d91e26"}
+                  >
+                    <Text>Top News</Text>
+                  </Box>
+                  <BreakingNews data={breakingNews} />
+                </>
+              )}
+            </>
+          ) : (
+            ""
+          )}
           {!loading ? (
             !loading2 ? (
               <Center mt={"20px"}>

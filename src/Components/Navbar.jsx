@@ -44,7 +44,7 @@ export default function Navbar() {
   };
   return (
     <>
-      <Box >
+      <Box>
         <Flex
           minH={"60px"}
           py={{ base: 2 }}
@@ -99,8 +99,10 @@ export default function Navbar() {
             <Flex
               display={{ base: "none", md: "flex" }}
               alignItems={"center"}
-              gap={"15px"}
-              ml={10}
+              gap={"30px"}
+              marginRight={"20px"}
+              paddingLeft={"40px"}
+              paddingRight={"40px"}
             >
               <Link to={"/trending-news"}>
                 <Text fontWeight={"700"} color={"white"}>

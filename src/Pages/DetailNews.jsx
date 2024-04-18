@@ -126,7 +126,7 @@ function DetailNews() {
           rel="apple-touch-icon"
           href="https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Surties%20Zomato%20Red%20Logo%203.png?alt=media&token=a7f9e6f9-4eb3-4b65-8134-9fd72fc6f3ed"
         />
-      </Helmet>{" "}
+      </Helmet>
       {loading ? (
         <Center mt={"20px"}>
           <Spinner
@@ -139,7 +139,7 @@ function DetailNews() {
         </Center>
       ) : (
         <Flex flexDirection={{ base: "column", md: "row" }}>
-          <Box backgroundColor={"#d91e26"} width={{ base: "100%", md: "20%" }}>
+          <Box backgroundColor={"#E2E8F0"} width={{ base: "100%", md: "20%" }}>
             <StickyBox offsetTop={20} offsetBottom={20}>
               <Sidebar />
             </StickyBox>
