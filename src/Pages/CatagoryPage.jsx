@@ -10,14 +10,18 @@ function CatagoryPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
   const { catagory } = useParams();
-
+  const [totalPages, setTotalPages] = useState(1);
   const fetchData = () => {
     setLoading(true);
     axios
-      .get(`https://surtiesserver.onrender.com/news?filter=${catagory}`)
+      .get(
+        `https://surtiesserver.onrender.com/news?page=${pageNumber}&filter=${catagory}`
+      )
       .then((res) => {
         setData(res.data.newsItems);
+        setTotalPages(res.data.totalPages);
         setLoading(false);
       })
       .catch((error) => {
@@ -26,8 +30,22 @@ function CatagoryPage() {
         setLoading(false);
       });
   };
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop !==
+        document.documentElement.offsetHeight ||
+      loading
+    ) {
+      return;
+    }
+    setPageNumber(pageNumber + 1);
+  };
   useEffect(() => {
     fetchData();
+    if (pageNumber != totalPages) {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
   }, [catagory]);
   return (
     <>

@@ -26,9 +26,9 @@ function BreakingNews({ data }) {
       <Flex
         overflow={"hidden"}
         w={{ base: "90%", md: "45%" }}
-        bg={useColorModeValue("white", "gray.900")}
+        bg={"#E2E8F0"}
         boxShadow={"2xl"}
-        rounded={"lg"}
+        borderRadius={"6px"}
         alignContent={"center"}
       >
         {" "}
@@ -46,9 +46,9 @@ function BreakingNews({ data }) {
       <Flex
         overflow={"hidden"}
         w={{ base: "90%", md: "45%" }}
-        bg={useColorModeValue("white", "gray.900")}
+        bg={"#E2E8F0"}
         boxShadow={"2xl"}
-        rounded={"lg"}
+        rounded={"6px"}
         alignContent={"center"}
       >
         <Link to={`/news/id/${data[currentIndex2]._id}`}>
