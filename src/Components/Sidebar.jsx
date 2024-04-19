@@ -8,7 +8,7 @@ import { RiGovernmentFill, RiMapPin5Fill, RiWomenFill } from "react-icons/ri";
 import { CiGlobe } from "react-icons/ci";
 import { TbHandFinger, TbWriting } from "react-icons/tb";
 import { IoPhonePortraitOutline } from "react-icons/io5";
-import { Box, Button, ListItem, UnorderedList } from "@chakra-ui/react";
+import { Box, Button, Image, ListItem, UnorderedList } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import Socials from "./Socials";
 import Newsletter from "./NewsLetter";
@@ -40,14 +40,38 @@ function Sidebar() {
           fontWeight={{ base: "bold", md: "600" }}
         >
           {[
-            { link: "country", icon: <GiIndianPalace /> },
-            { link: "gujrat", icon: <FaGuilded /> },
-            { link: "surat", icon: <FaCity /> },
-            { link: "national", icon: <RiMapPin5Fill /> },
-            { link: "entertainment", icon: <GiDramaMasks /> },
-            { link: "cricket", icon: <BiCricketBall /> },
-            { link: "religion", icon: <GiByzantinTemple /> },
-            { link: "surties", icon: <RiGovernmentFill /> },
+            {
+              link: "country",
+              icon: "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Assets%2Findia.png?alt=media&token=eefb7660-71f3-494d-968a-8214a1756bb3",
+            },
+            {
+              link: "gujarat",
+              icon: "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Assets%2Fkite.png?alt=media&token=1b1c0b56-2ea5-4a33-82b8-ab5184a2af8e",
+            },
+            {
+              link: "surat",
+              icon: "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Assets%2Fdiamond.png?alt=media&token=1cbef06d-a956-4bf2-9e2b-b81431bd6493",
+            },
+            {
+              link: "national",
+              icon: "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Assets%2Ftaj-mahal%20(1).png?alt=media&token=43b739c3-dca5-42a4-9f3e-afc146870640",
+            },
+            {
+              link: "entertainment",
+              icon: "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Assets%2Fpopcorn.png?alt=media&token=32b6c98e-8b50-417f-accb-7e40160eb1c3",
+            },
+            {
+              link: "cricket",
+              icon: "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Assets%2Fcricket.png?alt=media&token=5b90ce28-c707-4a43-b307-6ec5862058aa",
+            },
+            {
+              link: "religion",
+              icon: "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Assets%2Ftemple.png?alt=media&token=baf49e30-cbac-4931-a690-acd7448c14ec",
+            },
+            {
+              link: "surties",
+              icon: "https://firebasestorage.googleapis.com/v0/b/surtieswebapplication.appspot.com/o/Assets%2Fexclusive.png?alt=media&token=1571677c-2faa-4fb1-89f9-e52f6993f4d5",
+            },
           ].map((el, index) => (
             <ListItem
               border={{ base: "1px solid black ", md: "none" }}
@@ -72,7 +96,11 @@ function Sidebar() {
                 }}
                 to={`/news/catagory/${el.link}`}
               >
-                {el.icon}
+                <Image
+                  width={{ base: "20px", md: "25px" }}
+                  src={el.icon}
+                  alt=""
+                />
                 {el.link}
               </Link>
             </ListItem>

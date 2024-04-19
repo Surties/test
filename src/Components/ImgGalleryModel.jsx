@@ -11,6 +11,7 @@ import React from "react";
 import ImgGallery from "./ImgGallery";
 
 function ImgGalleryModel({ data, finalRef, isOpen, onOpen, onClose }) {
+  
   return (
     <Center>
       <Modal

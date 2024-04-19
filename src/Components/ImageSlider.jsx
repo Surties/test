@@ -63,7 +63,7 @@ const ImageSlider = ({ slides }) => {
               color={"white"}
               backgroundColor={"RGBA(0, 0, 0, 0.64)"}
             >
-              {slides[currentIndex].heading}
+              {slides[currentIndex].heading.slice(0, 60) + "..."}
             </Text>
           </Box>
         </Link>

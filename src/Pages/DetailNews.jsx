@@ -8,12 +8,15 @@ import StickyBox from "react-sticky-box";
 import ShareOn from "../Components/ShareOn";
 import axios from "axios";
 import RecommendNews from "../Components/RecommendedNews";
+import CategorizedNews from "../Components/CategorizedNews";
 
 function DetailNews() {
   const { id } = useParams();
   const [responseData, setResponseData] = useState([]);
   const [articleData, setArticleData] = useState({ imgs: [] });
   const [loading, setLoading] = useState(false);
+  const [data, setData] = useState([]);
+  const [category, setCategory] = useState("");
   const [error1, setError] = useState(false);
   const fetchData2 = () => {
     setLoading(true);
@@ -21,7 +24,7 @@ function DetailNews() {
       .get(`https://surtiesserver.onrender.com/news/${id}`)
       .then((response) => {
         setArticleData(response.data);
-
+        setCategory(response.data.catagory);
         setLoading(false);
       })
       .catch((error) => {
@@ -50,21 +53,21 @@ function DetailNews() {
       console.error("Error fetching data:", error);
     }
   };
-  const fetchData3 = async() => {
+  const fetchData3 = async () => {
     try {
       const response = await axios.get(
-        "https://surtiesserver.onrender.com/news/topweek"
+        `https://surtiesserver.onrender.com/news?filter=${category}`
       );
-      setResponseData(response.data);
+      setData(response.data.newsItems);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
-  }
+  };
   useEffect(() => {
     fetchData();
     patchData();
     fetchData2();
-    fetchData3()
+    fetchData3();
   }, [id]);
   return (
     <div>
@@ -160,9 +163,14 @@ function DetailNews() {
             flexDirection={{ base: "column", md: "row" }}
           >
             <Box>
-              <DetailNewsComponent articleData={articleData} />
+              <DetailNewsComponent
+                articleData={articleData}
+                category={category}
+                data={data}
+              />
             </Box>
           </Flex>
+
           <Box backgroundColor="#ffffff" width={{ base: "100%", md: "30%" }}>
             <StickyBox offsetTop={20} offsetBottom={20}>
               <ShareOn />

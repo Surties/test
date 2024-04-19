@@ -1,4 +1,4 @@
-import { Box, Center, Text, useDisclosure } from "@chakra-ui/react";
+import { Box, Center, Flex, Text, useDisclosure } from "@chakra-ui/react";
 
 import {
   FacebookEmbed,
@@ -9,9 +9,9 @@ import {
 
 import { useRef } from "react";
 import ImgGalleryModel from "./ImgGalleryModel";
+import CategorizedNews2 from "./CategortiesNews2";
 
-function DetailNewsComponent({ articleData }) {
-  console.log(articleData);
+function DetailNewsComponent({ articleData, category, data }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const finalRef = useRef(null);
   const handleClick = () => {
@@ -29,11 +29,15 @@ function DetailNewsComponent({ articleData }) {
       >
         {articleData.heading}
       </Text>
+      {console.log(articleData)}
       <ImgGalleryModel
         finalRef={finalRef}
         isOpen={isOpen}
         onOpen={onOpen}
-        data={[...articleData.imgs, articleData.thumbnail]}
+        data={[
+          ...articleData.imgs.map((imgObj) => imgObj.img),
+          articleData.thumbnail,
+        ]}
         onClose={onClose}
       />
       <Center
@@ -56,11 +60,9 @@ function DetailNewsComponent({ articleData }) {
       >
         {articleData.subHeading}
       </Text>
-
       <Text marginTop={"10px"} fontSize="md" whiteSpace="pre-line">
         <div dangerouslySetInnerHTML={{ __html: articleData.article }} />
       </Text>
-
       <Center gap={"10px"} flexDirection={"column"}>
         {articleData.imgs.map((el, index) => {
           return (
@@ -111,6 +113,9 @@ function DetailNewsComponent({ articleData }) {
         ) : (
           ""
         )}
+        <Flex>
+          <CategorizedNews2 cata={category} catagory={category} data={data} />
+        </Flex>
       </Center>
     </Center>
   );
