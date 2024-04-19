@@ -514,7 +514,7 @@ const AdminNewsForm = () => {
               >
                 {[
                   "country",
-                  "gujrat",
+                  "gujarat",
                   "Surat",
                   "National",
                   "entertainment",
