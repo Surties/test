@@ -25,7 +25,7 @@ function CategorizedNews({ data, catagory, cata }) {
         <Box
           h={"0.5px"}
           w={"75%"}
-          border={"1px solid #d91e26 "}
+          border={"1px solid #718096 "}
           opacity={"0.5"}
         ></Box>
         <Button

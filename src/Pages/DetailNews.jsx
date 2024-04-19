@@ -50,10 +50,21 @@ function DetailNews() {
       console.error("Error fetching data:", error);
     }
   };
+  const fetchData3 = async() => {
+    try {
+      const response = await axios.get(
+        "https://surtiesserver.onrender.com/news/topweek"
+      );
+      setResponseData(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  }
   useEffect(() => {
     fetchData();
     patchData();
     fetchData2();
+    fetchData3()
   }, [id]);
   return (
     <div>

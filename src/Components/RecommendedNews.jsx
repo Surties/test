@@ -12,21 +12,22 @@ function RecommendNews({ data }) {
             boxShadow={
               " rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px"
             }
-            borderRadius={"16px"}
+            background={"#EDF2F7"}
+            borderRadius={"6px"}
           >
             {
               <Link to={`/news/id/${el._id}`}>
                 <Flex>
                   <Img
                     h={"100px"}
-                    borderLeftRadius={"16px"}
+                    borderLeftRadius={"6px"}
                     width={"120px"}
                     src={el.thumbnail}
                     alt=""
                   />
                   <Box padding={"10px"}>
                     <Text fontWeight={"bold"} fontSize={"12px"}>
-                      {/* {el.heading.slice(0, 80) + "..."} */}
+                      {el.heading}
                     </Text>
                   </Box>
                 </Flex>

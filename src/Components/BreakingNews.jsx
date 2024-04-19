@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function BreakingNews({ data }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentIndex2, setCurrentIndex2] = useState(1);
+  const [currentIndex2, setCurrentIndex2] = useState(0);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -37,7 +37,7 @@ function BreakingNews({ data }) {
             <Center>
               <img width={"150px"} src={data[currentIndex].thumbnail} alt="" />
               <Box textAlign={"left"} p={"10px"}>
-                <Text>{data[currentIndex].heading}</Text>
+                <Text fontWeight={"bold"}>{data[currentIndex].heading}</Text>
               </Box>
             </Center>
           </Flex>
@@ -58,7 +58,7 @@ function BreakingNews({ data }) {
               <img width={"150px"} src={data[currentIndex2].thumbnail} alt="" />
 
               <Box p={"10px"} textAlign={"left"}>
-                <Text>{data[currentIndex2].heading}</Text>
+                <Text fontWeight={"bold"}>{data[currentIndex2].heading}</Text>
               </Box>
             </Center>
           </Flex>

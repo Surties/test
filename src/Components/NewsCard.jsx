@@ -15,6 +15,7 @@ function NewsCard({ data }) {
         flexDirection={"column"}
         borderRadius={"6px"}
         h={"350px"}
+        backgroundColor={"#E2E8F0"}
       >
         <Flex
           flexDirection={"column"}
@@ -27,7 +28,7 @@ function NewsCard({ data }) {
           <Box p={"10px"}>
             <Text
               marginTop={{ base: "-30", md: 0 }}
-              fontWeight={{ base: "500", md: "600" }}
+              fontWeight={{ base: "600", md: "700" }}
               textTransform={"capitalize"}
               fontSize={{ base: "14px", md: "18px" }}
             >

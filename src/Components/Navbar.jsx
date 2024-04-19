@@ -31,6 +31,7 @@ export default function Navbar() {
   const dispatch = useDispatch();
 
   const handleLogout = async () => {
+ 
     try {
       const response = await axios.get(
         "https://surtiesserver.onrender.com/auth/logout"
