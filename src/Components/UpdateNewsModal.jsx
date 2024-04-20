@@ -542,8 +542,8 @@ function UpdateNewsModal({ id, fetchData }) {
                         {[
                           "country",
                           "gujarat",
-                          "Surat",
-                          "National",
+                          "surat",
+                          "national",
                           "entertainment",
                           "cricket",
                           "religion",

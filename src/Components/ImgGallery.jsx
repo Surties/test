@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 function ImgGallery({ imgs }) {
-  const [el, setEl] = useState(2);
+  const [el, setEl] = useState(0);
 
   const handlePrev = () => {
     console.log(el);

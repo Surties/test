@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function BreakingNews({ data }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentIndex2, setCurrentIndex2] = useState(0);
+  const [currentIndex2, setCurrentIndex2] = useState(1);
 
   useEffect(() => {
     const intervalId = setInterval(() => {

@@ -12,6 +12,7 @@ function CatagoryPage() {
   const [error, setError] = useState(false);
   const [pageNumber, setPageNumber] = useState(1);
   const { catagory } = useParams();
+
   const [totalPages, setTotalPages] = useState(1);
   const fetchData = () => {
     setLoading(true);
@@ -21,6 +22,7 @@ function CatagoryPage() {
       )
       .then((res) => {
         setData(res.data.newsItems);
+        console.log(res.data);
         setTotalPages(res.data.totalPages);
         setLoading(false);
       })
