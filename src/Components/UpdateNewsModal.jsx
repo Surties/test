@@ -155,8 +155,13 @@ function UpdateNewsModal({ id, fetchData }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(imgArticle);
-    const updatedFormData = { ...formData, author: user, imgs: imgArticle };
+    console.log(embededLink);
+    const updatedFormData = {
+      ...formData,
+      author: user,
+      imgs: imgArticle,
+      embededLink: embededLink,
+    };
     setFormData(updatedFormData);
     axios
       .patch(
@@ -281,7 +286,7 @@ function UpdateNewsModal({ id, fetchData }) {
       ...prevLinks,
       [name]: { ...prevLinks[name], content: content },
     }));
-    console.log(embededLink);
+    console.log(name, content);
   };
   const handleChange3 = (e) => {
     const { name, value } = e.target;

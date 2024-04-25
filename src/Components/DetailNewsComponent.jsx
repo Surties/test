@@ -17,7 +17,7 @@ function DetailNewsComponent({ articleData, category, data }) {
   const handleClick = () => {
     onOpen();
   };
-
+  console.log(articleData);
   return (
     <Center flexDirection={"column"} p={5}>
       <Text
@@ -91,7 +91,6 @@ function DetailNewsComponent({ articleData, category, data }) {
       >
         {articleData.embededLink.instaLink.link ? (
           <>
-            {" "}
             <InstagramEmbed
               url={articleData.embededLink.instaLink.link}
               width={328}
