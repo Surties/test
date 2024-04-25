@@ -31,18 +31,23 @@ const initialFormData = {
   subHeading: "",
   author: "",
   trending: false,
-  instaLink: "",
+  instaLink: { link: "", content: "" },
   catagory: [],
   article: "",
   imgs: [],
-  twitterLink: "",
-  facebookLink: "",
-  youtubeLink: "",
+  twitterLink: { link: "", content: "" },
+  facebookLink: { link: "", content: "" },
+  youtubeLink: { link: "", content: "" },
   breaking: false,
   thumbnail: null,
   imgDescribtion: [],
 };
-
+const linkinit = {
+  instaLink: { link: "", content: "" },
+  youtubeLink: { link: "", content: "" },
+  facebookLink: { link: "", content: "" },
+  twitterLink: { link: "", content: "" },
+};
 const AdminNewsForm = () => {
   const [files, setFiles] = useState([]);
   const [thumbnail, setThumbnail] = useState(null);
@@ -50,6 +55,7 @@ const AdminNewsForm = () => {
   const [uploading1, setUploading1] = useState(false);
   const [uploading2, setUploading2] = useState(false);
   const [imgArticle, setImgArticle] = useState([]);
+  const [embededLink, setEmbededLink] = useState(linkinit);
   const [loading, setloading] = useState(false);
   const handleChange = (e) => {
     const { name, value, type, files, checked } = e.target;
@@ -65,6 +71,20 @@ const AdminNewsForm = () => {
         ...formData,
         [name]: checked,
       });
+      if (
+        name === "instaLink" ||
+        name === "twitterLink" ||
+        name === "youtubeLink" ||
+        name === "facebookLink"
+      ) {
+        setFormData({
+          ...formData,
+          instaLink: {
+            ...formData.instaLink,
+            link: value,
+          },
+        });
+      }
     } else {
       setFormData({
         ...formData,
@@ -137,7 +157,12 @@ const AdminNewsForm = () => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedFormData = { ...formData, author: user, imgs: imgArticle };
+    const updatedFormData = {
+      ...formData,
+      author: user,
+      imgs: imgArticle,
+      embededLink: embededLink,
+    };
     setFormData(updatedFormData);
     setloading(true);
     try {
@@ -152,6 +177,7 @@ const AdminNewsForm = () => {
       console.error("Error:", error);
     }
     setFormData(initialFormData);
+    setEmbededLink(linkinit);
     setImgArticle([]);
   };
   const handleDelete = () => {
@@ -172,7 +198,7 @@ const AdminNewsForm = () => {
       [{ size: ["small", false, "large", "huge"] }],
       ["bold", "italic", "underline", "strike", "blockquote"],
       [{ list: "ordered" }, { list: "bullet" }],
-      ["images", "link"],
+      ["image", "link", "html"], // Change "htmls" to "html"
       [
         { list: "ordered" },
         { list: "bullet" },
@@ -183,42 +209,7 @@ const AdminNewsForm = () => {
       [
         {
           color: [
-            "#000000",
-            "#e60000",
-            "#ff9900",
-            "#ffff00",
-            "#008a00",
-            "#0066cc",
-            "#9933ff",
-            "#ffffff",
-            "#facccc",
-            "#ffebcc",
-            "#ffffcc",
-            "#cce8cc",
-            "#cce0f5",
-            "#ebd6ff",
-            "#bbbbbb",
-            "#f06666",
-            "#ffc266",
-            "#ffff66",
-            "#66b966",
-            "#66a3e0",
-            "#c285ff",
-            "#888888",
-            "#a10000",
-            "#b26b00",
-            "#b2b200",
-            "#006100",
-            "#0047b2",
-            "#6b24b2",
-            "#444444",
-            "#5c0000",
-            "#663d00",
-            "#666600",
-            "#003700",
-            "#002966",
-            "#3d1466",
-            "custom-color",
+            // Color options
           ],
         },
       ],
@@ -241,6 +232,7 @@ const AdminNewsForm = () => {
     "align",
     "size",
     "images",
+    "html",
   ];
 
   const handleProcedureContentChange = (content) => {
@@ -251,6 +243,21 @@ const AdminNewsForm = () => {
     const updatedImgArticle = [...imgArticle];
     updatedImgArticle[index].content = newContent;
     setImgArticle(updatedImgArticle);
+  };
+  const handleQuillChange = (name, content) => {
+    setEmbededLink((prevLinks) => ({
+      ...prevLinks,
+      [name]: { ...prevLinks[name], content: content },
+    }));
+    console.log(embededLink);
+  };
+  const handleChange3 = (e) => {
+    const { name, value } = e.target;
+
+    setEmbededLink((prevLinks) => ({
+      ...prevLinks,
+      [name]: { ...prevLinks[name], link: value },
+    }));
   };
   return (
     <Flex minH={"100vh"} align={"center"} justify={"center"}>
@@ -443,39 +450,114 @@ const AdminNewsForm = () => {
                 focusBorderColor="#d91e26"
                 type="text"
                 name="instaLink"
-                value={formData.instaLink}
-                onChange={handleChange}
+                value={embededLink.instaLink.link}
+                onChange={handleChange3}
               />
+              <Box
+                marginTop={"20px"}
+                marginBottom={"60px"}
+                display={"grid"}
+                justifyContent={"center"}
+              >
+                <ReactQuill
+                  value={embededLink.instaLink.content}
+                  theme="snow"
+                  modules={modules}
+                  formats={formats}
+                  placeholder="write your content ...."
+                  onChange={(content) =>
+                    handleQuillChange("instaLink", content)
+                  }
+                  style={{ height: "220px" }}
+                ></ReactQuill>
+              </Box>
             </FormControl>
+
             <FormControl marginTop={"10px"} mb={4}>
-              <FormLabel fontWeight={"bold"}>Youtube Link</FormLabel>
+              <FormLabel fontWeight={"bold"}>YouTube Link</FormLabel>
               <Input
                 focusBorderColor="#d91e26"
                 type="text"
                 name="youtubeLink"
-                value={formData.youtubeLink}
-                onChange={handleChange}
+                value={embededLink.youtubeLink.link}
+                onChange={handleChange3}
               />
+              <Box
+                marginTop={"20px"}
+                marginBottom={"60px"}
+                display={"grid"}
+                justifyContent={"center"}
+              >
+                <ReactQuill
+                  value={embededLink.youtubeLink.content}
+                  theme="snow"
+                  modules={modules}
+                  formats={formats}
+                  placeholder="write your content ...."
+                  onChange={(content) =>
+                    handleQuillChange("youtubeLink", content)
+                  }
+                  style={{ height: "220px" }}
+                ></ReactQuill>
+              </Box>
             </FormControl>
+
             <FormControl marginTop={"10px"} mb={4}>
               <FormLabel fontWeight={"bold"}>Facebook Link</FormLabel>
               <Input
                 focusBorderColor="#d91e26"
                 type="text"
                 name="facebookLink"
-                value={formData.facebookLink}
-                onChange={handleChange}
+                value={embededLink.facebookLink.link}
+                onChange={handleChange3}
               />
+              <Box
+                marginTop={"20px"}
+                marginBottom={"60px"}
+                display={"grid"}
+                justifyContent={"center"}
+              >
+                <ReactQuill
+                  value={embededLink.facebookLink.content}
+                  theme="snow"
+                  modules={modules}
+                  formats={formats}
+                  placeholder="write your content ...."
+                  onChange={(content) =>
+                    handleQuillChange("facebookLink", content)
+                  }
+                  style={{ height: "220px" }}
+                ></ReactQuill>
+              </Box>
             </FormControl>
+
             <FormControl mb={4}>
               <FormLabel fontWeight={"bold"}>Twitter Link</FormLabel>
               <Input
                 focusBorderColor="#d91e26"
                 type="text"
                 name="twitterLink"
-                value={formData.twitterLink}
-                onChange={handleChange}
+                value={embededLink.twitterLink.link}
+                onChange={handleChange3}
               />
+              <Box
+                marginTop={"20px"}
+                marginBottom={"60px"}
+                display={"grid"}
+                justifyContent={"center"}
+              >
+                <ReactQuill
+                  value={embededLink.twitterLink.content}
+                  theme="snow"
+                  modules={modules}
+                  formats={formats}
+                  placeholder="write your content ...."
+                  onChange={(content) =>
+                    handleQuillChange("twitterLink", content)
+                  }
+                  style={{ height: "220px" }}
+                ></ReactQuill>
+              </Box>
             </FormControl>
             <Flex mt={"20px"} mb={"20px"} gap={"10px"}>
               <FormControl columns={{ base: 2, lg: 4 }}>

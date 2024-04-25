@@ -19,10 +19,12 @@ function DetailNews() {
   const [category, setCategory] = useState("");
   const [error1, setError] = useState(false);
   const fetchData2 = () => {
+    console.log("last");
     setLoading(true);
     axios
       .get(`https://surtiesserver.onrender.com/news/${id}`)
       .then((response) => {
+        console.log(response.data);
         setArticleData(response.data);
         setCategory(response.data.catagory);
         setLoading(false);
@@ -65,8 +67,8 @@ function DetailNews() {
   };
   useEffect(() => {
     fetchData();
-    patchData();
     fetchData2();
+    patchData();
     fetchData3();
   }, [id]);
   return (
@@ -163,11 +165,15 @@ function DetailNews() {
             flexDirection={{ base: "column", md: "row" }}
           >
             <Box>
-              <DetailNewsComponent
-                articleData={articleData}
-                category={category}
-                data={data}
-              />
+              {!articleData.article ? (
+                ""
+              ) : (
+                <DetailNewsComponent
+                  articleData={articleData}
+                  category={category}
+                  data={data}
+                />
+              )}
             </Box>
           </Flex>
 

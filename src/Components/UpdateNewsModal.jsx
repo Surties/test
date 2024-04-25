@@ -47,6 +47,12 @@ const initialFormData = {
   thumbnail: null,
   breakingL: false,
 };
+const linkinit = {
+  instaLink: { link: "", content: "" },
+  youtubeLink: { link: "", content: "" },
+  facebookLink: { link: "", content: "" },
+  twitterLink: { link: "", content: "" },
+};
 
 function UpdateNewsModal({ id, fetchData }) {
   const [files, setFiles] = useState(null);
@@ -55,6 +61,8 @@ function UpdateNewsModal({ id, fetchData }) {
   const [uploading1, setUploading1] = useState(false);
   const [uploading2, setUploading2] = useState(false);
   const [imgArticle, setImgArticle] = useState([]);
+  const [embededLink, setEmbededLink] = useState(linkinit);
+
   const { user } = useSelector((el) => {
     return el.auth;
   });
@@ -84,6 +92,7 @@ function UpdateNewsModal({ id, fetchData }) {
       setFormData(res.data);
       console.log(res.data);
       setImgArticle(res.data.imgs);
+      setEmbededLink(res.data.embededLink);
     });
   };
 
@@ -266,6 +275,21 @@ function UpdateNewsModal({ id, fetchData }) {
   }, []);
   const handleClick = () => {
     onOpen();
+  };
+  const handleQuillChange = (name, content) => {
+    setEmbededLink((prevLinks) => ({
+      ...prevLinks,
+      [name]: { ...prevLinks[name], content: content },
+    }));
+    console.log(embededLink);
+  };
+  const handleChange3 = (e) => {
+    const { name, value } = e.target;
+
+    setEmbededLink((prevLinks) => ({
+      ...prevLinks,
+      [name]: { ...prevLinks[name], link: value },
+    }));
   };
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
@@ -491,7 +515,7 @@ function UpdateNewsModal({ id, fetchData }) {
                       </FormControl>
                     </Flex>
                     <Box>
-                      <FormControl mb={4}>
+                      <FormControl marginTop={"10px"} mb={4}>
                         <FormLabel fontWeight={"bold"}>
                           Instagram Link
                         </FormLabel>
@@ -499,39 +523,114 @@ function UpdateNewsModal({ id, fetchData }) {
                           focusBorderColor="#d91e26"
                           type="text"
                           name="instaLink"
-                          value={formData.instaLink}
-                          onChange={handleChange}
+                          value={embededLink.instaLink.link}
+                          onChange={handleChange3}
                         />
+                        <Box
+                          marginTop={"20px"}
+                          marginBottom={"60px"}
+                          display={"grid"}
+                          justifyContent={"center"}
+                        >
+                          <ReactQuill
+                            value={embededLink.instaLink.content}
+                            theme="snow"
+                            modules={modules}
+                            formats={formats}
+                            placeholder="write your content ...."
+                            onChange={(content) =>
+                              handleQuillChange("instaLink", content)
+                            }
+                            style={{ height: "220px" }}
+                          ></ReactQuill>
+                        </Box>
                       </FormControl>
+
                       <FormControl marginTop={"10px"} mb={4}>
-                        <FormLabel fontWeight={"bold"}>Youtube Link</FormLabel>
+                        <FormLabel fontWeight={"bold"}>YouTube Link</FormLabel>
                         <Input
                           focusBorderColor="#d91e26"
                           type="text"
                           name="youtubeLink"
-                          value={formData.youtubeLink}
-                          onChange={handleChange}
+                          value={embededLink.youtubeLink.link}
+                          onChange={handleChange3}
                         />
+                        <Box
+                          marginTop={"20px"}
+                          marginBottom={"60px"}
+                          display={"grid"}
+                          justifyContent={"center"}
+                        >
+                          <ReactQuill
+                            value={embededLink.youtubeLink.content}
+                            theme="snow"
+                            modules={modules}
+                            formats={formats}
+                            placeholder="write your content ...."
+                            onChange={(content) =>
+                              handleQuillChange("youtubeLink", content)
+                            }
+                            style={{ height: "220px" }}
+                          ></ReactQuill>
+                        </Box>
                       </FormControl>
+
                       <FormControl marginTop={"10px"} mb={4}>
                         <FormLabel fontWeight={"bold"}>Facebook Link</FormLabel>
                         <Input
                           focusBorderColor="#d91e26"
                           type="text"
                           name="facebookLink"
-                          value={formData.facebookLink}
-                          onChange={handleChange}
+                          value={embededLink.facebookLink.link}
+                          onChange={handleChange3}
                         />
+                        <Box
+                          marginTop={"20px"}
+                          marginBottom={"60px"}
+                          display={"grid"}
+                          justifyContent={"center"}
+                        >
+                          <ReactQuill
+                            value={embededLink.facebookLink.content}
+                            theme="snow"
+                            modules={modules}
+                            formats={formats}
+                            placeholder="write your content ...."
+                            onChange={(content) =>
+                              handleQuillChange("facebookLink", content)
+                            }
+                            style={{ height: "220px" }}
+                          ></ReactQuill>
+                        </Box>
                       </FormControl>
+
                       <FormControl mb={4}>
                         <FormLabel fontWeight={"bold"}>Twitter Link</FormLabel>
                         <Input
                           focusBorderColor="#d91e26"
                           type="text"
                           name="twitterLink"
-                          value={formData.twitterLink}
-                          onChange={handleChange}
+                          value={embededLink.twitterLink.link}
+                          onChange={handleChange3}
                         />
+                        <Box
+                          marginTop={"20px"}
+                          marginBottom={"60px"}
+                          display={"grid"}
+                          justifyContent={"center"}
+                        >
+                          <ReactQuill
+                            value={embededLink.twitterLink.content}
+                            theme="snow"
+                            modules={modules}
+                            formats={formats}
+                            placeholder="write your content ...."
+                            onChange={(content) =>
+                              handleQuillChange("twitterLink", content)
+                            }
+                            style={{ height: "220px" }}
+                          ></ReactQuill>
+                        </Box>
                       </FormControl>
                       <FormLabel>Catagory</FormLabel>
                       <Grid

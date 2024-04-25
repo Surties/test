@@ -34,6 +34,8 @@ const Profile = () => {
   const { email, id } = useSelector((store) => {
     return store.auth;
   });
+ 
+
   const dispatch = useDispatch();
   const inputFileRef = useRef();
   const onBtnClick = () => {

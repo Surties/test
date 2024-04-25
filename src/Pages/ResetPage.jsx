@@ -7,6 +7,7 @@ import {
   FormLabel,
   Heading,
   Input,
+  Spinner,
   useColorModeValue,
 } from "@chakra-ui/react";
 import axios from "axios";
@@ -18,16 +19,20 @@ function ResetPage() {
   const [email, setEmail] = useState("");
   const [emailSentSuccess, setEmailSentSuccess] = useState(false);
   const [emailSentFailed, setEmailSentFailed] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleClick = () => {
+    setLoading(true);
     axios
       .post("https://surtiesserver.onrender.com/auth/forgot-password", {
         email,
       })
       .then((res) => {
         setEmailSentSuccess(true);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
         setEmailSentFailed(true);
       });
   };
@@ -55,40 +60,60 @@ function ResetPage() {
           borderRadius={"12px"}
           bg={useColorModeValue("gray.50", "gray.800")}
         >
-          {!emailSentSuccess ? (
-            <Center w={"400px"} flexDirection={"column"}>
-              <Center p={6} alignItems={"baseline"}>
-                <FormControl w={"300px"} pos={"static"} id="email" isRequired>
-                  <FormLabel color={"black"}>Email address</FormLabel>
-                  <Input
-                    _placeholder={{ color: "black" }}
-                    autoComplete="off"
-                    pos={"static"}
-                    required
-                    name="email"
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                    focusBorderColor="#d91e26"
-                    placeholder="Email"
-                    type="email"
+          {loading ? (
+            <>
+              {" "}
+              {!emailSentSuccess ? (
+                <Center w={"400px"} flexDirection={"column"}>
+                  <Center p={6} alignItems={"baseline"}>
+                    <FormControl
+                      w={"300px"}
+                      pos={"static"}
+                      id="email"
+                      isRequired
+                    >
+                      <FormLabel color={"black"}>Email address</FormLabel>
+                      <Input
+                        _placeholder={{ color: "black" }}
+                        autoComplete="off"
+                        pos={"static"}
+                        required
+                        name="email"
+                        onChange={(e) => {
+                          setEmail(e.target.value);
+                        }}
+                        focusBorderColor="#d91e26"
+                        placeholder="Email"
+                        type="email"
+                      />
+                    </FormControl>
+                  </Center>
+                  <Center p={6}>
+                    <Button
+                      onClick={handleClick}
+                      color={"#d91e26"}
+                      _hover={{ backgroundColor: "#d91e26", color: "white" }}
+                    >
+                      Reset Password
+                    </Button>
+                  </Center>
+                </Center>
+              ) : (
+                <Center mt={"20px"}>
+                  <Spinner
+                    thickness="4px"
+                    speed="0.65s"
+                    emptyColor="gray.200"
+                    color="#d91e26"
+                    size="xl"
                   />
-                </FormControl>
-              </Center>
-              <Center p={6}>
-                <Button
-                  onClick={handleClick}
-                  color={"#d91e26"}
-                  _hover={{ backgroundColor: "#d91e26", color: "white" }}
-                >
-                  Reset Password
-                </Button>
-              </Center>
-            </Center>
+                </Center>
+              )}
+            </>
           ) : (
             <Box textAlign="center" py={10} px={6}>
               <CheckCircleIcon boxSize={"50px"} color={"yellow.500"} />
-              <Heading color={"white"} as="h2" size="xl" mt={6} mb={2}>
+              <Heading color={"black"} as="h2" size="xl" mt={6} mb={2}>
                 Password reset link has been sent to your email
               </Heading>
 

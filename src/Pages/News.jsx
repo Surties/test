@@ -30,9 +30,10 @@ function News() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        "https://surtiesserver.onrender.com/news/breaking-news"
+        "https://surtiesserver.onrender.com/news/slider"
       );
-      setSlides(response.data);
+      console.log(response.data);
+      setSlides(response.data.slider);
     } catch (error) {
       setError(!!error1);
     } finally {
@@ -45,6 +46,7 @@ function News() {
       .get("https://surtiesserver.onrender.com/news/grouped")
       .then((response) => {
         setNews(response.data);
+
         setLoading(false);
       })
       .catch((error) => {
@@ -75,7 +77,7 @@ function News() {
       .get("https://surtiesserver.onrender.com/news/breaking-news")
       .then((res) => {
         console.log(res.data);
-        setBreakingNews(res.data);
+        setBreakingNews(res.data.breakingNews);
       })
       .catch((err) => {
         console.log(err);

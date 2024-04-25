@@ -17,6 +17,7 @@ function DetailNewsComponent({ articleData, category, data }) {
   const handleClick = () => {
     onOpen();
   };
+
   return (
     <Center flexDirection={"column"} p={5}>
       <Text
@@ -40,6 +41,14 @@ function DetailNewsComponent({ articleData, category, data }) {
         ]}
         onClose={onClose}
       />
+      <Text
+        marginTop={{ base: "10px", md: "10px" }}
+        lineHeight={"20px"}
+        fontSize="xl"
+        color="gray.600"
+      >
+        {articleData.subHeading}
+      </Text>
       <Center
         alignItems={"flex-end"}
         onClick={handleClick}
@@ -52,14 +61,7 @@ function DetailNewsComponent({ articleData, category, data }) {
       <Text marginTop={"10px"} fontSize="md" color="gray.500">
         Author: {articleData.author} | Date:{articleData.date}
       </Text>
-      <Text
-        marginTop={{ base: "10px", md: "10px" }}
-        lineHeight={"20px"}
-        fontSize="xl"
-        color="gray.600"
-      >
-        {articleData.subHeading}
-      </Text>
+
       <Text marginTop={"10px"} fontSize="md" whiteSpace="pre-line">
         <div dangerouslySetInnerHTML={{ __html: articleData.article }} />
       </Text>
@@ -87,34 +89,83 @@ function DetailNewsComponent({ articleData, category, data }) {
         marginTop={"40px"}
         w={{ base: "100%", md: "80%" }}
       >
-        {articleData.instaLink ? (
-          <InstagramEmbed url={articleData.instaLink} width={328} />
-        ) : (
-          ""
-        )}
-        {articleData.twitterLink ? (
+        {articleData.embededLink.instaLink.link ? (
           <>
-            <XEmbed url={articleData.twitterLink} width={325} />
+            {" "}
+            <InstagramEmbed
+              url={articleData.embededLink.instaLink.link}
+              width={328}
+            />
+            <Text marginTop={"10px"} fontSize="md" whiteSpace="pre-line">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: articleData.embededLink.instaLink.content,
+                }}
+              />
+            </Text>
           </>
         ) : (
           ""
         )}
-        {articleData.youtubeLink ? (
-          <YouTubeEmbed
-            url={articleData.youtubeLink}
-            width={425}
-            height={320}
-          />
+        {articleData.embededLink.twitterLink.link ? (
+          <>
+            <XEmbed
+              url={articleData.embededLink.twitterLink.link}
+              width={325}
+            />
+            <Text marginTop={"10px"} fontSize="md" whiteSpace="pre-line">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: articleData.embededLink.twitterLink.content,
+                }}
+              />
+            </Text>
+          </>
         ) : (
           ""
         )}
-        {articleData.facebookLink ? (
-          <FacebookEmbed url={articleData.facebookLink} width={325} />
+        {articleData.embededLink.youtubeLink.link ? (
+          <>
+            <YouTubeEmbed
+              url={articleData.embededLink.youtubeLink.link}
+              width={425}
+              height={320}
+            />
+            <Text marginTop={"10px"} fontSize="md" whiteSpace="pre-line">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: articleData.embededLink.youtubeLink.content,
+                }}
+              />
+            </Text>
+          </>
+        ) : (
+          ""
+        )}
+        {articleData.embededLink.facebookLink.link ? (
+          <>
+            {" "}
+            <FacebookEmbed
+              url={articleData.embededLink.facebookLink.link}
+              width={325}
+            />
+            <Text marginTop={"10px"} fontSize="md" whiteSpace="pre-line">
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: articleData.embededLink.facebookLink.content,
+                }}
+              />
+            </Text>
+          </>
         ) : (
           ""
         )}
         <Flex>
-          <CategorizedNews2 cata={category} catagory={category} data={data} />
+          <CategorizedNews2
+            cata={category}
+            catagory={category}
+            data={data.slice(0, 4)}
+          />
         </Flex>
       </Center>
     </Center>

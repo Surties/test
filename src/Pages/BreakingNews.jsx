@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Sidebar from "../Components/Sidebar";
-import { Box, Flex, Grid, Spinner } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import NewsCard from "../Components/NewsCard";
 import StickyBox from "react-sticky-box";
@@ -10,13 +10,15 @@ function BreakingNews() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-
+const [currentPage, setcurrentPage] = useState(1);
+const [totalPages, setTotalPages] = useState(1);
   const fetchData = () => {
     setLoading(true);
     axios
       .get(`https://surtiesserver.onrender.com/news/breaking-news`)
       .then((res) => {
-        setData(res.data);
+        setData(res.data.breakingNews);
+     setTotalPages(res.data.totalPages);
         console.log(res.data);
         setLoading(false);
       })
@@ -26,6 +28,12 @@ function BreakingNews() {
         setLoading(false);
       });
   };
+   const handleClick = () => {
+     if (currentPage < totalPages) {
+       fetchData(currentPage + 1);
+       setcurrentPage(currentPage + 1);
+     }
+   };
   useEffect(() => {
     fetchData();
   }, []);
@@ -63,20 +71,71 @@ function BreakingNews() {
             </Flex>
           </>
         ) : (
-          <Grid
-            templateColumns={{
-              base: "repeat(2,1fr)",
-              md: "repeat(4, 1fr)",
-              lg: '"repeat(4, 1fr)',
-            }}
-            gap={{ base: "15px", md: "5px" }}
-            w={{ base: "100%", md: "75%" }}
-            justifyContent={"center"}
-          >
-            {data.map((el) => {
-              return <NewsCard data={el} key={el._id} />;
-            })}
-          </Grid>
+          <>
+            <Grid
+              templateColumns={{
+                base: "repeat(2,1fr)",
+                md: "repeat(4, 1fr)",
+                lg: '"repeat(4, 1fr)',
+              }}
+              gap={{ base: "15px", md: "5px" }}
+              w={{ base: "100%", md: "75%" }}
+              justifyContent={"center"}
+            >
+              {data.map((el) => {
+                return <NewsCard data={el} key={el._id} />;
+              })}
+            </Grid>
+            {loading ? (
+              ""
+            ) : (
+              <>
+                {" "}
+                {totalPages == currentPage ? (
+                  ""
+                ) : (
+                  <Flex
+                    justifyContent={"center"}
+                    p={"20px"}
+                    alignItems={"center"}
+                    mt={"3%"}
+                    mr={"2.4%"}
+                  >
+                    <Box
+                      h={"0.5px"}
+                      w={"30%"}
+                      border={"1px solid #718096 "}
+                      opacity={"0.5"}
+                    ></Box>
+                    <Button
+                      disabled={currentPage == totalPages}
+                      height={"30px"}
+                      fontSize={"12px"}
+                      padding={"10px 18px"}
+                      backgroundColor={"white"}
+                      color={"black"}
+                      borderRadius={"40px"}
+                      border={"1px solid grey"}
+                      _hover={{
+                        color: "white",
+                        backgroundColor: "#d91e26",
+                        border: "1px solid #d91e26",
+                      }}
+                      onClick={handleClick}
+                    >
+                      View More
+                    </Button>
+                    <Box
+                      h={"0.5px"}
+                      w={"30%"}
+                      border={"1px solid #718096 "}
+                      opacity={"0.5"}
+                    ></Box>
+                  </Flex>
+                )}
+              </>
+            )}
+          </>
         )}
       </Box>
     </>

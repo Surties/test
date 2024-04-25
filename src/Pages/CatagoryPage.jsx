@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
-import { Box, Center, Flex, Grid, Spinner } from "@chakra-ui/react";
+import { Box, Button, Center, Flex, Grid, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import NewsCard from "../Components/NewsCard";
 import StickyBox from "react-sticky-box";
@@ -10,10 +10,18 @@ function CatagoryPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [pageNumber, setPageNumber] = useState(1);
+  
   const { catagory } = useParams();
 
-  const [totalPages, setTotalPages] = useState(1);
+  
+   const [currentPage, setcurrentPage] = useState(1);
+   const [totalPages, setTotalPages] = useState(1);
+   const handleClick = () => {
+     if (currentPage < totalPages) {
+       fetchData(currentPage + 1);
+       setcurrentPage(currentPage + 1);
+     }
+   };
   const fetchData = () => {
     setLoading(true);
     axios
@@ -32,22 +40,9 @@ function CatagoryPage() {
         setLoading(false);
       });
   };
-  const handleScroll = () => {
-    if (
-      window.innerHeight + document.documentElement.scrollTop !==
-        document.documentElement.offsetHeight ||
-      loading
-    ) {
-      return;
-    }
-    setPageNumber(pageNumber + 1);
-  };
+  
   useEffect(() => {
     fetchData();
-    if (pageNumber != totalPages) {
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-    }
   }, [catagory]);
   return (
     <>
@@ -98,20 +93,72 @@ function CatagoryPage() {
             </Flex>
           </>
         ) : (
-          <Grid
-            templateColumns={{
-              base: "repeat(2,1fr)",
-              md: "repeat(4, 1fr)",
-              lg: '"repeat(4, 1fr)',
-            }}
-            gap={{ base: "15px", md: "5px" }}
-            w={{ base: "100%", md: "75%" }}
-            justifyContent={"center"}
-          >
-            {data.map((el) => {
-              return <NewsCard data={el} key={el._id} />;
-            })}
-          </Grid>
+          <>
+            {" "}
+            <Grid
+              templateColumns={{
+                base: "repeat(2,1fr)",
+                md: "repeat(4, 1fr)",
+                lg: '"repeat(4, 1fr)',
+              }}
+              gap={{ base: "15px", md: "5px" }}
+              w={{ base: "100%", md: "75%" }}
+              justifyContent={"center"}
+            >
+              {data.map((el) => {
+                return <NewsCard data={el} key={el._id} />;
+              })}
+            </Grid>
+            {loading ? (
+              ""
+            ) : (
+              <>
+                {" "}
+                {totalPages == currentPage ? (
+                  ""
+                ) : (
+                  <Flex
+                    justifyContent={"center"}
+                    p={"20px"}
+                    alignItems={"center"}
+                    mt={"3%"}
+                    mr={"2.4%"}
+                  >
+                    <Box
+                      h={"0.5px"}
+                      w={"30%"}
+                      border={"1px solid #718096 "}
+                      opacity={"0.5"}
+                    ></Box>
+                    <Button
+                      disabled={currentPage == totalPages}
+                      height={"30px"}
+                      fontSize={"12px"}
+                      padding={"10px 18px"}
+                      backgroundColor={"white"}
+                      color={"black"}
+                      borderRadius={"40px"}
+                      border={"1px solid grey"}
+                      _hover={{
+                        color: "white",
+                        backgroundColor: "#d91e26",
+                        border: "1px solid #d91e26",
+                      }}
+                      onClick={handleClick}
+                    >
+                      View More
+                    </Button>
+                    <Box
+                      h={"0.5px"}
+                      w={"30%"}
+                      border={"1px solid #718096 "}
+                      opacity={"0.5"}
+                    ></Box>
+                  </Flex>
+                )}
+              </>
+            )}
+          </>
         )}
       </Box>
     </>
