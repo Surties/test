@@ -4,23 +4,18 @@ import {
   FormControl,
   FormLabel,
   Input,
-  Select,
   Flex,
   Stack,
   Modal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   ModalCloseButton,
   useDisclosure,
   Button,
   Grid,
   Text,
-  Textarea,
-  Radio,
-  RadioGroup,
   Switch,
 } from "@chakra-ui/react";
 import {
@@ -34,7 +29,7 @@ import { app, storage } from "../firebase/firebase";
 import axios from "axios";
 import ReactQuill from "react-quill";
 import { useSelector } from "react-redux";
-import { FaUpload } from "react-icons/fa";
+
 const initialFormData = {
   heading: "",
   subHeading: "",
@@ -90,7 +85,7 @@ function UpdateNewsModal({ id, fetchData }) {
   const getSingleData = () => {
     axios.get(`https://surtiesserver.onrender.com/news/${id}`).then((res) => {
       setFormData(res.data);
-   
+
       setImgArticle(res.data.imgs);
       setEmbededLink(res.data.embededLink);
     });
@@ -155,7 +150,7 @@ function UpdateNewsModal({ id, fetchData }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+
     const updatedFormData = {
       ...formData,
       author: user,
@@ -170,7 +165,6 @@ function UpdateNewsModal({ id, fetchData }) {
       )
       .then((response) => {
         fetchData();
-       
       })
       .catch((error) => {
         console.error("Error updating resource:", error);
@@ -286,7 +280,6 @@ function UpdateNewsModal({ id, fetchData }) {
       ...prevLinks,
       [name]: { ...prevLinks[name], content: content },
     }));
-  
   };
   const handleChange3 = (e) => {
     const { name, value } = e.target;

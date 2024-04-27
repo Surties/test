@@ -1,4 +1,4 @@
-// NewsletterSubscription.js
+
 import { LuMailPlus } from "react-icons/lu";
 import React, { useState } from "react";
 import {

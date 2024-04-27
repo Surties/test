@@ -1,6 +1,6 @@
 import React from "react";
 import ContactPageComp from "../Components/ContactPageComp";
-import { Box, Center, Flex } from "@chakra-ui/react";
+import {  Center, Flex } from "@chakra-ui/react";
 import { Helmet } from "react-helmet";
 
 function ContactUs() {

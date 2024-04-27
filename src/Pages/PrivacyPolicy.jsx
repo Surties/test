@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, Text, Link, List, ListItem } from "@chakra-ui/react";
+import { Box, Heading, Text,  } from "@chakra-ui/react";
 
 const PrivacyPolicy = () => {
   return (

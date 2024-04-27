@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Box, Center, Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Center, Flex, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 function BreakingNews({ data }) {

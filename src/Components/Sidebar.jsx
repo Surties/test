@@ -1,15 +1,9 @@
 import React, { useState } from "react";
-import { FaCity, FaFootballBall, FaGuilded } from "react-icons/fa";
-import { IoMdTrendingUp } from "react-icons/io";
+
 import { Link } from "react-router-dom";
-import { BiCricketBall } from "react-icons/bi";
-import { GiByzantinTemple, GiDramaMasks, GiIndianPalace } from "react-icons/gi";
-import { RiGovernmentFill, RiMapPin5Fill, RiWomenFill } from "react-icons/ri";
-import { CiGlobe } from "react-icons/ci";
-import { TbHandFinger, TbWriting } from "react-icons/tb";
-import { IoPhonePortraitOutline } from "react-icons/io5";
+
 import { Box, Button, Image, ListItem, UnorderedList } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
+
 import Socials from "./Socials";
 import Newsletter from "./NewsLetter";
 

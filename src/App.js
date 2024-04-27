@@ -9,8 +9,7 @@ import {
 
 import AllRoutes from "./Routes/AllRoutes";
 import "./App.css";
-import { Helmet } from "react-helmet";
-import { Center } from "@chakra-ui/react";
+
 axios.defaults.withCredentials = true;
 function App() {
   const dispatch = useDispatch();

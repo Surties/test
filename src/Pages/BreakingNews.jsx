@@ -19,7 +19,7 @@ const [totalPages, setTotalPages] = useState(1);
       .then((res) => {
         setData(res.data.breakingNews);
      setTotalPages(res.data.totalPages);
-        c
+
         setLoading(false);
       })
       .catch((error) => {

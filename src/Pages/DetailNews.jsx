@@ -8,7 +8,7 @@ import StickyBox from "react-sticky-box";
 import ShareOn from "../Components/ShareOn";
 import axios from "axios";
 import RecommendNews from "../Components/RecommendedNews";
-import CategorizedNews from "../Components/CategorizedNews";
+
 
 function DetailNews() {
   const { id } = useParams();
