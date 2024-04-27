@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../Components/Sidebar";
-import { Box, Button, Center, Flex, Grid, Spinner } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import NewsCard from "../Components/NewsCard";
 import StickyBox from "react-sticky-box";
@@ -10,18 +10,17 @@ function CatagoryPage() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  
+
   const { catagory } = useParams();
 
-  
-   const [currentPage, setcurrentPage] = useState(1);
-   const [totalPages, setTotalPages] = useState(1);
-   const handleClick = () => {
-     if (currentPage < totalPages) {
-       fetchData(currentPage + 1);
-       setcurrentPage(currentPage + 1);
-     }
-   };
+  const [currentPage, setcurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const handleClick = () => {
+    if (currentPage < totalPages) {
+      fetchData(currentPage + 1);
+      setcurrentPage(currentPage + 1);
+    }
+  };
   const fetchData = () => {
     setLoading(true);
     axios
@@ -39,7 +38,7 @@ function CatagoryPage() {
         setLoading(false);
       });
   };
-  
+
   useEffect(() => {
     fetchData();
   }, [catagory]);
