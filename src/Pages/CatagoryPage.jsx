@@ -25,7 +25,7 @@ function CatagoryPage() {
     setLoading(true);
     axios
       .get(
-        `https://surtiesserver.onrender.com/news?page=${pageNumber}&filter=${catagory}`
+        `https://surtiesserver.onrender.com/news?page=${currentPage}&filter=${catagory}`
       )
       .then((res) => {
         setData(res.data.newsItems);
