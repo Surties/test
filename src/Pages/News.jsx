@@ -32,7 +32,7 @@ function News() {
       const response = await axios.get(
         "https://surtiesserver.onrender.com/news/slider"
       );
-      console.log(response.data);
+     
       setSlides(response.data.slider);
     } catch (error) {
       setError(!!error1);
@@ -76,7 +76,7 @@ function News() {
     axios
       .get("https://surtiesserver.onrender.com/news/breaking-news")
       .then((res) => {
-        console.log(res.data);
+       
         setBreakingNews(res.data.breakingNews);
       })
       .catch((err) => {

@@ -38,7 +38,7 @@ export default function Navbar() {
       );
 
       dispatch({ type: LOGOUT_SUCCESS });
-      console.log(response.data);
+      
     } catch (error) {
       console.error("Error occurred during logout:", error);
     }

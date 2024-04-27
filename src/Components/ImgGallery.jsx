@@ -7,11 +7,11 @@ function ImgGallery({ imgs }) {
   const [el, setEl] = useState(0);
 
   const handlePrev = () => {
-    console.log(el);
+   
     setEl((prevIndex) => (prevIndex === 0 ? imgs.length - 1 : prevIndex - 1));
   };
   const handleNext = () => {
-    console.log(el);
+   
     setEl((prevIndex) => (prevIndex + 1) % imgs.length);
   };
   return (

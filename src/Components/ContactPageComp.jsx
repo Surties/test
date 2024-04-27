@@ -62,7 +62,7 @@ const ContactPageComp = () => {
   };
 
   const handleSubmit = (e) => {
-    console.log();
+    
     e.preventDefault();
 
     if (
@@ -74,7 +74,7 @@ const ContactPageComp = () => {
     ) {
       return;
     }
-    console.log(contactData);
+    
 
     handlePostRequest(contactData);
   };
@@ -86,7 +86,7 @@ const ContactPageComp = () => {
         "https://surtiesserver.onrender.com/contact-us",
         postData
       );
-      console.log(response);
+      
       setSuccessMsg(true);
       setLoading(false);
     } catch (error) {

@@ -90,7 +90,7 @@ function UpdateNewsModal({ id, fetchData }) {
   const getSingleData = () => {
     axios.get(`https://surtiesserver.onrender.com/news/${id}`).then((res) => {
       setFormData(res.data);
-      console.log(res.data);
+   
       setImgArticle(res.data.imgs);
       setEmbededLink(res.data.embededLink);
     });
@@ -155,7 +155,7 @@ function UpdateNewsModal({ id, fetchData }) {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(embededLink);
+   
     const updatedFormData = {
       ...formData,
       author: user,
@@ -170,7 +170,7 @@ function UpdateNewsModal({ id, fetchData }) {
       )
       .then((response) => {
         fetchData();
-        console.log(response);
+       
       })
       .catch((error) => {
         console.error("Error updating resource:", error);
@@ -286,7 +286,7 @@ function UpdateNewsModal({ id, fetchData }) {
       ...prevLinks,
       [name]: { ...prevLinks[name], content: content },
     }));
-    console.log(name, content);
+  
   };
   const handleChange3 = (e) => {
     const { name, value } = e.target;

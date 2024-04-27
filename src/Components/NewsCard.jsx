@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function NewsCard({ data }) {
-  console.log(data);
+  
   return (
     <Link to={`/news/id/${data._id}`}>
       {" "}

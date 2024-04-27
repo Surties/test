@@ -38,7 +38,7 @@ function App() {
   useEffect(() => {
     getUser();
   }, []);
-  console.log("last");
+  
   return (
     <>
       <AllRoutes />

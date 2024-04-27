@@ -71,7 +71,7 @@ const CareerForm = () => {
             file: downloadURL,
           }
         );
-        console.log(response);
+       
         setUploading(false);
 
         // Clear the form after successful submission

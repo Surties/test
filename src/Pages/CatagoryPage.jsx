@@ -30,7 +30,7 @@ function CatagoryPage() {
       )
       .then((res) => {
         setData(res.data.newsItems);
-        console.log(res.data);
+        
         setTotalPages(res.data.totalPages);
         setLoading(false);
       })

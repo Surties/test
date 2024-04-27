@@ -108,7 +108,7 @@ const AdminNewsForm = () => {
         ...formData,
         thumbnail: downloadURL,
       });
-      console.log(formData);
+   
       setUploading1(false);
     } catch (error) {
       console.error("Error uploading image:", error);
@@ -237,7 +237,7 @@ const AdminNewsForm = () => {
 
   const handleProcedureContentChange = (content) => {
     setFormData({ ...formData, article: content });
-    console.log(content);
+    
   };
   const handleProcedureContentChange2 = (index, newContent) => {
     const updatedImgArticle = [...imgArticle];
@@ -249,7 +249,7 @@ const AdminNewsForm = () => {
       ...prevLinks,
       [name]: { ...prevLinks[name], content: content },
     }));
-    console.log(embededLink);
+ 
   };
   const handleChange3 = (e) => {
     const { name, value } = e.target;

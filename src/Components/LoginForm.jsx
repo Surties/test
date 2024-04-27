@@ -75,7 +75,7 @@ export default function LoginForm() {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
-      console.log(res.data);
+     
       setLoading(false);
       if (res.data.role === "admin" && "newsEditor") {
         navigate("/admin");

@@ -18,7 +18,7 @@ const Newsletter = () => {
 
   const handleChange = (event) => {
     setEmail(event.target.value);
-    console.log(event.target.value);
+    
   };
 
   const handleSubmit = (event) => {
@@ -34,7 +34,7 @@ const Newsletter = () => {
     axios
       .post("https://surtiesserver.onrender.com/email-list", { email })
       .then((response) => {
-        console.log("Response:", response.data);
+     
       })
       .catch((error) => {
         console.error("Error:", error);

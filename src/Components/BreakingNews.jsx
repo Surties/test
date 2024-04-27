@@ -3,7 +3,7 @@ import { Box, Center, Flex, Text, useColorModeValue } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 function BreakingNews({ data }) {
-  console.log(data);
+ 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentIndex2, setCurrentIndex2] = useState(0);
 
