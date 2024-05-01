@@ -2,7 +2,14 @@ import React, { useState } from "react";
 
 import { Link } from "react-router-dom";
 
-import { Box, Button, Image, ListItem, UnorderedList } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Image,
+  ListItem,
+  Text,
+  UnorderedList,
+} from "@chakra-ui/react";
 
 import Socials from "./Socials";
 import Newsletter from "./NewsLetter";
@@ -95,7 +102,7 @@ function Sidebar() {
                   src={el.icon}
                   alt=""
                 />
-                {el.link}
+                <Text textTransform={"capitalize"}>{el.link}</Text>
               </Link>
             </ListItem>
           ))}

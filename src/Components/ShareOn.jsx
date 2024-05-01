@@ -20,7 +20,7 @@ function ShareOn() {
         <Text>SHARE ON</Text>
       </Center>
       <Center padding={"20px 0px"} gap={"5%"}>
-        <WhatsappShareButton url={shareUrl}>
+        <WhatsappShareButton url={shareUrl} title="Whatapp">
           <WhatsappIcon size={32} round={true} />
         </WhatsappShareButton>
         <FacebookShareButton url={shareUrl}>

@@ -20,9 +20,9 @@ import Filtering from "./Filtering";
 
 const cata = [
   "country",
-  "gujrat",
-  "Surat",
-  "National",
+  "gujarat",
+  "surat",
+  "national",
   "entertainment",
   "cricket",
   "religion",
